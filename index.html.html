@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRDM 商談マニュアル｜リスク対応編</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Serif+Display&display=swap');
+
+:root {
+  --navy: #0f1f3d;
+  --navy-mid: #1a3560;
+  --blue: #1e5fa8;
+  --blue-light: #d6e8f8;
+  --blue-pale: #eef5fc;
+  --red: #c0392b;
+  --red-light: #fde8e6;
+  --red-pale: #fff5f4;
+  --green: #1d6a44;
+  --green-light: #d8f0e5;
+  --green-pale: #f0faf5;
+  --amber: #b45309;
+  --amber-light: #fef3cd;
+  --purple: #5b21b6;
+  --purple-light: #ede9fe;
+  --gray-100: #f7f8fa;
+  --gray-200: #eef0f3;
+  --gray-400: #9da5b0;
+  --gray-600: #5a6473;
+  --gray-800: #2d3748;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+  --radius: 12px;
+  --radius-sm: 7px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--gray-100);
+  color: var(--gray-800);
+  min-height: 100vh;
+  line-height: 1.7;
+}
+
+/* ── TOP HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
+  padding: 36px 40px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.header-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.page-header h1 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.page-header h1 span {
+  color: #7ec8f5;
+}
+.header-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  max-width: 600px;
+  line-height: 1.65;
+}
+.header-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-white {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.btn-white:hover { background: rgba(255,255,255,0.25); }
+.btn-accent {
+  background: #7ec8f5;
+  color: var(--navy);
+}
+.btn-accent:hover { background: #a3d8f7; }
+
+/* ── LEGEND ── */
+.legend-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 12px 40px;
+}
+.legend-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--gray-600);
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+/* ── SECTION HEADER ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin: 36px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.section-label:first-child { margin-top: 0; }
+
+/* ── RISK CARD ── */
+.risk-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 12px;
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.risk-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  display: block;
+}
+
+.card-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cat-tag {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+.cat-tag .cat-name {
+  font-size: 9px;
+  font-weight: 700;
+  margin-top: 3px;
+  letter-spacing: 0.5px;
+}
+
+.card-title-area {
+  flex: 1;
+  min-width: 0;
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+.card-question {
+  font-size: 12px;
+  color: var(--gray-600);
+  margin-top: 3px;
+}
+
+.card-status {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.first-badge {
+  background: var(--red);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.chevron {
+  color: var(--gray-400);
+  font-size: 18px;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+.risk-card.open .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── CARD BODY ── */
+.card-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--gray-200);
+}
+.risk-card.open .card-body {
+  display: block;
+}
+
+/* First answer box */
+.first-answer {
+  margin: 16px 0;
+  background: var(--red-pale);
+  border: 1.5px solid #f5c6c1;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.first-answer-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.first-answer-label::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 12px;
+  background: var(--red);
+  border-radius: 2px;
+}
+.first-answer-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1.75;
+  white-space: pre-line;
+}
+
+/* Sub sections */
+.sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+@media(max-width: 640px) {
+  .sub-grid { grid-template-columns: 1fr; }
+}
+
+.sub-box {
+  border-radius: var(--radius-sm);
+  padding: 13px 15px;
+}
+.sub-box.detail {
+  background: var(--blue-pale);
+  border: 1px solid var(--blue-light);
+}
+.sub-box.material {
+  background: var(--amber-light);
+  border: 1px solid #fcd97a;
+}
+.sub-box.phrase {
+  background: var(--purple-light);
+  border: 1px solid #c4b5fd;
+  grid-column: 1 / -1;
+}
+
+.sub-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sub-label.blue { color: var(--blue); }
+.sub-label.amber { color: var(--amber); }
+.sub-label.purple { color: var(--purple); }
+
+.sub-content {
+  font-size: 13px;
+  line-height: 1.75;
+  white-space: pre-line;
+  color: var(--gray-800);
+}
+.sub-content.phrase-text {
+  font-weight: 700;
+  font-style: italic;
+  color: var(--purple);
+  font-size: 13px;
+}
+
+/* Bullet list */
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.detail-list li {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--gray-800);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.detail-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-size: 11px;
+  top: 2px;
+}
+
+.material-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.material-list li {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--gray-800);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.material-list li::before {
+  content: '📄';
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+  top: 1px;
+}
+
+.url-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 12px;
+  word-break: break-all;
+}
+.url-link:hover { text-decoration: underline; }
+
+/* ── RULES SECTION ── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+@media(max-width: 640px) {
+  .rules-grid { grid-template-columns: 1fr; }
+}
+
+.rule-item {
+  display: flex;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.rule-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+.rule-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--gray-800);
+}
+.rule-text strong {
+  font-weight: 700;
+  color: var(--navy);
+  display: block;
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+
+/* ── MERIT PLACEHOLDER ── */
+.merit-placeholder {
+  background: var(--white);
+  border: 2px dashed var(--gray-200);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  color: var(--gray-400);
+}
+.merit-placeholder .icon { font-size: 32px; margin-bottom: 10px; }
+.merit-placeholder p { font-size: 14px; }
+
+/* ── PRINT ── */
+@media print {
+  .page-header { background: var(--navy) !important; -webkit-print-color-adjust: exact; }
+  .card-body { display: block !important; }
+  .chevron { display: none; }
+  .header-actions { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-badge">GRDM SALES MANUAL</div>
+    <h1>商談マニュアル <span>リスク対応編</span></h1>
+    <p class="header-desc">
+      属人性を排除し、誰でも一定品質の対応ができる組織的営業の実現。<br>
+      赤字＝<strong style="color:#7ec8f5">第一陣の回答</strong>（全営業統一の初期対応）をまず使い、深掘りされたら詳細へ展開する。
+    </p>
+    <div class="header-actions">
+      <button class="btn btn-white" onclick="toggleAll(true)">▼ 全て展開する</button>
+      <button class="btn btn-white" onclick="toggleAll(false)">▲ 全て閉じる</button>
+      <button class="btn btn-accent" onclick="downloadPage()">⬇ HTMLファイルを保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <span style="font-size:12px;font-weight:700;color:var(--gray-600);">凡例</span>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--red)"></div>
+      <span>第一陣の回答（全員統一）</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--blue)"></div>
+      <span>詳細説明・補足トーク</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--amber)"></div>
+      <span>使用資料・データ</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--purple)"></div>
+      <span>口頭フレーズ例</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- DEMERIT SECTION -->
+  <div class="section-label">デメリット・リスク対応 ／ Risk Response</div>
+
+  <!-- 売却 -->
+  <div class="risk-card" id="card-baikya">
+    <button class="card-trigger" onclick="toggleCard('card-baikya')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#dbeafe;">
+          <span>🏠</span>
+          <span class="cat-name" style="color:#1e40af;">売却</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">価格決定方法・売却時の価格</div>
+          <div class="card-question">「売却するとき、いくらで売れますか？どう価格が決まるの？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer">
+        <div class="first-answer-label">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text">収益還元法と周辺相場（賃貸・売買）の2軸で算出します。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>収益還元法：年間賃料収入 ÷ 想定利回りで価格を計算</li>
+            <li>周辺相場：直近の同エリア・同スペックの売買事例と賃貸相場を照合</li>
+            <li>実需要（自己居住）と投資需要の両面から買い手を探し、高値売却が可能</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>周辺売買事例データ（REINS等）</li>
+            <li>賃料査定シート</li>
+            <li>収益還元法シミュレーションシート</li>
+          </ul>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「売却価格は感覚ではなく、2つの客観的な指標から算出します。まずご覧ください」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 修繕 -->
+  <div class="risk-card" id="card-shuzen">
+    <button class="card-trigger" onclick="toggleCard('card-shuzen')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#d1fae5;">
+          <span>🔧</span>
+          <span class="cat-name" style="color:#065f46;">修繕</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">修繕積立金の変動リスク</div>
+          <div class="card-question">「修繕積立金が上がり続けると聞いた。将来いくらになるの？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer">
+        <div class="first-answer-label">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text">国交省のガイドラインに基づき、長期修繕計画書をもとにシミュレーションします。
+5年おきに10万円、10年おきに10万円上がる設定でご説明します。
+退去時のリフォーム代も積立金の一部として計上できるケースがあります。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>国交省ガイドラインでは修繕積立金の目安・段階増額の計画が示されている</li>
+            <li>積立金上昇分を加味しても、家賃収入とのバランスで手残りがプラスかを試算</li>
+            <li>部屋をきれいに保つことで入居率向上・高賃料維持にもつながる</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>長期修繕計画書（各マンション管理組合発行）</li>
+            <li>国交省ガイドライン（修繕積立金の目安）</li>
+            <li>部屋別修繕積立金推移シミュレーション（Excel）</li>
+          </ul>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「ガイドラインに沿って計画書を一緒に見ましょう。数字で見ると、実は想像ほど怖くないんです」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 金利 -->
+  <div class="risk-card" id="card-kinri">
+    <button class="card-trigger" onclick="toggleCard('card-kinri')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#fee2e2;">
+          <span>📈</span>
+          <span class="cat-name" style="color:#991b1b;">金利</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">金利上昇リスク</div>
+          <div class="card-question">「これから金利が上がったら返済が苦しくなりませんか？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer">
+        <div class="first-answer-label">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text">① まず「今後どうなると思いますか？」と相手の意見を聞く。（傾聴が先）
+② 世界各国の政策金利×平均年収比較表（米・豪・英・日）を見てもらう。
+③ 上がった場合の月負担増を一緒に計算する。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>金利は経費扱いになる（節税メリットとセット説明）</li>
+            <li>過去40年の政策金利の推移データをグラフで見せる</li>
+            <li>金利上昇→住宅ローン困難→賃貸需要増加という逆説的メリット</li>
+            <li>黄金30年ローンが変動でも成立する理由（データ収集中）</li>
+            <li>金融機関（イオン・ソニー）の金利上昇上限は1.25倍ルール</li>
+            <li>ソニー銀行での月負担増の具体試算で顧客と共感</li>
+            <li>商談相手は銀行を選べることも伝える</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>世界各国政策金利×平均年収比較表（米・豪・英・日）</li>
+            <li>過去40年 政策金利推移グラフ</li>
+            <li>金利上昇シミュレーション（月額負担変化）</li>
+            <li>イオン銀行・ソニー銀行の1.25倍ルール説明資料</li>
+          </ul>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「まず○○さんはこれからどうなると思いますか？（意見を聞く）　実はデータを見ると…」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 天災 -->
+  <div class="risk-card" id="card-tensai">
+    <button class="card-trigger" onclick="toggleCard('card-tensai')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#ede9fe;">
+          <span>🌏</span>
+          <span class="cat-name" style="color:#4c1d95;">天災</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">地震・火災・水災リスク</div>
+          <div class="card-question">「地震で建物が壊れたらどうなるんですか？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer">
+        <div class="first-answer-label">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text">① まず「何が心配ですか？」と聞く。（傾聴が先）
+② 地震：入居者に火災保険の加入義務があり、損害はそこから支払われる。
+③ 火災・水災：入居者の保険で修繕でき、オーナーの保険加入は任意。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>東日本大震災でのRC造マンション倒壊棟数：84,667棟中 682棟（約0.8%）</li>
+            <li>軽微・損傷なしが大半（9割以上）→「実質ほぼ倒壊しない」と説明できる</li>
+            <li>修繕積立金の一部が災害修繕に充当される仕組みがある</li>
+            <li>実質的なオーナーの自己負担は現時点でほぼない</li>
+            <li>地震保険の加入は任意であることも合わせて説明</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>国土交通省「被災状況調査」</li>
+            <li>
+              <a class="url-link" href="https://www.kanrikyo.or.jp/outline/seido.html" target="_blank">
+                kanrikyo.or.jp/outline/seido.html
+              </a>
+            </li>
+            <li>
+              <a class="url-link" href="https://www.kanrikyo.or.jp/news/data/hisaihoukoku110519.pdf" target="_blank">
+                RC造マンション被害データPDF
+              </a>
+            </li>
+            <li>修繕積立金の用途・充当フロー図</li>
+          </ul>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「まず何が一番心配ですか？（聞く）　実際の数字を見てみましょう。東日本大震災のデータです」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 家賃 -->
+  <div class="risk-card" id="card-yachin">
+    <button class="card-trigger" onclick="toggleCard('card-yachin')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#fef3c7;">
+          <span>🏢</span>
+          <span class="cat-name" style="color:#92400e;">家賃</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">家賃下落リスク（サブリース）</div>
+          <div class="card-question">「家賃が下がることはないですか？ずっと続きますか？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer">
+        <div class="first-answer-label">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text">近隣同種の相場をレインズで一緒に確認します。
+上がるも下がるも、両者合意のもとで決定されます。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>東京の基本金額はほぼ変わらない実績がある（京都は別）</li>
+            <li>管理会社が2年の自動更新時に再査定する仕組み</li>
+            <li>インフレで家賃が上がる可能性もある（追い風として説明）</li>
+            <li>資材高騰で中古物件の希少価値が高まっている現状も伝える</li>
+            <li>「家賃は管理される」ではなく「一緒に決める」というスタンスで話す</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>レインズ（REINS）近隣同種賃料データ</li>
+            <li>過去の賃料推移グラフ（東京主要エリア）</li>
+            <li>インフレと不動産価値の相関データ</li>
+            <li>資材高騰と中古物件希少価値のデータ</li>
+          </ul>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「まずこのエリアの直近相場をレインズで一緒に見てみましょう。実際の数字で確認できます」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MERIT PLACEHOLDER -->
+  <div class="section-label" style="margin-top:40px;">メリット ／ Benefits（作成中）</div>
+  <div class="risk-card" style="border:2px dashed #cbd5e1; box-shadow:none; background:#f8fafc;">
+    <div class="card-header" style="opacity:0.5;">
+      <div class="cat-tag" style="background:#e0f2fe;"><span>🛡</span><span class="cat-name" style="color:#0369a1;">保険</span></div>
+      <div class="card-title-area"><div class="card-title" style="color:#94a3b8;">保険メリット（準備中）</div></div>
+    </div>
+  </div>
+  <div class="risk-card" style="border:2px dashed #cbd5e1; box-shadow:none; background:#f8fafc;">
+    <div class="card-header" style="opacity:0.5;">
+      <div class="cat-tag" style="background:#d1fae5;"><span>💴</span><span class="cat-name" style="color:#065f46;">節税</span></div>
+      <div class="card-title-area"><div class="card-title" style="color:#94a3b8;">節税メリット（準備中）</div></div>
+    </div>
+  </div>
+  <div class="risk-card" style="border:2px dashed #cbd5e1; box-shadow:none; background:#f8fafc;">
+    <div class="card-header" style="opacity:0.5;">
+      <div class="cat-tag" style="background:#fef9c3;"><span>📊</span><span class="cat-name" style="color:#713f12;">運用</span></div>
+      <div class="card-title-area"><div class="card-title" style="color:#94a3b8;">運用メリット（準備中）</div></div>
+    </div>
+  </div>
+
+  <!-- OPERATION RULES -->
+  <div class="section-label" style="margin-top:40px;">運用ルール ／ Operation Rules</div>
+  <div class="rules-grid">
+    <div class="rule-item">
+      <div class="rule-icon">🔴</div>
+      <div class="rule-text">
+        <strong>第一陣の回答は全員統一</strong>
+        個人の経験や感性でアレンジしない。まずこれを使う。
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">💬</div>
+      <div class="rule-text">
+        <strong>詳細は深掘りされてから展開</strong>
+        第一陣回答に対し顧客がさらに聞いてきた場合に詳細へ進む。
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">📄</div>
+      <div class="rule-text">
+        <strong>資料は事前準備必須</strong>
+        タブレットや紙で準備しておく。「次回持ってきます」はNG。
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">👂</div>
+      <div class="rule-text">
+        <strong>金利・天災は傾聴から入る</strong>
+        まず顧客の意見・感情を引き出してから数字で返す（傾聴→論理の順）。
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🔄</div>
+      <div class="rule-text">
+        <strong>マニュアルは生きもの</strong>
+        現場でより良い回答が生まれたら随時更新・共有する。
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🎯</div>
+      <div class="rule-text">
+        <strong>目標：サイゼリヤ型の再現性</strong>
+        誰が対応しても一定品質。個人の能力に依存しない組織営業を目指す。
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+function toggleAll(open) {
+  document.querySelectorAll('.risk-card[id]').forEach(card => {
+    card.classList.toggle('open', open);
+  });
+}
+
+function downloadPage() {
+  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'GRDM_商談マニュアル_リスク対応編.html';
+  a.click();
+}
+</script>
+</body>
+</html>
