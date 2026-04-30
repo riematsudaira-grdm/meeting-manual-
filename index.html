@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRDM 商談マニュアル｜リスク対応編</title>
+<title>GRDM 商談マニュアル｜メリット・リスク対応編</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Serif+Display&display=swap');
 
@@ -491,7 +491,7 @@ body {
 <div class="page-header">
   <div class="header-inner">
     <div class="header-badge">GRDM SALES MANUAL</div>
-    <h1>商談マニュアル <span>リスク対応編</span></h1>
+    <h1>商談マニュアル <span>メリット・リスク対応編</span></h1>
     <p class="header-desc">
       属人性を排除し、誰でも一定品質の対応ができる組織的営業の実現。<br>
       赤字＝<strong style="color:#7ec8f5">第一陣の回答</strong>（全営業統一の初期対応）をまず使い、深掘りされたら詳細へ展開する。
@@ -530,8 +530,184 @@ body {
 <!-- MAIN -->
 <div class="main">
 
+  <!-- MERIT SECTION -->
+  <div class="section-label">メリット ／ Benefits</div>
+
+  <!-- 保険 -->
+  <div class="risk-card" id="card-hoken">
+    <button class="card-trigger" onclick="toggleCard('card-hoken')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#e0f2fe;">
+          <span>🛡</span>
+          <span class="cat-name" style="color:#0369a1;">保険</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">生命保険の代替効果（団信）</div>
+          <div class="card-question">「保険には入っているのですが…マンションで何が変わるの？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge" style="background:#0369a1;">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer" style="background:#eff6ff; border-color:#bfdbfe;">
+        <div class="first-answer-label" style="color:#1d4ed8;">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text" style="color:#1d4ed8;">国内生保で掛け捨て（定期付終身保険）に入っている方に対して：
+① その保険の仕組みを説明する。→ 60歳以降の保障がほぼ消え、払った分はほぼ掛け捨てになること。
+② 終身保険との比較をその場でインターネットで調べ、年齢・条件を入れてシミュレーションを一緒に見せる。
+③ 計算書1年目（PORT資料）で団信の生命保険効果を数字で見せる。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>団体信用生命保険（団信）：死亡・所定の高度障害時にローンが全額完済される</li>
+            <li>残された家族は物件をそのまま保有でき、家賃収入が遺族年金として続く</li>
+            <li>計算書の例：遺族年金合計 約2,203万円分の生命保険効果（35年間保有の場合）</li>
+            <li>国内生保の掛け捨て型は60歳以降の保障がほぼゼロになるため、保険料が無駄になりやすい</li>
+            <li>終身保険と比較すると、マンション経営の方がコストパフォーマンスが高いケースが多い</li>
+            <li>アクサ生命との比較金額は口頭で伝える（※数字は都度確認）</li>
+            <li>適用条件：国内生保で掛け捨ての場合に特に有効（定期付終身保険が対象）</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>保険証券（事前に持参をお願いしておく）→ これを基に比較</li>
+            <li>計算書1年目（PORT資料）：生命保険効果・団信の説明欄</li>
+            <li>終身保険のシミュレーション（その場でネット検索・条件入力）</li>
+            <li>アクサ生命との比較（口頭）</li>
+          </ul>
+          <div style="margin-top:10px; padding:8px 10px; background:#fef9c3; border-radius:6px; font-size:12px; color:#92400e;">
+            ⚠ 国内生保の掛け捨て加入者に対して使うことが多い。保険証券がある場合のみフル活用。
+          </div>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「今の保険、60歳以降の保障って実際どうなっているかご存知ですか？一緒に確認してみましょう。（保険証券を見ながら）実は…」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 節税 -->
+  <div class="risk-card" id="card-setsuzei">
+    <button class="card-trigger" onclick="toggleCard('card-setsuzei')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#d1fae5;">
+          <span>💴</span>
+          <span class="cat-name" style="color:#065f46;">節税</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">節税効果（確定申告・所得税・住民税の還付）</div>
+          <div class="card-question">「税金が戻るって本当ですか？どういう仕組みですか？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge" style="background:#065f46;">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer" style="background:#f0faf5; border-color:#a7f3d0;">
+        <div class="first-answer-label" style="color:#065f46;">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text" style="color:#065f46;">① まずお客様の年収をヒアリングする。
+② 所得税と住民税の話をする。「高いと思いますか？どうしたいですか？」と聞く。
+③ 不動産の経費を計上することで税金が戻る仕組みを説明する。
+④「今サラリーマンができる税金対策は医療費控除とふるさと納税だけ。一番効果が高いのがマンション経営」と伝える。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>不動産経費（ローン利息・管理費・修繕費・減価償却など）を給与収入と損益通算できる</li>
+            <li>計算書の例：所得税還付 約255,000円＋住民税軽減 約113,300円＝節税合計 約368,300円/年</li>
+            <li>2〜3件入れたときの節税額は計算書1年目で確認できる</li>
+            <li>源泉徴収票を使って所得税・住民税の実額を一緒に確認する</li>
+            <li>「医療費控除は使える人が限られる。ふるさと納税は上限がある。マンション経営は金額が大きい」という比較で話す</li>
+            <li>※税務判断は税理士等の専門家に確認いただく旨を必ず添える</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>計算書1年目（PORT資料）：節税合計額の欄（2〜3件入れたバージョンも活用）</li>
+            <li>源泉徴収票：所得税・住民税の実額確認に使用</li>
+          </ul>
+          <div style="margin-top:10px; padding:8px 10px; background:#fef9c3; border-radius:6px; font-size:12px; color:#92400e;">
+            ⚠ 営業担当者は税務相談・控除判断は行えない。必ず「税理士等の専門家へご確認ください」と添える。
+          </div>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「○○さんの年収だと、毎年これだけ税金を払っていますよね。サラリーマンが合法的にこれを減らせる方法、実はほとんどないんです。ふるさと納税はご存知ですか？あれより全然大きい話です」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 運用・転売 -->
+  <div class="risk-card" id="card-unyo">
+    <button class="card-trigger" onclick="toggleCard('card-unyo')">
+      <div class="card-header">
+        <div class="cat-tag" style="background:#fef9c3;">
+          <span>📊</span>
+          <span class="cat-name" style="color:#713f12;">運用</span>
+        </div>
+        <div class="card-title-area">
+          <div class="card-title">運用・転売メリット（損益分岐・収支シミュレーション）</div>
+          <div class="card-question">「将来いくら儲かるんですか？売ったらどうなりますか？」</div>
+        </div>
+        <div class="card-status">
+          <span class="first-badge" style="background:#b45309;">第一陣あり</span>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </button>
+    <div class="card-body">
+      <div class="first-answer" style="background:#fffbeb; border-color:#fcd34d;">
+        <div class="first-answer-label" style="color:#b45309;">第一陣の回答（全員統一）</div>
+        <div class="first-answer-text" style="color:#b45309;">① 損益分岐表で「5年後・10年後・20年後に売った場合」の手残り金額を一緒に確認する。
+② 不動産価格が上がった場合・下がった場合の両方の数字を見せる（最悪の想定も必ず話す）。
+③ 50年収支表でローン完済後の家賃収入（私的年金）の話につなげる。</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-box detail">
+          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
+          <ul class="detail-list">
+            <li>損益分岐表：「手残り金額 ＝ 想定売却価格 − 残債 ± 収支累計」で算出</li>
+            <li>価格帯は50%〜120%まで幅を持たせた表で、最悪シナリオも含めて見せることで信頼感を高める</li>
+            <li>例：10年後に100%（現状維持）で売却 → 手残り約401万円、投資利益率436%</li>
+            <li>例：35年後に100%で売却 → 手残り約2,121万円、投資利益率500%</li>
+            <li>50年収支表：ローン完済（35年）後は返済がゼロになり、家賃収入がほぼそのまま手取りになる</li>
+            <li>計算書の例：完済後の月々収入 約57,890円（年間 約629,680円）が私的年金として機能</li>
+            <li>積立NISAとの比較表は第二陣（深く聞かれたとき）に使う ※計算書1年目・50年収支表とセット</li>
+          </ul>
+        </div>
+        <div class="sub-box material">
+          <div class="sub-label amber">📄 使用資料・データ</div>
+          <ul class="material-list">
+            <li>損益分岐表（PORT資料）：売却時の手残り・投資利益率を確認</li>
+            <li>計算書1年目（PORT資料）：月々収支・節税額・生命保険効果の全体像</li>
+            <li>50年収支表（PORT資料）：ローン完済後の私的年金・リスク説明時にも使用</li>
+            <li>積立NISA比較表（第二陣）：計算書1年目・50年収支表とセットで使う</li>
+          </ul>
+          <div style="margin-top:10px; padding:8px 10px; background:#fef9c3; border-radius:6px; font-size:12px; color:#92400e;">
+            ⚠ 積立NISA比較表は第一陣ではなく第二陣。深掘りされたときに計算書・50年収支表とセットで使う。
+          </div>
+        </div>
+        <div class="sub-box phrase">
+          <div class="sub-label purple">🗣 口頭フレーズ例</div>
+          <div class="sub-content phrase-text">「最悪のシナリオも含めて一緒に見ましょう。価格が下がった場合・上がった場合、両方の数字がここに出ています。（損益分岐表を見せながら）○年後に売るとしたら、ここですね」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- DEMERIT SECTION -->
-  <div class="section-label">デメリット・リスク対応 ／ Risk Response</div>
+  <div class="section-label" style="margin-top:40px;">デメリット・リスク対応 ／ Risk Response</div>
 
   <!-- 売却 -->
   <div class="risk-card" id="card-baikya">
@@ -799,27 +975,6 @@ body {
     </div>
   </div>
 
-  <!-- MERIT PLACEHOLDER -->
-  <div class="section-label" style="margin-top:40px;">メリット ／ Benefits（作成中）</div>
-  <div class="risk-card" style="border:2px dashed #cbd5e1; box-shadow:none; background:#f8fafc;">
-    <div class="card-header" style="opacity:0.5;">
-      <div class="cat-tag" style="background:#e0f2fe;"><span>🛡</span><span class="cat-name" style="color:#0369a1;">保険</span></div>
-      <div class="card-title-area"><div class="card-title" style="color:#94a3b8;">保険メリット（準備中）</div></div>
-    </div>
-  </div>
-  <div class="risk-card" style="border:2px dashed #cbd5e1; box-shadow:none; background:#f8fafc;">
-    <div class="card-header" style="opacity:0.5;">
-      <div class="cat-tag" style="background:#d1fae5;"><span>💴</span><span class="cat-name" style="color:#065f46;">節税</span></div>
-      <div class="card-title-area"><div class="card-title" style="color:#94a3b8;">節税メリット（準備中）</div></div>
-    </div>
-  </div>
-  <div class="risk-card" style="border:2px dashed #cbd5e1; box-shadow:none; background:#f8fafc;">
-    <div class="card-header" style="opacity:0.5;">
-      <div class="cat-tag" style="background:#fef9c3;"><span>📊</span><span class="cat-name" style="color:#713f12;">運用</span></div>
-      <div class="card-title-area"><div class="card-title" style="color:#94a3b8;">運用メリット（準備中）</div></div>
-    </div>
-  </div>
-
   <!-- OPERATION RULES -->
   <div class="section-label" style="margin-top:40px;">運用ルール ／ Operation Rules</div>
   <div class="rules-grid">
@@ -886,7 +1041,7 @@ function downloadPage() {
   const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'GRDM_商談マニュアル_リスク対応編.html';
+  a.download = 'GRDM_商談マニュアル_メリット・リスク対応編.html';
   a.click();
 }
 </script>
