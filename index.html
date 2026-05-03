@@ -3,1045 +3,850 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRDM 商談マニュアル｜メリット・リスク対応編</title>
+<title>GRDM 商談マニュアル 完全版</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
 
 :root {
   --navy: #0f1f3d;
-  --navy-mid: #1a3560;
+  --navy2: #1a3560;
   --blue: #1e5fa8;
-  --blue-light: #d6e8f8;
-  --blue-pale: #eef5fc;
-  --red: #c0392b;
-  --red-light: #fde8e6;
-  --red-pale: #fff5f4;
-  --green: #1d6a44;
-  --green-light: #d8f0e5;
-  --green-pale: #f0faf5;
+  --blue-lt: #dbeafe;
+  --blue-pl: #eff6ff;
+  --red: #b91c1c;
+  --red-lt: #fee2e2;
+  --red-pl: #fff5f5;
+  --green: #15803d;
+  --green-lt: #dcfce7;
+  --green-pl: #f0fdf4;
+  --teal: #0e7490;
+  --teal-lt: #cffafe;
+  --teal-pl: #ecfeff;
   --amber: #b45309;
-  --amber-light: #fef3cd;
-  --purple: #5b21b6;
-  --purple-light: #ede9fe;
-  --gray-100: #f7f8fa;
-  --gray-200: #eef0f3;
-  --gray-400: #9da5b0;
-  --gray-600: #5a6473;
-  --gray-800: #2d3748;
-  --white: #ffffff;
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.07);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
-  --radius: 12px;
-  --radius-sm: 7px;
+  --amber-lt: #fde68a;
+  --amber-pl: #fffbeb;
+  --purple: #6d28d9;
+  --purple-lt: #ede9fe;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-600: #4b5563;
+  --gray-800: #1f2937;
+  --white: #fff;
+  --sh: 0 1px 5px rgba(0,0,0,0.07);
+  --sh2: 0 4px 16px rgba(0,0,0,0.10);
+  --r: 10px;
+  --rs: 6px;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#eaecf2;color:var(--gray-800);line-height:1.7}
 
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  background: var(--gray-100);
-  color: var(--gray-800);
-  min-height: 100vh;
-  line-height: 1.7;
-}
+/* ─ HEADER ─ */
+.ph{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,var(--blue) 100%);padding:32px 40px 26px;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.phi{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.badge{display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.85);font-size:10px;letter-spacing:2.5px;padding:3px 12px;border-radius:20px;margin-bottom:10px}
+.ph h1{font-size:23px;font-weight:900;color:#fff;margin-bottom:6px}
+.ph h1 span{color:#7ec8f5}
+.ph p{font-size:12px;color:rgba(255,255,255,0.6);max-width:580px;line-height:1.7}
+.ph-btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:all .18s}
+.btn-g{background:rgba(255,255,255,0.13);color:#fff;border:1px solid rgba(255,255,255,0.28)}
+.btn-g:hover{background:rgba(255,255,255,0.22)}
+.btn-a{background:#7ec8f5;color:var(--navy)}
+.btn-a:hover{background:#a8d8f8}
 
-/* ── TOP HEADER ── */
-.page-header {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
-  padding: 36px 40px 30px;
-  position: relative;
-  overflow: hidden;
-}
-.page-header::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 260px; height: 260px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-}
-.page-header::after {
-  content: '';
-  position: absolute;
-  bottom: -40px; left: 30%;
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-}
-.header-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 960px;
-  margin: 0 auto;
-}
-.header-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.9);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
-}
-.page-header h1 {
-  font-size: 26px;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-.page-header h1 span {
-  color: #7ec8f5;
-}
-.header-desc {
-  font-size: 13px;
-  color: rgba(255,255,255,0.65);
-  max-width: 600px;
-  line-height: 1.65;
-}
-.header-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s;
-  font-family: inherit;
-}
-.btn-white {
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-.btn-white:hover { background: rgba(255,255,255,0.25); }
-.btn-accent {
-  background: #7ec8f5;
-  color: var(--navy);
-}
-.btn-accent:hover { background: #a3d8f7; }
+/* ─ MAIN ─ */
+.main{max-width:900px;margin:0 auto;padding:26px 16px 60px}
 
-/* ── LEGEND ── */
-.legend-bar {
-  background: var(--white);
-  border-bottom: 1px solid var(--gray-200);
-  padding: 12px 40px;
+/* ─ PHASE HEADER ─ */
+.phase-header{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px;border-radius:var(--r);
+  margin:24px 0 10px;
+  cursor:pointer;
+  user-select:none;
 }
-.legend-inner {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  flex-wrap: wrap;
+.phase-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:900;color:#fff;flex-shrink:0;
 }
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--gray-600);
-}
-.legend-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-}
+.phase-title-block{flex:1}
+.phase-title{font-size:15px;font-weight:900;color:#fff}
+.phase-sub{font-size:11px;color:rgba(255,255,255,0.72);margin-top:1px}
+.phase-time{font-size:11px;font-weight:700;background:rgba(255,255,255,0.15);color:#fff;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.phase-chevron{font-size:18px;color:rgba(255,255,255,0.7);transition:transform .22s;flex-shrink:0}
+.phase-wrap.open .phase-chevron{transform:rotate(180deg)}
 
-/* ── MAIN CONTENT ── */
-.main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 32px 20px 60px;
-}
+/* phase colors */
+.ph1 .phase-header{background:linear-gradient(135deg,#0369a1,#0ea5e9)}
+.ph2 .phase-header{background:linear-gradient(135deg,#b45309,#f59e0b)}
+.ph3 .phase-header{background:linear-gradient(135deg,#15803d,#22c55e)}
+.ph4 .phase-header{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
 
-/* ── SECTION HEADER ── */
-.section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gray-400);
-  margin: 36px 0 14px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--gray-200);
-}
-.section-label:first-child { margin-top: 0; }
+/* phase body */
+.phase-body{display:none;padding-bottom:8px}
+.phase-wrap.open .phase-body{display:block}
 
-/* ── RISK CARD ── */
-.risk-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 12px;
-  border: 1px solid var(--gray-200);
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-.risk-card:hover {
-  box-shadow: var(--shadow-md);
-}
+/* ─ STEP CARD ─ */
+.step-card{background:var(--white);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--gray-200);overflow:hidden;margin-bottom:8px;transition:box-shadow .18s}
+.step-card:hover{box-shadow:var(--sh2)}
 
-.card-trigger {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
-  display: block;
-}
+.step-trig{width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;font-family:inherit;display:block}
+.step-head{padding:13px 18px 11px;display:flex;align-items:center;gap:11px}
+.step-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.step-titles{flex:1}
+.step-title{font-size:14.5px;font-weight:700;color:var(--gray-800)}
+.step-sub{font-size:11px;color:var(--gray-400);margin-top:2px}
+.step-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.tbadge{font-size:10px;font-weight:700;background:var(--gray-100);color:var(--gray-600);padding:2px 9px;border-radius:20px;white-space:nowrap}
+.chev{font-size:15px;color:var(--gray-400);transition:transform .22s}
+.step-card.open .chev{transform:rotate(180deg)}
 
-.card-header {
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+/* ─ STEP BODY ─ */
+.step-body{display:none;padding:0 18px 18px;border-top:1px solid var(--gray-200)}
+.step-card.open .step-body{display:block}
 
-.cat-tag {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  line-height: 1;
+/* script block */
+.script-block{
+  margin:14px 0 10px;
+  border-radius:var(--rs);padding:13px 15px;
+  border-left:3px solid;
 }
-.cat-tag .cat-name {
-  font-size: 9px;
-  font-weight: 700;
-  margin-top: 3px;
-  letter-spacing: 0.5px;
-}
+.script-label{font-size:10px;font-weight:700;letter-spacing:1.5px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.script-text{font-size:13.5px;font-weight:700;line-height:1.85;white-space:pre-line}
 
-.card-title-area {
-  flex: 1;
-  min-width: 0;
-}
-.card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--gray-800);
-}
-.card-question {
-  font-size: 12px;
-  color: var(--gray-600);
-  margin-top: 3px;
-}
+/* 2col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.full-col{grid-column:1/-1}
+@media(max-width:580px){.two-col{grid-template-columns:1fr}}
 
-.card-status {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.first-badge {
-  background: var(--red);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 20px;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-.chevron {
-  color: var(--gray-400);
-  font-size: 18px;
-  transition: transform 0.25s;
-  line-height: 1;
-}
-.risk-card.open .chevron {
-  transform: rotate(180deg);
-}
+.info-box{border-radius:var(--rs);padding:12px 14px}
+.info-box-title{font-size:10px;font-weight:700;letter-spacing:1.2px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.ul-n{list-style:none;padding:0;margin:0}
+.ul-n li{padding-left:14px;position:relative;font-size:12px;line-height:1.75;margin-bottom:3px;color:var(--gray-800)}
+.ul-n li::before{content:'▸';position:absolute;left:0;font-size:10px;top:3px;color:var(--blue)}
+.ul-d li::before{content:'📄';top:1px}
 
-/* ── CARD BODY ── */
-.card-body {
-  display: none;
-  padding: 0 20px 20px;
-  border-top: 1px solid var(--gray-200);
-}
-.risk-card.open .card-body {
-  display: block;
-}
+.warn{margin-top:8px;padding:7px 10px;background:#fef9c3;border-radius:4px;font-size:11px;color:#92400e;line-height:1.6}
 
-/* First answer box */
-.first-answer {
-  margin: 16px 0;
-  background: var(--red-pale);
-  border: 1.5px solid #f5c6c1;
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-}
-.first-answer-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.first-answer-label::before {
-  content: '';
-  display: inline-block;
-  width: 3px;
-  height: 12px;
-  background: var(--red);
-  border-radius: 2px;
-}
-.first-answer-text {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--red);
-  line-height: 1.75;
-  white-space: pre-line;
-}
+/* talk blue / doc amber */
+.box-talk{background:var(--blue-pl);border:1px solid var(--blue-lt)}
+.box-talk .info-box-title{color:var(--blue)}
+.box-doc{background:var(--amber-pl);border:1px solid var(--amber-lt)}
+.box-doc .info-box-title{color:var(--amber)}
+.box-phrase{background:var(--purple-lt);border:1px solid #c4b5fd;grid-column:1/-1;padding:11px 14px}
+.box-phrase .info-box-title{color:var(--purple)}
+.phrase-txt{font-size:13px;font-weight:700;font-style:italic;line-height:1.75;color:var(--purple)}
 
-/* Sub sections */
-.sub-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 12px;
-}
-@media(max-width: 640px) {
-  .sub-grid { grid-template-columns: 1fr; }
-}
+/* check boxes */
+.checklist{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.check-item{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.65;color:var(--gray-800)}
+.check-box{width:18px;height:18px;border:2px solid var(--gray-200);border-radius:4px;flex-shrink:0;margin-top:2px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px}
+.check-item.done .check-box{background:var(--green);border-color:var(--green);color:#fff}
 
-.sub-box {
-  border-radius: var(--radius-sm);
-  padding: 13px 15px;
-}
-.sub-box.detail {
-  background: var(--blue-pale);
-  border: 1px solid var(--blue-light);
-}
-.sub-box.material {
-  background: var(--amber-light);
-  border: 1px solid #fcd97a;
-}
-.sub-box.phrase {
-  background: var(--purple-light);
-  border: 1px solid #c4b5fd;
-  grid-column: 1 / -1;
-}
+/* risk sub-section */
+.risk-sub{margin-top:14px}
+.risk-tag{display:inline-block;font-size:11px;font-weight:700;color:var(--red);background:var(--red-lt);padding:3px 10px;border-radius:4px;margin-bottom:7px}
+.risk-script{background:var(--red-pl);border-left:3px solid var(--red);border-radius:var(--rs);padding:11px 14px;margin-bottom:8px}
+.risk-script .script-label{color:var(--red)}
+.risk-script .script-text{color:var(--red);font-size:13px}
 
-.sub-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.sub-label.blue { color: var(--blue); }
-.sub-label.amber { color: var(--amber); }
-.sub-label.purple { color: var(--purple); }
+/* section label */
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(--gray-400);padding-bottom:7px;border-bottom:1px solid var(--gray-200);margin:28px 0 12px;text-transform:uppercase}
+.sec-lbl:first-child{margin-top:0}
 
-.sub-content {
-  font-size: 13px;
-  line-height: 1.75;
-  white-space: pre-line;
-  color: var(--gray-800);
-}
-.sub-content.phrase-text {
-  font-weight: 700;
-  font-style: italic;
-  color: var(--purple);
-  font-size: 13px;
-}
+/* rules */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:580px){.rules{grid-template-columns:1fr}}
+.rule-c{display:flex;gap:10px;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--rs);padding:12px 14px;box-shadow:var(--sh)}
+.rule-ic{font-size:18px;flex-shrink:0;margin-top:1px}
+.rule-tx{font-size:12px;line-height:1.65;color:var(--gray-800)}
+.rule-tx strong{display:block;font-weight:700;color:var(--navy);font-size:12.5px;margin-bottom:2px}
 
-/* Bullet list */
-.detail-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.detail-list li {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--gray-800);
-  padding-left: 16px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.detail-list li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--blue);
-  font-size: 11px;
-  top: 2px;
-}
+/* source note */
+.source-note{margin-top:6px;padding:6px 10px;background:var(--gray-50);border-radius:4px;border:1px solid var(--gray-200);font-size:10.5px;color:var(--gray-400);line-height:1.6}
 
-.material-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.material-list li {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--gray-800);
-  padding-left: 16px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.material-list li::before {
-  content: '📄';
-  position: absolute;
-  left: 0;
-  font-size: 11px;
-  top: 1px;
-}
-
-.url-link {
-  color: var(--blue);
-  text-decoration: none;
-  font-size: 12px;
-  word-break: break-all;
-}
-.url-link:hover { text-decoration: underline; }
-
-/* ── RULES SECTION ── */
-.rules-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 14px;
-}
-@media(max-width: 640px) {
-  .rules-grid { grid-template-columns: 1fr; }
-}
-
-.rule-item {
-  display: flex;
-  gap: 12px;
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-  padding: 14px;
-  box-shadow: var(--shadow-sm);
-}
-.rule-icon {
-  font-size: 20px;
-  flex-shrink: 0;
-  line-height: 1;
-  margin-top: 2px;
-}
-.rule-text {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--gray-800);
-}
-.rule-text strong {
-  font-weight: 700;
-  color: var(--navy);
-  display: block;
-  margin-bottom: 2px;
-  font-size: 13px;
-}
-
-/* ── MERIT PLACEHOLDER ── */
-.merit-placeholder {
-  background: var(--white);
-  border: 2px dashed var(--gray-200);
-  border-radius: var(--radius);
-  padding: 32px;
-  text-align: center;
-  color: var(--gray-400);
-}
-.merit-placeholder .icon { font-size: 32px; margin-bottom: 10px; }
-.merit-placeholder p { font-size: 14px; }
-
-/* ── PRINT ── */
-@media print {
-  .page-header { background: var(--navy) !important; -webkit-print-color-adjust: exact; }
-  .card-body { display: block !important; }
-  .chevron { display: none; }
-  .header-actions { display: none; }
-}
+/* inline highlight */
+.hl{background:#fef9c3;border-radius:3px;padding:0 3px;font-weight:700;color:#92400e}
 </style>
 </head>
 <body>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="header-inner">
-    <div class="header-badge">GRDM SALES MANUAL</div>
-    <h1>商談マニュアル <span>メリット・リスク対応編</span></h1>
-    <p class="header-desc">
-      属人性を排除し、誰でも一定品質の対応ができる組織的営業の実現。<br>
-      赤字＝<strong style="color:#7ec8f5">第一陣の回答</strong>（全営業統一の初期対応）をまず使い、深掘りされたら詳細へ展開する。
-    </p>
-    <div class="header-actions">
-      <button class="btn btn-white" onclick="toggleAll(true)">▼ 全て展開する</button>
-      <button class="btn btn-white" onclick="toggleAll(false)">▲ 全て閉じる</button>
-      <button class="btn btn-accent" onclick="downloadPage()">⬇ HTMLファイルを保存</button>
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="ph">
+  <div class="phi">
+    <div class="badge">GRDM SALES MANUAL</div>
+    <h1>商談マニュアル <span>完全版</span></h1>
+    <p>属人性を排除し、誰でも同じ品質で成約できる仕組みをつくる。<br>
+    初交渉→テストクロージング→再交渉→契約結論交渉 の4フェーズ構成。</p>
+    <div class="ph-btns">
+      <button class="btn btn-g" onclick="openAll()">▼ 全て展開</button>
+      <button class="btn btn-g" onclick="closeAll()">▲ 全て閉じる</button>
+      <button class="btn btn-a" onclick="dl()">⬇ 保存</button>
     </div>
   </div>
 </div>
 
-<!-- LEGEND -->
-<div class="legend-bar">
-  <div class="legend-inner">
-    <span style="font-size:12px;font-weight:700;color:var(--gray-600);">凡例</span>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--red)"></div>
-      <span>第一陣の回答（全員統一）</span>
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--blue)"></div>
-      <span>詳細説明・補足トーク</span>
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--amber)"></div>
-      <span>使用資料・データ</span>
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--purple)"></div>
-      <span>口頭フレーズ例</span>
-    </div>
-  </div>
-</div>
-
-<!-- MAIN -->
 <div class="main">
 
-  <!-- MERIT SECTION -->
-  <div class="section-label">メリット ／ Benefits</div>
+<!-- ══════════════════════════════════════════
+     PHASE 1：初交渉
+══════════════════════════════════════════ -->
+<div class="sec-lbl">商談フェーズ</div>
 
-  <!-- 保険 -->
-  <div class="risk-card" id="card-hoken">
-    <button class="card-trigger" onclick="toggleCard('card-hoken')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#e0f2fe;">
-          <span>🛡</span>
-          <span class="cat-name" style="color:#0369a1;">保険</span>
+<div class="phase-wrap ph1" id="phase1">
+  <div class="phase-header" onclick="togglePhase('phase1')">
+    <div class="phase-num">1</div>
+    <div class="phase-title-block">
+      <div class="phase-title">初交渉（初回商談）</div>
+      <div class="phase-sub">仕組み説明 → メリット訴求 → 現状把握 → 必要性 → 商品比較 → テストクロージング</div>
+    </div>
+    <span class="phase-time">⏱ 60〜90分</span>
+    <span class="phase-chevron">⌄</span>
+  </div>
+  <div class="phase-body">
+
+    <!-- i. 仕組み説明 -->
+    <div class="step-card" id="s1i">
+      <button class="step-trig" onclick="toggleStep('s1i')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#e0f2fe">📋</div>
+          <div class="step-titles">
+            <div class="step-title">ⅰ マンション経営の仕組みを説明する</div>
+            <div class="step-sub">システム・団信・サブリースの3つを図解でざっくり説明</div>
+          </div>
+          <div class="step-right"><span class="tbadge">⏱ 約15分</span><span class="chev">⌄</span></div>
         </div>
-        <div class="card-title-area">
-          <div class="card-title">生命保険の代替効果（団信）</div>
-          <div class="card-question">「保険には入っているのですが…マンションで何が変わるの？」</div>
+      </button>
+      <div class="step-body">
+        <div class="script-block" style="background:#eff6ff;border-color:#3b82f6">
+          <div class="script-label" style="color:#1d4ed8">説明の流れ（全員統一）</div>
+          <div class="script-text" style="color:#1d4ed8">① ローンで購入 → 家賃収入でローン返済 → 完済後は収入に、という「仕組み」を図解で説明
+② 3つの柱を紹介：【システム】返済中も家賃が入る ／ 【団信】万一でローンが消える ／ 【サブリース】空室でも家賃保証
+③ メリットは大きく4つあります、とざっくり紹介（保険・年金・節税・運用）
+④「今一番気になるのはどれですか？」とヒアリングし、優先順位を確認</div>
         </div>
-        <div class="card-status">
-          <span class="first-badge" style="background:#0369a1;">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer" style="background:#eff6ff; border-color:#bfdbfe;">
-        <div class="first-answer-label" style="color:#1d4ed8;">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text" style="color:#1d4ed8;">国内生保で掛け捨て（定期付終身保険）に入っている方に対して：
-① その保険の仕組みを説明する。→ 60歳以降の保障がほぼ消え、払った分はほぼ掛け捨てになること。
-② 終身保険との比較をその場でインターネットで調べ、年齢・条件を入れてシミュレーションを一緒に見せる。
-③ 計算書1年目（PORT資料）で団信の生命保険効果を数字で見せる。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>団体信用生命保険（団信）：死亡・所定の高度障害時にローンが全額完済される</li>
-            <li>残された家族は物件をそのまま保有でき、家賃収入が遺族年金として続く</li>
-            <li>計算書の例：遺族年金合計 約2,203万円分の生命保険効果（35年間保有の場合）</li>
-            <li>国内生保の掛け捨て型は60歳以降の保障がほぼゼロになるため、保険料が無駄になりやすい</li>
-            <li>終身保険と比較すると、マンション経営の方がコストパフォーマンスが高いケースが多い</li>
-            <li>アクサ生命との比較金額は口頭で伝える（※数字は都度確認）</li>
-            <li>適用条件：国内生保で掛け捨ての場合に特に有効（定期付終身保険が対象）</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>保険証券（事前に持参をお願いしておく）→ これを基に比較</li>
-            <li>計算書1年目（PORT資料）：生命保険効果・団信の説明欄</li>
-            <li>終身保険のシミュレーション（その場でネット検索・条件入力）</li>
-            <li>アクサ生命との比較（口頭）</li>
-          </ul>
-          <div style="margin-top:10px; padding:8px 10px; background:#fef9c3; border-radius:6px; font-size:12px; color:#92400e;">
-            ⚠ 国内生保の掛け捨て加入者に対して使うことが多い。保険証券がある場合のみフル活用。
+        <div class="two-col">
+          <div class="info-box box-doc full-col">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>GRDM提案資料「なぜマンション経営をお勧めするのか」→ 4つのメリット一覧ページ</li>
+              <li>計算書1年目（PORT資料）→ 月々収支の全体像をざっくり見せる</li>
+            </ul>
+          </div>
+          <div class="info-box box-phrase">
+            <div class="info-box-title">🗣 口頭フレーズ</div>
+            <div class="phrase-txt">「まず全体像をざっくりお伝えしますね。仕組みはシンプルで、3つの柱があります。（資料を開く）この4つのメリットのうち、今一番気になるのはどれですか？」</div>
           </div>
         </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「今の保険、60歳以降の保障って実際どうなっているかご存知ですか？一緒に確認してみましょう。（保険証券を見ながら）実は…」</div>
+        <div class="source-note">
+          業界共通の訴求軸：①生命保険代わり ②年金対策 ③節税 ④立地・運用 の4〜5軸が標準（トーシンパートナーズ・プレサンス・イー・トラスト等 共通）
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- 節税 -->
-  <div class="risk-card" id="card-setsuzei">
-    <button class="card-trigger" onclick="toggleCard('card-setsuzei')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#d1fae5;">
-          <span>💴</span>
-          <span class="cat-name" style="color:#065f46;">節税</span>
+    <!-- ii. 現状把握 -->
+    <div class="step-card" id="s1ii">
+      <button class="step-trig" onclick="toggleStep('s1ii')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#d1fae5">🔍</div>
+          <div class="step-titles">
+            <div class="step-title">ⅱ 現状把握（ヒアリング）</div>
+            <div class="step-sub">お客様の現状・価値観・家族構成・保険加入状況を丁寧に確認する</div>
+          </div>
+          <div class="step-right"><span class="tbadge">⏱ 約10分</span><span class="chev">⌄</span></div>
         </div>
-        <div class="card-title-area">
-          <div class="card-title">節税効果（確定申告・所得税・住民税の還付）</div>
-          <div class="card-question">「税金が戻るって本当ですか？どういう仕組みですか？」</div>
+      </button>
+      <div class="step-body">
+        <div class="script-block" style="background:#f0fdf4;border-color:#22c55e">
+          <div class="script-label" style="color:var(--green)">ヒアリング項目（全員統一）</div>
+          <div class="script-text" style="color:var(--green)">① 年収・家族構成・お子さんの年齢
+② 今の生命保険の種類（掛け捨て？終身？）→ 保険証券があれば当日持参を依頼
+③ 老後の年金について不安を感じているか
+④ 今の貯蓄方法・資産運用状況（銀行預金だけ？NISA？）
+⑤ 源泉徴収票を当日持参してもらう（節税説明のため）</div>
         </div>
-        <div class="card-status">
-          <span class="first-badge" style="background:#065f46;">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer" style="background:#f0faf5; border-color:#a7f3d0;">
-        <div class="first-answer-label" style="color:#065f46;">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text" style="color:#065f46;">① まずお客様の年収をヒアリングする。
-② 所得税と住民税の話をする。「高いと思いますか？どうしたいですか？」と聞く。
-③ 不動産の経費を計上することで税金が戻る仕組みを説明する。
-④「今サラリーマンができる税金対策は医療費控除とふるさと納税だけ。一番効果が高いのがマンション経営」と伝える。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>不動産経費（ローン利息・管理費・修繕費・減価償却など）を給与収入と損益通算できる</li>
-            <li>計算書の例：所得税還付 約255,000円＋住民税軽減 約113,300円＝節税合計 約368,300円/年</li>
-            <li>2〜3件入れたときの節税額は計算書1年目で確認できる</li>
-            <li>源泉徴収票を使って所得税・住民税の実額を一緒に確認する</li>
-            <li>「医療費控除は使える人が限られる。ふるさと納税は上限がある。マンション経営は金額が大きい」という比較で話す</li>
-            <li>※税務判断は税理士等の専門家に確認いただく旨を必ず添える</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>計算書1年目（PORT資料）：節税合計額の欄（2〜3件入れたバージョンも活用）</li>
-            <li>源泉徴収票：所得税・住民税の実額確認に使用</li>
-          </ul>
-          <div style="margin-top:10px; padding:8px 10px; background:#fef9c3; border-radius:6px; font-size:12px; color:#92400e;">
-            ⚠ 営業担当者は税務相談・控除判断は行えない。必ず「税理士等の専門家へご確認ください」と添える。
+        <div class="two-col">
+          <div class="info-box box-talk">
+            <div class="info-box-title">💬 補足ポイント</div>
+            <ul class="ul-n">
+              <li>業界トップセールスの共通点：「何に価値観を持つか」を見極めてから訴求軸を決める（不動産会社のミカタ調査）</li>
+              <li>仕事・プライベート・家族 のどの価値観かで刺さるトークが変わる</li>
+              <li>家族のいる方は「万一のとき家族が困らないか」が最大の関心事</li>
+            </ul>
+          </div>
+          <div class="info-box box-phrase" style="grid-column:auto">
+            <div class="info-box-title">🗣 口頭フレーズ</div>
+            <div class="phrase-txt">「少しお聞きしてもよいですか？今の生命保険、どんなタイプに入っていますか？老後の年金については何か対策されていますか？」</div>
           </div>
         </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「○○さんの年収だと、毎年これだけ税金を払っていますよね。サラリーマンが合法的にこれを減らせる方法、実はほとんどないんです。ふるさと納税はご存知ですか？あれより全然大きい話です」</div>
-        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 運用・転売 -->
-  <div class="risk-card" id="card-unyo">
-    <button class="card-trigger" onclick="toggleCard('card-unyo')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#fef9c3;">
-          <span>📊</span>
-          <span class="cat-name" style="color:#713f12;">運用</span>
+    <!-- iii. 必要性 -->
+    <div class="step-card" id="s1iii">
+      <button class="step-trig" onclick="toggleStep('s1iii')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#fef3c7">💡</div>
+          <div class="step-titles">
+            <div class="step-title">ⅲ 必要性の訴求（メリット詳細説明）</div>
+            <div class="step-sub">4つのメリットをヒアリング結果に合わせて順番に説明する</div>
+          </div>
+          <div class="step-right"><span class="tbadge">⏱ 約30分</span><span class="chev">⌄</span></div>
         </div>
-        <div class="card-title-area">
-          <div class="card-title">運用・転売メリット（損益分岐・収支シミュレーション）</div>
-          <div class="card-question">「将来いくら儲かるんですか？売ったらどうなりますか？」</div>
-        </div>
-        <div class="card-status">
-          <span class="first-badge" style="background:#b45309;">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer" style="background:#fffbeb; border-color:#fcd34d;">
-        <div class="first-answer-label" style="color:#b45309;">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text" style="color:#b45309;">① 損益分岐表で「5年後・10年後・20年後に売った場合」の手残り金額を一緒に確認する。
-② 不動産価格が上がった場合・下がった場合の両方の数字を見せる（最悪の想定も必ず話す）。
-③ 50年収支表でローン完済後の家賃収入（私的年金）の話につなげる。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>損益分岐表：「手残り金額 ＝ 想定売却価格 − 残債 ± 収支累計」で算出</li>
-            <li>価格帯は50%〜120%まで幅を持たせた表で、最悪シナリオも含めて見せることで信頼感を高める</li>
-            <li>例：10年後に100%（現状維持）で売却 → 手残り約401万円、投資利益率436%</li>
-            <li>例：35年後に100%で売却 → 手残り約2,121万円、投資利益率500%</li>
-            <li>50年収支表：ローン完済（35年）後は返済がゼロになり、家賃収入がほぼそのまま手取りになる</li>
-            <li>計算書の例：完済後の月々収入 約57,890円（年間 約629,680円）が私的年金として機能</li>
-            <li>積立NISAとの比較表は第二陣（深く聞かれたとき）に使う ※計算書1年目・50年収支表とセット</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>損益分岐表（PORT資料）：売却時の手残り・投資利益率を確認</li>
-            <li>計算書1年目（PORT資料）：月々収支・節税額・生命保険効果の全体像</li>
-            <li>50年収支表（PORT資料）：ローン完済後の私的年金・リスク説明時にも使用</li>
-            <li>積立NISA比較表（第二陣）：計算書1年目・50年収支表とセットで使う</li>
-          </ul>
-          <div style="margin-top:10px; padding:8px 10px; background:#fef9c3; border-radius:6px; font-size:12px; color:#92400e;">
-            ⚠ 積立NISA比較表は第一陣ではなく第二陣。深掘りされたときに計算書・50年収支表とセットで使う。
+      </button>
+      <div class="step-body">
+
+        <!-- 保険 -->
+        <div style="margin-top:14px">
+          <div class="risk-tag" style="background:#e0f2fe;color:#0369a1">🛡 メリット① 生命保険効果（団信）</div>
+          <div class="script-block" style="background:#eff6ff;border-color:#60a5fa;margin-top:6px">
+            <div class="script-label" style="color:#1d4ed8">説明トーク（全員統一）</div>
+            <div class="script-text" style="color:#1d4ed8">現在の保険証券を確認 → 掛け捨て or 定期付終身の場合：
+「60歳以降、保障がほぼゼロになります。払った分はほぼ掛け捨てです」
+→ 団信の説明：「マンションのローンには団体信用生命保険が付いています。
+　 死亡・高度障害になった瞬間、ローンが全額消えます。
+　 無借金のマンションが家族に残り、家賃がそのまま遺族年金になります」
+→ 計算書1年目で「生命保険効果欄」の数字（遺族年金相当額）を見せる</div>
+          </div>
+          <div class="two-col" style="margin-top:8px">
+            <div class="info-box box-doc">
+              <div class="info-box-title">📄 使う資料</div>
+              <ul class="ul-n ul-d">
+                <li>保険証券（当日持参）→ 現状比較の根拠</li>
+                <li>GRDM提案資料「生命保険」ページ</li>
+                <li>計算書1年目（PORT）→ 生命保険効果欄</li>
+                <li>終身保険シミュレーション（その場でネット検索）</li>
+              </ul>
+              <div class="warn">⚠ 掛け捨て・定期付終身加入者に特に有効</div>
+            </div>
+            <div class="info-box box-talk">
+              <div class="info-box-title">💬 業界共通の説明ポイント</div>
+              <ul class="ul-n">
+                <li>団信の保険料はローン金利に組み込まれるため、実質家賃収入で賄える（GLC・イー・トラスト共通）</li>
+                <li>「不動産の形をした保険商品」という伝え方が刺さりやすい（グランド１コーポレーション）</li>
+                <li>家族がいる方には「借金を家族に残さない安心感」が最大の訴求点（HOME4U調査）</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「最悪のシナリオも含めて一緒に見ましょう。価格が下がった場合・上がった場合、両方の数字がここに出ています。（損益分岐表を見せながら）○年後に売るとしたら、ここですね」</div>
+
+        <!-- 年金 -->
+        <div style="margin-top:18px">
+          <div class="risk-tag" style="background:#d1fae5;color:#15803d">🏦 メリット② 年金対策（個人年金になる）</div>
+          <div class="script-block" style="background:#f0fdf4;border-color:#4ade80;margin-top:6px">
+            <div class="script-label" style="color:var(--green)">説明トーク（全員統一）</div>
+            <div class="script-text" style="color:var(--green)">「公的年金の受給開始が65歳以上に引き上げられ、受給額も実質目減りしています。
+今後さらに厳しくなることはあっても、良くなることはほぼないでしょう。
+ローン返済中は家賃で返済 → 完済後はその家賃がそのままご自身の個人年金に。
+（50年収支表を見せながら）完済後はこれだけの収入が入り続けます」</div>
+          </div>
+          <div class="two-col" style="margin-top:8px">
+            <div class="info-box box-doc">
+              <div class="info-box-title">📄 使う資料</div>
+              <ul class="ul-n ul-d">
+                <li>GRDM提案資料「年金対策」ページ</li>
+                <li>50年収支表（PORT）→ ローン完済後の収入</li>
+                <li>計算書1年目（PORT）→ 月々収支</li>
+              </ul>
+            </div>
+            <div class="info-box box-phrase" style="grid-column:auto">
+              <div class="info-box-title">🗣 口頭フレーズ</div>
+              <div class="phrase-txt">「公的年金に頼れない今、○○さんはどう備えていますか？ローンが終わったあと、この表の金額が毎月入り続けます」</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 節税 -->
+        <div style="margin-top:18px">
+          <div class="risk-tag" style="background:#cffafe;color:#0e7490">💴 メリット③ 節税効果（所得税・住民税の還付）</div>
+          <div class="script-block" style="background:var(--teal-pl);border-color:#06b6d4;margin-top:6px">
+            <div class="script-label" style="color:var(--teal)">説明トーク（全員統一）</div>
+            <div class="script-text" style="color:var(--teal)">「○○さんの年収だと、毎年これだけ所得税・住民税を払っています（源泉徴収票で確認）。
+サラリーマンができる節税って、ふるさと納税くらいしかありませんよね。
+マンション経営は不動産経費を給与所得と損益通算できるので、税金が還ってきます。
+（計算書1年目を見せながら）年間でこれだけ節税できます」
+「これ、ふるさと納税とケタが違いますよね」</div>
+          </div>
+          <div class="two-col" style="margin-top:8px">
+            <div class="info-box box-doc">
+              <div class="info-box-title">📄 使う資料</div>
+              <ul class="ul-n ul-d">
+                <li>源泉徴収票（当日持参）→ 税額の実額確認</li>
+                <li>計算書1年目（PORT）→ 節税合計額欄</li>
+              </ul>
+              <div class="warn">⚠ 税務相談はNG。必ず「税理士にご確認を」と添える</div>
+            </div>
+            <div class="info-box box-talk">
+              <div class="info-box-title">💬 業界共通の説明ポイント</div>
+              <ul class="ul-n">
+                <li>不動産所得が赤字になると給与所得と損益通算でき、数十万円の差が生じる（RENOSY・コヤノ税理士法人）</li>
+                <li>高所得のサラリーマンほど節税効果が大きい（Dear Reicious）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 運用 -->
+        <div style="margin-top:18px">
+          <div class="risk-tag" style="background:#fef3c7;color:#b45309">📈 メリット④ 現金運用・転売効果（収益還元法）</div>
+          <div class="script-block" style="background:var(--amber-pl);border-color:#f59e0b;margin-top:6px">
+            <div class="script-label" style="color:var(--amber)">説明トーク（全員統一）</div>
+            <div class="script-text" style="color:var(--amber)">「銀行預金は0.001〜0.3%、国債は1.5%。不動産の表面利回りは平均4%です。
+しかも株や債券と違い、ゼロになるリスクがほぼありません。
+（収益還元法資料を見せながら）家賃が上がると→不動産価格も上がります。
+インフレで現金は目減り、不動産は物価と一緒に上がります。
+（損益分岐表を見せながら）5年後・10年後・最悪のシナリオも含めて一緒に見ましょう」</div>
+          </div>
+          <div class="two-col" style="margin-top:8px">
+            <div class="info-box box-doc">
+              <div class="info-box-title">📄 使う資料</div>
+              <ul class="ul-n ul-d">
+                <li>GRDM提案資料「現金運用」「インフレ対策」ページ</li>
+                <li>収益還元法 説明資料（GRDM作成）→ 渡しても可</li>
+                <li>損益分岐表（PORT）→ 手残り金額・投資利益率</li>
+                <li>50年収支表（PORT）→ 長期シミュレーション</li>
+                <li>積立NISA比較表【第二陣用】</li>
+              </ul>
+              <div class="warn">⚠ 積立NISA比較は第二陣。深掘りされたときに計算書とセットで</div>
+            </div>
+            <div class="info-box box-talk">
+              <div class="info-box-title">💬 業界共通の説明ポイント</div>
+              <ul class="ul-n">
+                <li>表面利回り4%は主要金融商品と比べて最高水準（当社実績値・2017年3月）</li>
+                <li>実物資産は株・債券のようにゼロになるリスクが極めて低い</li>
+                <li>インフレ時に現金は実質目減り、不動産は物価に連動して価値維持（GRDM提案資料）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- iv. 商品比較 -->
+    <div class="step-card" id="s1iv">
+      <button class="step-trig" onclick="toggleStep('s1iv')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#ede9fe">⚖️</div>
+          <div class="step-titles">
+            <div class="step-title">ⅳ 商品比較（他の資産運用との違いを整理）</div>
+            <div class="step-sub">銀行預金・NISA・生命保険との比較でマンション経営の優位性を示す</div>
+          </div>
+          <div class="step-right"><span class="tbadge">⏱ 約5分</span><span class="chev">⌄</span></div>
+        </div>
+      </button>
+      <div class="step-body">
+        <div class="script-block" style="background:var(--purple-lt);border-color:#a78bfa">
+          <div class="script-label" style="color:var(--purple)">説明トーク（全員統一）</div>
+          <div class="script-text" style="color:var(--purple)">「今お持ちの資産運用と比較してみましょう。
+　銀行預金 → インフレで実質目減り。利回りほぼゼロ。
+　NISA/株式 → 運用次第では増えるが、ゼロになるリスクがある。節税・保険効果なし。
+　生命保険（掛け捨て）→ 60歳以降の保障がほぼゼロ。払い損になりやすい。
+　マンション経営 → 利回り平均4%・節税・団信・年金・インフレ対策 全部まとめて対応できる唯一の手段です」</div>
+        </div>
+        <div class="two-col">
+          <div class="info-box box-doc full-col">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>GRDM提案資料「現金運用（主な金融商品の利回り比較表）」ページ</li>
+              <li>積立NISA比較表（第二陣・深掘りされたときのみ）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEST CLOSING -->
+    <div class="step-card" id="s1tc">
+      <button class="step-trig" onclick="toggleStep('s1tc')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#fee2e2">🎯</div>
+          <div class="step-titles">
+            <div class="step-title" style="color:var(--red)">テストクロージング ＋ 枠組み・約束取り</div>
+            <div class="step-sub">「メリットはOKですね？ではネックを全部出してもらう」→「解消したら契約」の枠組みを取る</div>
+          </div>
+          <div class="step-right"><span class="tbadge" style="background:#fee2e2;color:var(--red)">🔑 必須</span><span class="chev">⌄</span></div>
+        </div>
+      </button>
+      <div class="step-body">
+        <div class="script-block" style="background:var(--red-pl);border-color:var(--red)">
+          <div class="script-label" style="color:var(--red)">テストクロージング トーク（全員統一）</div>
+          <div class="script-text" style="color:var(--red)">「今日ご説明したメリット（保険・年金・節税・運用）については、ご理解いただけましたか？
+（YESを確認してから）
+では、正直にお聞きします。
+このお話を進めるにあたって、何か気になる点・不安な点はありますか？
+どんな小さなことでも全部教えてください。
+（全てのネックを紙に書き出す）
+これらが全て解消できたら、次回ご一緒に前向きに検討していただけますか？」</div>
+        </div>
+        <div class="two-col">
+          <div class="info-box" style="background:#fff5f5;border:1px solid #fca5a5;grid-column:1/-1">
+            <div class="info-box-title" style="color:var(--red)">📌 枠組み・約束取りのポイント</div>
+            <ul class="ul-n">
+              <li class="check-item"><span class="check-box">✓</span><span>ネックを全て洗い出し、<span class="hl">紙に書く</span>（口頭だけでは再交渉で逃げられる）</span></li>
+              <li class="check-item"><span class="check-box">✓</span><span>「全部解消したら契約する」という<span class="hl">約束を口頭で確認</span>する</span></li>
+              <li class="check-item"><span class="check-box">✓</span><span>再交渉（リスク説明）の日程をその場で仮決めする</span></li>
+              <li class="check-item"><span class="check-box">✓</span><span>ネックがない場合は「では今日、契約の方向で進めましょうか？」と前倒しクロージングも可</span></li>
+            </ul>
+          </div>
+          <div class="info-box box-phrase">
+            <div class="info-box-title">🗣 締めのフレーズ</div>
+            <div class="phrase-txt">「ありがとうございます。ではこのネックが解消できれば、次回ご契約に向けて進めていただけるということでよろしいですか？（確認）　では次回、一つ一つ丁寧に解消させてください」</div>
+          </div>
+          <div class="info-box box-talk">
+            <div class="info-box-title">💬 業界の知見</div>
+            <ul class="ul-n">
+              <li>テストクロージングで成約率が2倍になる（ミリオンセールスアカデミー）</li>
+              <li>いきなり商品説明→クロージングは「売りに来た」と心を閉ざされる原因（同上）</li>
+              <li>最終判断はお客様が下す。営業の役割は不安を丁寧に取り除くこと（不動産会社のミカタ）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 2：再交渉
+══════════════════════════════════════════ -->
+<div class="phase-wrap ph2" id="phase2">
+  <div class="phase-header" onclick="togglePhase('phase2')">
+    <div class="phase-num">2</div>
+    <div class="phase-title-block">
+      <div class="phase-title">再交渉（リスク説明・ネック解消）</div>
+      <div class="phase-sub">初交渉で洗い出したネックを一つ一つ解消する。解消できたら契約の約束を基に日程調整へ</div>
+    </div>
+    <span class="phase-time">⏱ 30〜60分</span>
+    <span class="phase-chevron">⌄</span>
+  </div>
+  <div class="phase-body">
+
+    <div class="step-card" id="s2open">
+      <button class="step-trig" onclick="toggleStep('s2open')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#fef3c7">📝</div>
+          <div class="step-titles">
+            <div class="step-title">冒頭：前回の約束の確認 → ネック一覧を見せる</div>
+            <div class="step-sub">「前回、これが解消されたら契約いただけるとおっしゃっていましたよね」</div>
+          </div>
+          <div class="step-right"><span class="tbadge">⏱ 約5分</span><span class="chev">⌄</span></div>
+        </div>
+      </button>
+      <div class="step-body">
+        <div class="script-block" style="background:var(--amber-pl);border-color:var(--amber)">
+          <div class="script-label" style="color:var(--amber)">冒頭トーク（全員統一）</div>
+          <div class="script-text" style="color:var(--amber)">「前回、メリットについてはご理解いただけたとのことでしたね。
+その上で、○○・○○・○○というご不安があるとお聞きしました。
+今日はこの3点を一つ一つ丁寧にご説明して、全て解消させていただきます。
+解消できた時点で、次のステップに進めることを確認させてください」</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- リスク一覧 -->
+    <div class="step-card" id="s2risks">
+      <button class="step-trig" onclick="toggleStep('s2risks')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#fee2e2">⚡</div>
+          <div class="step-titles">
+            <div class="step-title">一般的なリスク一覧と解消トーク（第一陣の回答）</div>
+            <div class="step-sub">以下のリスクに対して「それ以上でもそれ以下でもない」解消資料を用意しておく</div>
+          </div>
+          <div class="step-right"><span class="chev">⌄</span></div>
+        </div>
+      </button>
+      <div class="step-body">
+
+        <!-- 売れるのか -->
+        <div class="risk-sub">
+          <div class="risk-tag">ⅰ 「本当に売れるの？この価格で売れるの？」→ 築古の相場の資料</div>
+          <div class="risk-script">
+            <div class="script-label">第一陣の回答</div>
+            <div class="script-text">収益還元法と周辺相場の2軸で算出します。
+「家賃収入 ÷ 利回り ＝ 不動産価格」なので、家賃が上がれば価格も上がります。
+（収益還元法資料を見せながら）築40年前・20年前・現在の価格変化で数字が証明しています。
+損益分岐表で5年後・10年後・最悪シナリオも全部一緒に確認しましょう。</div>
+          </div>
+          <div class="info-box box-doc">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>収益還元法 説明資料（GRDM作成）→ お客様渡し可</li>
+              <li>損益分岐表（PORT）</li>
+              <li>周辺売買事例データ（REINS等）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 家賃下がる -->
+        <div class="risk-sub">
+          <div class="risk-tag">ⅱ 「家賃が下がるのでは？」→ 周辺相場の資料</div>
+          <div class="risk-script">
+            <div class="script-label">第一陣の回答</div>
+            <div class="script-text">近隣同種の相場をレインズで一緒に確認します。
+上がるも下がるも、両者合意のもとで決定されます。
+東京の賃料は過去のデータでほぼ横ばい〜上昇傾向です。（グラフを見せる）
+インフレで家賃が上がる可能性もあります。</div>
+          </div>
+          <div class="info-box box-doc">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>レインズ（REINS）近隣同種賃料データ（その場で検索）</li>
+              <li>過去の賃料推移グラフ（東京主要エリア）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 金利 -->
+        <div class="risk-sub">
+          <div class="risk-tag">ⅲ 「金利が上がったら？」→ 過去の推移の資料</div>
+          <div class="risk-script">
+            <div class="script-label">第一陣の回答（傾聴から入る）</div>
+            <div class="script-text">① 「今後どうなると思いますか？」と意見を聞く（傾聴が先）
+② 世界各国政策金利×平均年収比較表（米・豪・英・日）を見せる
+③ 上がった場合の月負担増を一緒に計算する
+④ イオン・ソニー銀行は1.25倍ルールがある（上限がある）
+⑤ 金利は経費計上できるため節税メリットとセットで説明</div>
+          </div>
+          <div class="info-box box-doc">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>世界各国政策金利×平均年収比較表</li>
+              <li>過去40年 政策金利推移グラフ</li>
+              <li>金利上昇シミュレーション（月額負担変化）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 天災 -->
+        <div class="risk-sub">
+          <div class="risk-tag">ⅳ 「地震・火災・水災が怖い」→ 地震保険の資料</div>
+          <div class="risk-script">
+            <div class="script-label">第一陣の回答（傾聴から入る）</div>
+            <div class="script-text">① 「何が一番心配ですか？」と聞く
+② 地震：入居者に火災保険加入義務 → 損害はそこから支払われる
+③ RC造マンション倒壊率はほぼゼロ：東日本大震災で84,667棟中682棟（約0.8%）
+④ 修繕積立金の一部が災害修繕に充当される仕組みがある</div>
+          </div>
+          <div class="info-box box-doc">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>国交省「被災状況調査」RC造被害データ（kanrikyo.or.jp）</li>
+              <li>修繕積立金の充当フロー図</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 修繕 -->
+        <div class="risk-sub">
+          <div class="risk-tag">ⅴ 「修繕積立金が上がり続けたら？」→ 国交省が出しているガイドライン</div>
+          <div class="risk-script">
+            <div class="script-label">第一陣の回答</div>
+            <div class="script-text">国交省ガイドラインに基づいた長期修繕計画書でシミュレーションします。
+5年おきに10万円・10年おきに10万円上がる設定で計算しています。
+（ガイドライン7ページ目を見せて）修繕した物件と未修繕の物件、価値の差がここに出ています。
+修繕は「コスト」ではなく「資産価値の維持投資」です。</div>
+          </div>
+          <div class="info-box box-doc">
+            <div class="info-box-title">📄 使う資料</div>
+            <ul class="ul-n ul-d">
+              <li>国交省「修繕積立金ガイドライン」7ページ目（修繕済・未修繕の価値比較）</li>
+              <li>長期修繕計画書</li>
+              <li>修繕積立金推移シミュレーション</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 解消確認 -->
+        <div style="margin-top:20px">
+          <div class="script-block" style="background:var(--green-pl);border-color:var(--green)">
+            <div class="script-label" style="color:var(--green)">ネック解消後の確認トーク（全員統一）</div>
+            <div class="script-text" style="color:var(--green)">「以上で、前回おっしゃっていた○○・○○・○○について全てご説明しました。
+それぞれについて、解消できましたでしょうか？（一つ一つ確認）
+前回、これが解消したら前向きに検討いただけるとおっしゃっていましたので、
+次のステップ（契約結論）に向けて、日程を決めさせてください」</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 3：契約結論交渉
+══════════════════════════════════════════ -->
+<div class="phase-wrap ph3" id="phase3">
+  <div class="phase-header" onclick="togglePhase('phase3')">
+    <div class="phase-num">3</div>
+    <div class="phase-title-block">
+      <div class="phase-title">契約結論交渉（契約日）</div>
+      <div class="phase-sub">契約締結 ＋ 決済までの段取り・必要書類の確認を抜かりなく行う</div>
+    </div>
+    <span class="phase-time">⏱ 60〜90分</span>
+    <span class="phase-chevron">⌄</span>
+  </div>
+  <div class="phase-body">
+
+    <div class="step-card" id="s3contract">
+      <button class="step-trig" onclick="toggleStep('s3contract')">
+        <div class="step-head">
+          <div class="step-icon" style="background:#d1fae5">📝</div>
+          <div class="step-titles">
+            <div class="step-title">契約前の最終確認チェックリスト</div>
+            <div class="step-sub">決済当日に「知らなかった」をゼロにする。段取りの先手を打つ</div>
+          </div>
+          <div class="step-right"><span class="tbadge" style="background:#d1fae5;color:var(--green)">必須チェック</span><span class="chev">⌄</span></div>
+        </div>
+      </button>
+      <div class="step-body">
+        <div class="script-block" style="background:var(--green-pl);border-color:var(--green)">
+          <div class="script-label" style="color:var(--green)">冒頭トーク（全員統一）</div>
+          <div class="script-text" style="color:var(--green)">「前回、全てのご不安が解消できましたので、今日は契約の方向で進めさせてください。
+まず契約に必要なものを一緒に確認して、決済までの流れを共有させてください。
+わからないことは何でも聞いてください」</div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="info-box-title" style="color:var(--green);font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:10px">✅ 契約当日チェックリスト</div>
+          <div class="checklist">
+            <div class="check-item"><span class="check-box"></span><span>物件の最終確認（物件名・号室・価格・金融機関・金利・期間）</span></div>
+            <div class="check-item"><span class="check-box"></span><span>重要事項説明書の読み合わせ・署名・捺印</span></div>
+            <div class="check-item"><span class="check-box"></span><span>売買契約書の署名・捺印</span></div>
+            <div class="check-item"><span class="check-box"></span><span>手付金の支払い確認</span></div>
+            <div class="check-item"><span class="check-box"></span><span>ローン本審査の申込スケジュール確認</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="info-box-title" style="color:var(--green);font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:10px">📋 決済までに必要な公的書類（事前に案内）</div>
+          <div class="two-col">
+            <div class="info-box box-doc">
+              <div class="info-box-title">個人確認書類</div>
+              <ul class="ul-n ul-d">
+                <li>本人確認書類（運転免許証・マイナンバーカード等）</li>
+                <li>住民票（発行3ヶ月以内）</li>
+                <li>印鑑証明書（発行3ヶ月以内）</li>
+                <li>実印</li>
+              </ul>
+            </div>
+            <div class="info-box box-doc">
+              <div class="info-box-title">収入・ローン審査書類</div>
+              <ul class="ul-n ul-d">
+                <li>源泉徴収票（直近2年分）</li>
+                <li>健康保険証</li>
+                <li>在職証明書（金融機関が求める場合）</li>
+                <li>他のローン・クレジット残高確認書類</li>
+              </ul>
+            </div>
+            <div class="info-box box-talk full-col">
+              <div class="info-box-title">💬 決済当日の流れを事前に共有しておく</div>
+              <ul class="ul-n">
+                <li>ローン本審査 → 承認通知 → 決済日設定 → 所有権移転登記 → 家賃受け取り開始、の順番を口頭で説明</li>
+                <li>不動産取得税は購入後数ヶ月〜半年後に通知が来ることも伝える</li>
+                <li>確定申告の時期（翌年2〜3月）と手続き方法も一言添える</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 4: アフターフォロー
+══════════════════════════════════════════ -->
+<div class="phase-wrap ph4" id="phase4">
+  <div class="phase-header" onclick="togglePhase('phase4')">
+    <div class="phase-num">4</div>
+    <div class="phase-title-block">
+      <div class="phase-title">アフターフォロー・紹介獲得</div>
+      <div class="phase-sub">契約後も信頼関係を継続。紹介・追加購入につなげる</div>
+    </div>
+    <span class="phase-time">⏱ 継続</span>
+    <span class="phase-chevron">⌄</span>
+  </div>
+  <div class="phase-body">
+    <div class="step-card" id="s4follow">
+      <button class="step-trig" onclick="toggleStep('s4follow')">
+        <div class="step-head">
+          <div class="step-icon" style="background:var(--purple-lt)">🤝</div>
+          <div class="step-titles">
+            <div class="step-title">契約後フォロー・紹介依頼</div>
+            <div class="step-sub">最終的な成約の決め手は「人への信頼」。信頼残高を積み上げる</div>
+          </div>
+          <div class="step-right"><span class="chev">⌄</span></div>
+        </div>
+      </button>
+      <div class="step-body">
+        <div class="two-col">
+          <div class="info-box box-talk">
+            <div class="info-box-title">💬 フォローのポイント</div>
+            <ul class="ul-n">
+              <li>決済完了後、1週間以内に連絡（最初の家賃入金タイミングのお知らせ）</li>
+              <li>確定申告シーズン前（1月頃）に「準備できていますか？」の一声</li>
+              <li>年1回の収支報告書をベースに状況確認の連絡</li>
+              <li>「信頼できる人に任せたい」が紹介の動機。小さな誠実さを積み重ねる</li>
+            </ul>
+          </div>
+          <div class="info-box box-phrase" style="grid-column:auto">
+            <div class="info-box-title">🗣 紹介依頼フレーズ</div>
+            <div class="phrase-txt">「もし同じようなお悩みをお持ちのご友人・同僚の方がいらっしゃれば、ぜひご紹介いただけると嬉しいです。○○さんの信頼があってこそのご縁ですので、同じように丁寧に対応させていただきます」</div>
+          </div>
+          <div class="source-note full-col">
+            業界の知見：成約の決め手は最終的に「人（信頼関係）」（不動産会社のミカタ・トップセールスインタビュー）。商品説明が不利でも「この人を信頼できる」と感じてもらえれば契約になる事例多数。
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- DEMERIT SECTION -->
-  <div class="section-label" style="margin-top:40px;">デメリット・リスク対応 ／ Risk Response</div>
-
-  <!-- 売却 -->
-  <div class="risk-card" id="card-baikya">
-    <button class="card-trigger" onclick="toggleCard('card-baikya')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#dbeafe;">
-          <span>🏠</span>
-          <span class="cat-name" style="color:#1e40af;">売却</span>
-        </div>
-        <div class="card-title-area">
-          <div class="card-title">価格決定方法・売却時の価格</div>
-          <div class="card-question">「売却するとき、いくらで売れますか？どう価格が決まるの？」</div>
-        </div>
-        <div class="card-status">
-          <span class="first-badge">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer">
-        <div class="first-answer-label">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text">収益還元法と周辺相場（賃貸・売買）の2軸で算出します。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>収益還元法：年間賃料収入 ÷ 想定利回りで価格を計算</li>
-            <li>周辺相場：直近の同エリア・同スペックの売買事例と賃貸相場を照合</li>
-            <li>実需要（自己居住）と投資需要の両面から買い手を探し、高値売却が可能</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>周辺売買事例データ（REINS等）</li>
-            <li>賃料査定シート</li>
-            <li>収益還元法シミュレーションシート</li>
-          </ul>
-        </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「売却価格は感覚ではなく、2つの客観的な指標から算出します。まずご覧ください」</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 修繕 -->
-  <div class="risk-card" id="card-shuzen">
-    <button class="card-trigger" onclick="toggleCard('card-shuzen')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#d1fae5;">
-          <span>🔧</span>
-          <span class="cat-name" style="color:#065f46;">修繕</span>
-        </div>
-        <div class="card-title-area">
-          <div class="card-title">修繕積立金の変動リスク</div>
-          <div class="card-question">「修繕積立金が上がり続けると聞いた。将来いくらになるの？」</div>
-        </div>
-        <div class="card-status">
-          <span class="first-badge">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer">
-        <div class="first-answer-label">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text">国交省のガイドラインに基づき、長期修繕計画書をもとにシミュレーションします。
-5年おきに10万円、10年おきに10万円上がる設定でご説明します。
-退去時のリフォーム代も積立金の一部として計上できるケースがあります。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>国交省ガイドラインでは修繕積立金の目安・段階増額の計画が示されている</li>
-            <li>積立金上昇分を加味しても、家賃収入とのバランスで手残りがプラスかを試算</li>
-            <li>部屋をきれいに保つことで入居率向上・高賃料維持にもつながる</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>長期修繕計画書（各マンション管理組合発行）</li>
-            <li>国交省ガイドライン（修繕積立金の目安）</li>
-            <li>部屋別修繕積立金推移シミュレーション（Excel）</li>
-          </ul>
-        </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「ガイドラインに沿って計画書を一緒に見ましょう。数字で見ると、実は想像ほど怖くないんです」</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 金利 -->
-  <div class="risk-card" id="card-kinri">
-    <button class="card-trigger" onclick="toggleCard('card-kinri')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#fee2e2;">
-          <span>📈</span>
-          <span class="cat-name" style="color:#991b1b;">金利</span>
-        </div>
-        <div class="card-title-area">
-          <div class="card-title">金利上昇リスク</div>
-          <div class="card-question">「これから金利が上がったら返済が苦しくなりませんか？」</div>
-        </div>
-        <div class="card-status">
-          <span class="first-badge">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer">
-        <div class="first-answer-label">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text">① まず「今後どうなると思いますか？」と相手の意見を聞く。（傾聴が先）
-② 世界各国の政策金利×平均年収比較表（米・豪・英・日）を見てもらう。
-③ 上がった場合の月負担増を一緒に計算する。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>金利は経費扱いになる（節税メリットとセット説明）</li>
-            <li>過去40年の政策金利の推移データをグラフで見せる</li>
-            <li>金利上昇→住宅ローン困難→賃貸需要増加という逆説的メリット</li>
-            <li>黄金30年ローンが変動でも成立する理由（データ収集中）</li>
-            <li>金融機関（イオン・ソニー）の金利上昇上限は1.25倍ルール</li>
-            <li>ソニー銀行での月負担増の具体試算で顧客と共感</li>
-            <li>商談相手は銀行を選べることも伝える</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>世界各国政策金利×平均年収比較表（米・豪・英・日）</li>
-            <li>過去40年 政策金利推移グラフ</li>
-            <li>金利上昇シミュレーション（月額負担変化）</li>
-            <li>イオン銀行・ソニー銀行の1.25倍ルール説明資料</li>
-          </ul>
-        </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「まず○○さんはこれからどうなると思いますか？（意見を聞く）　実はデータを見ると…」</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 天災 -->
-  <div class="risk-card" id="card-tensai">
-    <button class="card-trigger" onclick="toggleCard('card-tensai')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#ede9fe;">
-          <span>🌏</span>
-          <span class="cat-name" style="color:#4c1d95;">天災</span>
-        </div>
-        <div class="card-title-area">
-          <div class="card-title">地震・火災・水災リスク</div>
-          <div class="card-question">「地震で建物が壊れたらどうなるんですか？」</div>
-        </div>
-        <div class="card-status">
-          <span class="first-badge">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer">
-        <div class="first-answer-label">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text">① まず「何が心配ですか？」と聞く。（傾聴が先）
-② 地震：入居者に火災保険の加入義務があり、損害はそこから支払われる。
-③ 火災・水災：入居者の保険で修繕でき、オーナーの保険加入は任意。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>東日本大震災でのRC造マンション倒壊棟数：84,667棟中 682棟（約0.8%）</li>
-            <li>軽微・損傷なしが大半（9割以上）→「実質ほぼ倒壊しない」と説明できる</li>
-            <li>修繕積立金の一部が災害修繕に充当される仕組みがある</li>
-            <li>実質的なオーナーの自己負担は現時点でほぼない</li>
-            <li>地震保険の加入は任意であることも合わせて説明</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>国土交通省「被災状況調査」</li>
-            <li>
-              <a class="url-link" href="https://www.kanrikyo.or.jp/outline/seido.html" target="_blank">
-                kanrikyo.or.jp/outline/seido.html
-              </a>
-            </li>
-            <li>
-              <a class="url-link" href="https://www.kanrikyo.or.jp/news/data/hisaihoukoku110519.pdf" target="_blank">
-                RC造マンション被害データPDF
-              </a>
-            </li>
-            <li>修繕積立金の用途・充当フロー図</li>
-          </ul>
-        </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「まず何が一番心配ですか？（聞く）　実際の数字を見てみましょう。東日本大震災のデータです」</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 家賃 -->
-  <div class="risk-card" id="card-yachin">
-    <button class="card-trigger" onclick="toggleCard('card-yachin')">
-      <div class="card-header">
-        <div class="cat-tag" style="background:#fef3c7;">
-          <span>🏢</span>
-          <span class="cat-name" style="color:#92400e;">家賃</span>
-        </div>
-        <div class="card-title-area">
-          <div class="card-title">家賃下落リスク（サブリース）</div>
-          <div class="card-question">「家賃が下がることはないですか？ずっと続きますか？」</div>
-        </div>
-        <div class="card-status">
-          <span class="first-badge">第一陣あり</span>
-          <span class="chevron">⌄</span>
-        </div>
-      </div>
-    </button>
-    <div class="card-body">
-      <div class="first-answer">
-        <div class="first-answer-label">第一陣の回答（全員統一）</div>
-        <div class="first-answer-text">近隣同種の相場をレインズで一緒に確認します。
-上がるも下がるも、両者合意のもとで決定されます。</div>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-box detail">
-          <div class="sub-label blue">💬 詳細説明・補足トーク</div>
-          <ul class="detail-list">
-            <li>東京の基本金額はほぼ変わらない実績がある（京都は別）</li>
-            <li>管理会社が2年の自動更新時に再査定する仕組み</li>
-            <li>インフレで家賃が上がる可能性もある（追い風として説明）</li>
-            <li>資材高騰で中古物件の希少価値が高まっている現状も伝える</li>
-            <li>「家賃は管理される」ではなく「一緒に決める」というスタンスで話す</li>
-          </ul>
-        </div>
-        <div class="sub-box material">
-          <div class="sub-label amber">📄 使用資料・データ</div>
-          <ul class="material-list">
-            <li>レインズ（REINS）近隣同種賃料データ</li>
-            <li>過去の賃料推移グラフ（東京主要エリア）</li>
-            <li>インフレと不動産価値の相関データ</li>
-            <li>資材高騰と中古物件希少価値のデータ</li>
-          </ul>
-        </div>
-        <div class="sub-box phrase">
-          <div class="sub-label purple">🗣 口頭フレーズ例</div>
-          <div class="sub-content phrase-text">「まずこのエリアの直近相場をレインズで一緒に見てみましょう。実際の数字で確認できます」</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- OPERATION RULES -->
-  <div class="section-label" style="margin-top:40px;">運用ルール ／ Operation Rules</div>
-  <div class="rules-grid">
-    <div class="rule-item">
-      <div class="rule-icon">🔴</div>
-      <div class="rule-text">
-        <strong>第一陣の回答は全員統一</strong>
-        個人の経験や感性でアレンジしない。まずこれを使う。
-      </div>
-    </div>
-    <div class="rule-item">
-      <div class="rule-icon">💬</div>
-      <div class="rule-text">
-        <strong>詳細は深掘りされてから展開</strong>
-        第一陣回答に対し顧客がさらに聞いてきた場合に詳細へ進む。
-      </div>
-    </div>
-    <div class="rule-item">
-      <div class="rule-icon">📄</div>
-      <div class="rule-text">
-        <strong>資料は事前準備必須</strong>
-        タブレットや紙で準備しておく。「次回持ってきます」はNG。
-      </div>
-    </div>
-    <div class="rule-item">
-      <div class="rule-icon">👂</div>
-      <div class="rule-text">
-        <strong>金利・天災は傾聴から入る</strong>
-        まず顧客の意見・感情を引き出してから数字で返す（傾聴→論理の順）。
-      </div>
-    </div>
-    <div class="rule-item">
-      <div class="rule-icon">🔄</div>
-      <div class="rule-text">
-        <strong>マニュアルは生きもの</strong>
-        現場でより良い回答が生まれたら随時更新・共有する。
-      </div>
-    </div>
-    <div class="rule-item">
-      <div class="rule-icon">🎯</div>
-      <div class="rule-text">
-        <strong>目標：サイゼリヤ型の再現性</strong>
-        誰が対応しても一定品質。個人の能力に依存しない組織営業を目指す。
-      </div>
-    </div>
-  </div>
+<!-- ══ RULES ══ -->
+<div class="sec-lbl" style="margin-top:32px">運用ルール</div>
+<div class="rules">
+  <div class="rule-c"><div class="rule-ic">🔴</div><div class="rule-tx"><strong>第一陣の回答は全員統一</strong>個人の感性でアレンジしない。まずこれを使う。</div></div>
+  <div class="rule-c"><div class="rule-ic">📝</div><div class="rule-tx"><strong>ネックは必ず紙に書く</strong>テストクロージング時、口頭だけでは再交渉で逃げられる。</div></div>
+  <div class="rule-c"><div class="rule-ic">👂</div><div class="rule-tx"><strong>金利・天災は傾聴から入る</strong>まず意見を聞いてから数字で返す（傾聴→論理の順）。</div></div>
+  <div class="rule-c"><div class="rule-ic">📄</div><div class="rule-tx"><strong>資料は事前準備必須</strong>「次回持ってきます」はNG。当日手元に揃えておく。</div></div>
+  <div class="rule-c"><div class="rule-ic">🎯</div><div class="rule-tx"><strong>目標：サイゼリヤ型の再現性</strong>誰が対応しても一定品質。属人性を排除する。</div></div>
+  <div class="rule-c"><div class="rule-ic">🔄</div><div class="rule-tx"><strong>マニュアルは生きもの</strong>現場でよい回答が生まれたら随時更新・共有する。</div></div>
+</div>
 
 </div><!-- /main -->
 
 <script>
-function toggleCard(id) {
-  const card = document.getElementById(id);
-  card.classList.toggle('open');
+function togglePhase(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
 }
-
-function toggleAll(open) {
-  document.querySelectorAll('.risk-card[id]').forEach(card => {
-    card.classList.toggle('open', open);
-  });
+function toggleStep(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
 }
-
-function downloadPage() {
-  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'GRDM_商談マニュアル_メリット・リスク対応編.html';
+function openAll(){
+  document.querySelectorAll('.phase-wrap').forEach(e=>e.classList.add('open'));
+  document.querySelectorAll('.step-card').forEach(e=>e.classList.add('open'));
+}
+function closeAll(){
+  document.querySelectorAll('.phase-wrap').forEach(e=>e.classList.remove('open'));
+  document.querySelectorAll('.step-card').forEach(e=>e.classList.remove('open'));
+}
+function dl(){
+  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='GRDM_商談マニュアル_完全版.html';
   a.click();
 }
 </script>
