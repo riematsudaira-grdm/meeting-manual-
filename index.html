@@ -172,6 +172,20 @@ body{font-family:'Noto Sans JP',sans-serif;background:#eaecf2;color:var(--gray-8
 
 /* inline highlight */
 .hl{background:#fef9c3;border-radius:3px;padding:0 3px;font-weight:700;color:#92400e}
+
+/* resource link button */
+.res-link{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px 3px 8px;border-radius:5px;
+  font-size:11px;font-weight:700;
+  text-decoration:none;
+  border:1.5px solid;
+  margin-left:6px;vertical-align:middle;
+  transition:all .15s;white-space:nowrap;
+}
+.res-link:hover{opacity:0.8;transform:translateY(-1px)}
+.res-link-blue{background:#eff6ff;color:#1d4ed8;border-color:#93c5fd}
+.res-link-green{background:#f0fdf4;color:#15803d;border-color:#86efac}
 </style>
 </head>
 <body>
@@ -407,7 +421,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:#eaecf2;color:var(--gray-8
               <div class="info-box-title">📄 使う資料</div>
               <ul class="ul-n ul-d">
                 <li>GRDM提案資料「現金運用」「インフレ対策」ページ</li>
-                <li>収益還元法 説明資料（GRDM作成）→ 渡しても可</li>
+                <li>収益還元法 説明資料（GRDM作成）→ 渡しても可<a class="res-link res-link-blue" href="soneki.html" target="_blank">↗ 資料を開く</a></li>
                 <li>損益分岐表（PORT）→ 手残り金額・投資利益率</li>
                 <li>50年収支表（PORT）→ 長期シミュレーション</li>
                 <li>積立NISA比較表【第二陣用】</li>
@@ -577,7 +591,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:#eaecf2;color:var(--gray-8
           <div class="info-box box-doc">
             <div class="info-box-title">📄 使う資料</div>
             <ul class="ul-n ul-d">
-              <li>収益還元法 説明資料（GRDM作成）→ お客様渡し可</li>
+              <li>収益還元法 説明資料（GRDM作成）→ お客様渡し可<a class="res-link res-link-green" href="soneki.html" target="_blank">↗ 資料を開く</a></li>
               <li>損益分岐表（PORT）</li>
               <li>周辺売買事例データ（REINS等）</li>
             </ul>
