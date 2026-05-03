@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不動産価格の評価方法｜収益還元法</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #e8eaf0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.a4 {
+  width: 794px;
+  min-height: 1123px;
+  background: #fff;
+  padding: 44px 48px 36px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 3px solid #0f1f3d;
+  margin-bottom: 22px;
+}
+.header-left {}
+.header-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1e5fa8;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f1f3d;
+  line-height: 1.3;
+}
+.header h1 span { color: #1e5fa8; }
+.header-sub {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+.logo-area {
+  text-align: right;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+  padding-top: 4px;
+}
+.logo-area strong { color: #0f1f3d; font-size: 13px; display: block; }
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #f0f5ff;
+  border-left: 4px solid #1e5fa8;
+  border-radius: 0 8px 8px 0;
+  padding: 11px 16px;
+  margin-bottom: 22px;
+  font-size: 12.5px;
+  color: #1f3864;
+  line-height: 1.75;
+}
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ── 3 METHODS GRID ── */
+.methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.method-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid #e5e7eb;
+}
+.method-card.primary {
+  border-color: #1e5fa8;
+  box-shadow: 0 2px 12px rgba(30,95,168,0.13);
+}
+
+.method-card-head {
+  padding: 10px 14px 9px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.method-card.primary .method-card-head { background: #0f1f3d; }
+.method-card.secondary .method-card-head { background: #f3f4f6; }
+
+.method-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.primary .method-icon { background: rgba(255,255,255,0.15); }
+.secondary .method-icon { background: #e5e7eb; }
+
+.method-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.primary .method-name { color: #fff; }
+.secondary .method-name { color: #1f2937; }
+
+.method-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+.primary .method-tag { color: #7ec8f5; }
+.secondary .method-tag { color: #6b7280; }
+
+.method-card-body {
+  padding: 12px 14px 14px;
+  background: #fff;
+}
+.method-desc {
+  font-size: 11.5px;
+  line-height: 1.75;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.method-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.meta-row {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+.meta-label {
+  font-weight: 700;
+  flex-shrink: 0;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9.5px;
+}
+.primary-label { background: #dbeafe; color: #1e40af; }
+.secondary-label { background: #f3f4f6; color: #4b5563; }
+.meta-value { color: #4b5563; }
+
+.recommended-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #1e5fa8;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ── FORMULA BOX ── */
+.formula-section {
+  background: #0f1f3d;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.formula-label {
+  color: #7ec8f5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
+}
+.formula-main {
+  flex: 1;
+  text-align: center;
+}
+.formula-title {
+  color: rgba(255,255,255,0.6);
+  font-size: 10px;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+.formula-eq {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.formula-eq .frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+.formula-eq .frac .num { border-bottom: 1.5px solid #7ec8f5; padding-bottom: 2px; color: #7ec8f5; font-size: 13px; }
+.formula-eq .frac .den { padding-top: 2px; color: rgba(255,255,255,0.7); font-size: 11px; }
+.formula-eq .result { color: #fbbf24; font-size: 17px; font-weight: 900; }
+.formula-note {
+  color: rgba(255,255,255,0.45);
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* ── TABLE ── */
+.table-section { margin-bottom: 22px; }
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.price-table thead tr {
+  background: #0f1f3d;
+  color: #fff;
+}
+.price-table thead th {
+  padding: 9px 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.price-table thead th:first-child { text-align: left; border-radius: 8px 0 0 0; }
+.price-table thead th:last-child { border-radius: 0 8px 0 0; }
+.price-table thead .now-col { background: #1e5fa8; }
+
+.price-table tbody tr { border-bottom: 1px solid #f3f4f6; }
+.price-table tbody tr:last-child { border-bottom: none; }
+.price-table tbody td {
+  padding: 9px 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #374151;
+}
+.price-table tbody td:first-child {
+  text-align: left;
+  font-weight: 700;
+  color: #0f1f3d;
+  font-size: 11.5px;
+}
+.price-table tbody tr:nth-child(even) td { background: #f9fafb; }
+.price-table .now-col { background: #eff6ff !important; color: #1e40af !important; font-weight: 700; }
+.price-table .highlight-row td { background: #fefce8 !important; }
+.price-table .highlight-row .now-col { background: #fef3c7 !important; }
+
+.arrow-cell {
+  padding: 0 2px !important;
+  color: #1e5fa8;
+  font-size: 14px;
+}
+
+.table-note {
+  font-size: 10.5px;
+  color: #6b7280;
+  margin-top: 7px;
+  line-height: 1.6;
+  padding-left: 2px;
+}
+
+/* ── BOTTOM ROW ── */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.info-box {
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+.info-box.blue { background: #eff6ff; border: 1px solid #bfdbfe; }
+.info-box.amber { background: #fffbeb; border: 1px solid #fde68a; }
+.info-box-title {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.blue .info-box-title { color: #1e40af; }
+.amber .info-box-title { color: #92400e; }
+.info-box p { color: #374151; font-size: 11px; line-height: 1.75; }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.footer-ref {
+  font-size: 9px;
+  color: #9ca3af;
+  line-height: 1.7;
+  max-width: 560px;
+}
+.footer-ref a { color: #6b7280; text-decoration: none; }
+.footer-brand {
+  font-size: 10px;
+  color: #9ca3af;
+  text-align: right;
+  white-space: nowrap;
+}
+.footer-brand strong { display: block; color: #4b5563; font-size: 11px; }
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .a4 { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<div class="a4">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-tag">Real Estate Valuation Guide</div>
+      <h1>不動産価格は<span>どう決まるのか？</span></h1>
+      <div class="header-sub">投資用マンションの価格評価に使われる3つの方法をわかりやすく解説します。</div>
+    </div>
+    <div class="logo-area">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    「この物件、本当にこの金額で売れるんですか？」——その疑問にお答えするため、不動産価格の評価方法をご説明します。<br>
+    投資用マンションでは特に <strong>収益還元法</strong> が重要な指標となります。家賃収入という「稼ぐ力」から逆算して価格を導き出す考え方です。
+  </div>
+
+  <!-- 3 METHODS -->
+  <div class="section-title">不動産価格の評価方法（3種類）</div>
+  <div class="methods-grid">
+
+    <!-- 収益還元法 -->
+    <div class="method-card primary">
+      <div class="method-card-head">
+        <div class="method-icon">💹</div>
+        <div>
+          <div class="method-name">収益還元法</div>
+          <div class="method-tag">INCOME APPROACH</div>
+        </div>
+      </div>
+      <div class="method-card-body">
+        <div class="method-desc">
+          その物件が将来生み出す<strong>家賃収入（稼ぐ力）</strong>をもとに価格を算出する方法。投資用不動産の評価に最も適している。
+        </div>
+        <div class="method-meta">
+          <div class="meta-row">
+            <span class="meta-label primary-label">算出ベース</span>
+            <span class="meta-value">家賃収入（年間）</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label primary-label">主な用途</span>
+            <span class="meta-value">収益用不動産の評価</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label primary-label">考え方</span>
+            <span class="meta-value">いくら稼ぐ力があるか</span>
+          </div>
+        </div>
+        <div class="recommended-badge">★ 投資用マンションに最適</div>
+      </div>
+    </div>
+
+    <!-- 積算法 -->
+    <div class="method-card secondary">
+      <div class="method-card-head">
+        <div class="method-icon">🏗</div>
+        <div>
+          <div class="method-name">積算法</div>
+          <div class="method-tag">COST APPROACH</div>
+        </div>
+      </div>
+      <div class="method-card-body">
+        <div class="method-desc">
+          <strong>土地の価格＋建物の価格</strong>を合計して不動産価値を算出する方法。銀行が融資判断の際に使うことが多い。
+        </div>
+        <div class="method-meta">
+          <div class="meta-row">
+            <span class="meta-label secondary-label">算出ベース</span>
+            <span class="meta-value">相続税路線価・公示価格等</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label secondary-label">主な用途</span>
+            <span class="meta-value">銀行の不動産評価・融資審査</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label secondary-label">考え方</span>
+            <span class="meta-value">土地と建物の価格の合計</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 取引事例比較法 -->
+    <div class="method-card secondary">
+      <div class="method-card-head">
+        <div class="method-icon">🔍</div>
+        <div>
+          <div class="method-name">取引事例比較法</div>
+          <div class="method-tag">COMPARISON APPROACH</div>
+        </div>
+      </div>
+      <div class="method-card-body">
+        <div class="method-desc">
+          近隣の<strong>類似物件の実際の売買事例</strong>と比較して価格を算出する方法。中古住宅の評価によく使われる。
+        </div>
+        <div class="method-meta">
+          <div class="meta-row">
+            <span class="meta-label secondary-label">算出ベース</span>
+            <span class="meta-value">周辺の取引事例</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label secondary-label">主な用途</span>
+            <span class="meta-value">中古住宅の評価・査定</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label secondary-label">考え方</span>
+            <span class="meta-value">似た物件の実際の売買価格</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FORMULA -->
+  <div class="formula-section">
+    <div class="formula-label">収益還元法の計算式</div>
+    <div class="formula-main">
+      <div class="formula-title">DIRECT CAPITALIZATION METHOD</div>
+      <div class="formula-eq">
+        <span class="frac">
+          <span class="num">年間家賃収入（純収益）</span>
+          <span class="den">還元利回り（周辺の平均実質利回り）</span>
+        </span>
+        <span style="color:rgba(255,255,255,0.6); font-size:18px; vertical-align:middle;">＝</span>
+        <span class="result">収益還元価格</span>
+      </div>
+      <div class="formula-note">※ 家賃が上がると → 価格も上がる。インフレに強い実物資産の特性を示す計算式。</div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-section">
+    <div class="section-title">収益還元法による価格変化のシミュレーション（利回り4%一定の場合）</div>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>40年前</th>
+          <th class="arrow-cell"></th>
+          <th>20年前</th>
+          <th class="arrow-cell"></th>
+          <th class="now-col">現在</th>
+          <th class="arrow-cell"></th>
+          <th>将来（予測）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>月々家賃</td>
+          <td>5万円</td>
+          <td class="arrow-cell">▶</td>
+          <td>7万円</td>
+          <td class="arrow-cell">▶</td>
+          <td class="now-col">9万円</td>
+          <td class="arrow-cell">▶</td>
+          <td>11万円</td>
+        </tr>
+        <tr>
+          <td>年間家賃</td>
+          <td>60万円</td>
+          <td class="arrow-cell"></td>
+          <td>84万円</td>
+          <td class="arrow-cell"></td>
+          <td class="now-col">108万円</td>
+          <td class="arrow-cell"></td>
+          <td>132万円</td>
+        </tr>
+        <tr>
+          <td>利回り</td>
+          <td>4.00%</td>
+          <td class="arrow-cell"></td>
+          <td>4.00%</td>
+          <td class="arrow-cell"></td>
+          <td class="now-col">4.00%</td>
+          <td class="arrow-cell"></td>
+          <td>4.00%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>収益還元価格</td>
+          <td>1,000万円</td>
+          <td class="arrow-cell">▶</td>
+          <td>2,100万円</td>
+          <td class="arrow-cell">▶</td>
+          <td class="now-col">2,700万円</td>
+          <td class="arrow-cell">▶</td>
+          <td>3,300万円</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-note">
+      ポイント：家賃が上がれば（利回りが同じなら）不動産価格も連動して上昇します。インフレ局面では家賃も上昇するため、不動産は現金より価値が目減りしにくい資産です。
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom-row">
+    <div class="info-box blue">
+      <div class="info-box-title">💡 なぜ投資用マンションには収益還元法が使われるのか？</div>
+      <p>住宅ローンで購入する実需物件とは異なり、投資用マンションは「毎月の家賃収入がいくら得られるか」が価値の本質です。収益還元法はその本質を価格に反映できる唯一の評価手法であり、売却時の価格交渉においても最も説得力のある根拠となります。</p>
+    </div>
+    <div class="info-box amber">
+      <div class="info-box-title">⚠️ 売却価格が下がる時はどんな時？</div>
+      <p>・家賃が大幅に下落した場合（空室・賃料値下げ）<br>
+      ・周辺エリアの供給過多により利回り水準が上昇した場合<br>
+      ・物件の管理状態が著しく悪化した場合<br>
+      逆に、入居率・家賃を維持・向上させることが資産価値の防衛につながります。</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-ref">
+      【参考文献・データ出典】<br>
+      ・国土交通省「不動産鑑定評価基準」（令和2年改正）https://www.mlit.go.jp/totikensangyo/totikensangyo_fr4_000043.html<br>
+      ・国土交通省「修繕積立金に関するガイドライン」https://www.mlit.go.jp/jutakukentiku/house/content/001747009.pdf<br>
+      ・国土交通省「不動産価格指数（住宅）」https://www.mlit.go.jp/totikensangyo/totikensangyo_tk5_000085.html<br>
+      ※本資料は作成時点の情報を参考にしております。実際の売却価格・利回りは市況等により異なります。投資判断はご自身の責任にて行ってください。
+    </div>
+    <div class="footer-brand">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
