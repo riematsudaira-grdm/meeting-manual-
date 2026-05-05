@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金利上昇と不動産価格の関係｜GRDM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#e8eaf0;display:flex;justify-content:center;padding:24px;min-height:100vh}
+
+.a4{width:794px;min-height:1123px;background:#fff;padding:42px 48px 36px;box-shadow:0 4px 32px rgba(0,0,0,0.13);display:flex;flex-direction:column}
+
+/* HEADER */
+.header{border-bottom:3px solid #0f1f3d;padding-bottom:14px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start}
+.header-tag{font-size:10px;font-weight:700;letter-spacing:2px;color:#b45309;margin-bottom:5px}
+.header h1{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:#0f1f3d;line-height:1.3}
+.header h1 span{color:#b45309}
+.header-sub{font-size:11px;color:#6b7280;margin-top:5px;line-height:1.6}
+.logo{font-size:10px;color:#9ca3af;text-align:right;padding-top:4px}
+.logo strong{display:block;color:#4b5563;font-size:12px}
+
+/* INTRO */
+.intro{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 7px 7px 0;padding:11px 16px;margin-bottom:20px;font-size:12.5px;color:#78350f;line-height:1.75}
+
+/* SEC */
+.sec{font-size:10.5px;font-weight:700;letter-spacing:2px;color:#6b7280;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.sec::after{content:'';flex:1;height:1px;background:#e5e7eb}
+
+/* 2-COL */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+
+/* POINT CARD */
+.pc{border-radius:9px;padding:13px 15px}
+.pc.navy{background:#0f1f3d;color:#fff}
+.pc.amber{background:#fffbeb;border:1.5px solid #fde68a}
+.pc.red{background:#fff5f5;border:1.5px solid #fca5a5}
+.pc.green{background:#f0fdf4;border:1.5px solid #86efac}
+.pc.blue{background:#eff6ff;border:1.5px solid #bfdbfe}
+.pc.purple{background:#f5f3ff;border:1.5px solid #c4b5fd}
+.pc-title{font-size:11.5px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.navy .pc-title{color:#7ec8f5}
+.amber .pc-title{color:#b45309}
+.red .pc-title{color:#b91c1c}
+.green .pc-title{color:#15803d}
+.blue .pc-title{color:#1e40af}
+.purple .pc-title{color:#6d28d9}
+.pc-text{font-size:11.5px;line-height:1.75}
+.navy .pc-text{color:rgba(255,255,255,0.85)}
+.amber .pc-text,.red .pc-text,.green .pc-text,.blue .pc-text,.purple .pc-text{color:#374151}
+
+/* LIST */
+.ul-n{list-style:none;padding:0;margin:0}
+.ul-n li{padding-left:14px;position:relative;font-size:11.5px;line-height:1.75;margin-bottom:3px;color:#374151}
+.ul-n li::before{content:'▸';position:absolute;left:0;color:#b45309;font-size:10px;top:3px}
+
+/* COMPARISON TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:20px}
+.ctable thead tr{background:#0f1f3d}
+.ctable thead th{padding:8px 11px;color:#fff;font-weight:700;font-size:11px;text-align:center}
+.ctable thead th:first-child{text-align:left;border-radius:7px 0 0 0}
+.ctable thead th:last-child{border-radius:0 7px 0 0}
+.ctable tbody td{padding:8px 11px;text-align:center;border-bottom:1px solid #f3f4f6;color:#374151;font-size:11.5px}
+.ctable tbody td:first-child{text-align:left;font-weight:700;color:#0f1f3d}
+.ctable tbody tr:nth-child(even) td{background:#f9fafb}
+.ctable .jp-row td{background:#fef3c7 !important;font-weight:700;color:#92400e}
+
+/* FLOW */
+.flow-box{background:#0f1f3d;border-radius:10px;padding:15px 18px;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.flow-label{color:#7ec8f5;font-size:10px;font-weight:700;letter-spacing:1.2px;white-space:nowrap;line-height:1.4}
+.flow-items{display:flex;align-items:center;gap:0;flex:1;justify-content:center;flex-wrap:wrap}
+.fi{background:rgba(255,255,255,0.1);border-radius:6px;padding:7px 11px;text-align:center;min-width:90px}
+.fi .fn{font-size:9px;color:rgba(255,255,255,0.5);margin-bottom:2px}
+.fi .ft{font-size:11px;font-weight:700;color:#fff;line-height:1.4}
+.fa{font-size:16px;color:rgba(255,255,255,0.35);padding:0 5px}
+
+/* HIGHLIGHT BOX */
+.hl-box{border-radius:9px;padding:14px 18px;margin-bottom:20px}
+.hl-box.dark{background:#0f1f3d}
+.hl-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+.dark .hl-lbl{color:#7ec8f5}
+.hl-text{font-size:13px;font-weight:700;line-height:1.85;white-space:pre-line}
+.dark .hl-text{color:#fff}
+
+/* FOOTER */
+.footer{margin-top:auto;padding-top:12px;border-top:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:flex-end}
+.footer-ref{font-size:9px;color:#9ca3af;line-height:1.7;max-width:540px}
+.footer-ref a{color:#9ca3af}
+.footer-brand{font-size:10px;color:#9ca3af;text-align:right}
+.footer-brand strong{display:block;color:#4b5563;font-size:11px}
+
+@media print{body{background:#fff;padding:0}.a4{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="a4">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="header-tag">Interest Rate &amp; Real Estate Price Guide</div>
+      <h1>金利が上がると<span>不動産価格はどうなるのか？</span></h1>
+      <div class="header-sub">「金利が上昇したら返済が苦しくなるのでは？」という不安にお答えする資料です。</div>
+    </div>
+    <div class="logo">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    金利上昇は確かに注意が必要なテーマです。ただし正しく理解すると、<strong>日本は世界的に見て金利が極めて低い国</strong>であり、不動産価格と物価の関係・海外ファンドの動向を踏まえると、投資用マンションへの影響は一般に思われているほど単純ではありません。
+  </div>
+
+  <!-- GLOBAL COMPARISON -->
+  <div class="sec">世界各国の政策金利と住宅ローン金利の比較</div>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>国</th>
+        <th>政策金利（2025年頃）</th>
+        <th>住宅ローン金利目安</th>
+        <th>平均年収（概算）</th>
+        <th>コメント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🇺🇸 アメリカ</td>
+        <td>4.25〜4.50%</td>
+        <td>6〜7%台</td>
+        <td>約700〜800万円</td>
+        <td>高金利でローン負担大</td>
+      </tr>
+      <tr>
+        <td>🇦🇺 オーストラリア</td>
+        <td>4.10%</td>
+        <td>5〜6%台</td>
+        <td>約700〜750万円</td>
+        <td>高金利でも不動産高騰続く</td>
+      </tr>
+      <tr>
+        <td>🇬🇧 イギリス</td>
+        <td>4.50%</td>
+        <td>4〜5%台</td>
+        <td>約500〜600万円</td>
+        <td>高金利・低年収の組み合わせ</td>
+      </tr>
+      <tr class="jp-row">
+        <td>🇯🇵 日本</td>
+        <td>0.50%（2025年時点）</td>
+        <td>変動0.3〜1.5%台</td>
+        <td>約460万円（国税庁調査）</td>
+        <td>世界で最も低い金利水準</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- KEY POINTS 3col -->
+  <div class="sec">金利上昇への正しい理解 ／ 3つのポイント</div>
+  <div class="three">
+    <div class="pc amber">
+      <div class="pc-title">📊 日本の金利は世界最低水準</div>
+      <div class="pc-text">2025年時点で日本の政策金利は0.5%。米国（4.5%）・英国（4.5%）・豪州（4.1%）と比べて圧倒的に低い。日本は「世界で最も調達コストが安い市場」として海外ファンドに注目されている。</div>
+    </div>
+    <div class="pc blue">
+      <div class="pc-title">🏦 1.25倍ルールで上限がある</div>
+      <div class="pc-text">イオン銀行・ソニー銀行など主要金融機関では、金利が上昇しても毎月の返済額は「前回の1.25倍まで」という上限ルールがある。急激な負担増加には一定の歯止めが設けられている。</div>
+    </div>
+    <div class="pc green">
+      <div class="pc-title">💰 金利は経費として計上できる</div>
+      <div class="pc-text">ローン利息は不動産所得の経費として計上可能。金利が上昇するほど経費が増え、節税効果が高まるという逆説的なメリットも生まれる。金利上昇と節税はセットで考える。</div>
+    </div>
+  </div>
+
+  <!-- INFLATION & REAL ESTATE -->
+  <div class="sec">物価と不動産価格の関係 ／ インフレ局面での不動産の強み</div>
+  <div class="two">
+    <div class="pc red">
+      <div class="pc-title">💸 物価が上がっても現金は目減りする</div>
+      <div class="pc-text">インフレ率2%が続くと、1,000万円の現金は：<br>
+      • 10年後 → 実質 約820万円<br>
+      • 20年後 → 実質 約670万円<br>
+      • 30年後 → 実質 約550万円<br><br>
+      銀行預金の金利がほぼゼロなら、現金を持ち続けることが最大のリスクになる。</div>
+    </div>
+    <div class="pc green">
+      <div class="pc-title">🏢 不動産はインフレとともに価値が上がる</div>
+      <div class="pc-text">不動産（実物資産）は物価上昇に連動して価格が上がる傾向がある。<br><br>
+      収益還元法：家賃収入 ÷ 利回り ＝ 不動産価格<br>
+      → 物価上昇で家賃が上がれば、不動産価格も上昇する<br><br>
+      インフレ対策として、現金より不動産が有効な理由がここにある。</div>
+    </div>
+  </div>
+
+  <!-- OVERSEAS FUNDS -->
+  <div class="sec">なぜ海外ファンドが日本の不動産を買い続けるのか</div>
+  <div class="flow-box">
+    <div class="flow-label">海外ファンドが<br>日本を選ぶ<br>理由の連鎖</div>
+    <div class="flow-items">
+      <div class="fi"><div class="fn">①</div><div class="ft">日本の金利<br>が世界最低</div></div>
+      <div class="fa">▶</div>
+      <div class="fi"><div class="fn">②</div><div class="ft">資金調達<br>コストが安い</div></div>
+      <div class="fa">▶</div>
+      <div class="fi"><div class="fn">③</div><div class="ft">利回りとの<br>差（利ざや）大</div></div>
+      <div class="fa">▶</div>
+      <div class="fi"><div class="fn">④</div><div class="ft">日本不動産<br>への投資が有利</div></div>
+      <div class="fa">▶</div>
+      <div class="fi"><div class="fn">⑤</div><div class="ft">需要増加で<br>価格が上昇</div></div>
+    </div>
+  </div>
+
+  <div class="two" style="margin-bottom:20px">
+    <div class="pc navy">
+      <div class="pc-title">🌏 JLL調査：海外マネーが日本に集中</div>
+      <div class="pc-text">JLL（世界最大の不動産サービス会社）の調査によると、2024年の国内不動産投資額は前年比40%増の約3.9兆円。日本は2024年上半期の取引額で世界3位（170億米ドル）に達した。海外ファンドのドライパウダー（待機資金）は約500億米ドル（日本の年間投資額の2年分）が蓄積されている。</div>
+    </div>
+    <div class="pc purple">
+      <div class="pc-title">📈 低金利が日本を「世界で稀な市場」に</div>
+      <div class="pc-text">米国など主要国では金利が4〜5%台で、不動産利回りとの差（イールドギャップ）が縮小している。一方、日本は金利が0.5%台で利回り4%前後の不動産は「キャッシュ・オン・キャッシュ利回りが見込める世界でも希少なマーケット」（JLL）として評価されている。</div>
+    </div>
+  </div>
+
+  <!-- ANSWER -->
+  <div class="hl-box dark">
+    <div class="hl-lbl">「金利が上がったら？」への回答</div>
+    <div class="hl-text">まず、日本の金利は世界で最も低い水準にあります。上がったとしても海外と比べれば依然として低い状態が続きます。
+仮に金利が上がっても：①1.25倍ルールで急激な負担増は抑制される ②金利は経費計上で節税効果が増す
+③インフレで物価が上がれば家賃も上がり、収益還元法で不動産価格も維持・上昇する
+そして世界中の海外ファンドが「日本は調達コストが安い」と買い続けているのが現実です。</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-ref">
+      【参考文献・データ出典】<br>
+      ・JLL Japan「金利上昇局面の日本不動産市場における海外投資家の動向」（2024年）jll.com/ja-jp<br>
+      ・国税庁「令和4年分 民間給与実態統計調査」（平均給与458万円）nta.go.jp<br>
+      ・第一生命経済研究所「利上げで住宅価格はどれだけ下落するのか」（2024年）dlri.co.jp<br>
+      ・日本銀行「政策金利の推移」boj.or.jp / 国土交通省「不動産価格指数」mlit.go.jp<br>
+      ※本資料は作成時点の情報を参考にしており、将来の金利・不動産価格を保証するものではありません。
+    </div>
+    <div class="footer-brand">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
