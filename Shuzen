@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>修繕積立金とマンションの資産価値｜GRDM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#e8eaf0;display:flex;justify-content:center;padding:24px;min-height:100vh}
+
+.a4{width:794px;min-height:1123px;background:#fff;padding:42px 48px 36px;box-shadow:0 4px 32px rgba(0,0,0,0.13);display:flex;flex-direction:column;gap:0}
+
+/* HEADER */
+.header{border-bottom:3px solid #0f1f3d;padding-bottom:14px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start}
+.header-tag{font-size:10px;font-weight:700;letter-spacing:2px;color:#1e5fa8;margin-bottom:5px}
+.header h1{font-family:'Noto Serif JP',serif;font-size:21px;font-weight:700;color:#0f1f3d;line-height:1.3}
+.header h1 span{color:#1e5fa8}
+.header-sub{font-size:11px;color:#6b7280;margin-top:5px;line-height:1.6}
+.logo{font-size:10px;color:#9ca3af;text-align:right;padding-top:4px}
+.logo strong{display:block;color:#4b5563;font-size:12px}
+
+/* INTRO */
+.intro{background:#f0f5ff;border-left:4px solid #1e5fa8;border-radius:0 7px 7px 0;padding:11px 16px;margin-bottom:20px;font-size:12.5px;color:#1f3864;line-height:1.75}
+
+/* SECTION TITLE */
+.sec{font-size:10.5px;font-weight:700;letter-spacing:2px;color:#6b7280;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.sec::after{content:'';flex:1;height:1px;background:#e5e7eb}
+
+/* COMPARISON CARDS */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.ccard{border-radius:10px;overflow:hidden;border:2px solid}
+.ccard-bad{border-color:#fca5a5}
+.ccard-good{border-color:#86efac}
+.ccard-head{padding:11px 15px 10px;display:flex;align-items:center;gap:10px}
+.ccard-bad .ccard-head{background:#fef2f2}
+.ccard-good .ccard-head{background:#f0fdf4}
+.ccard-emoji{font-size:22px;flex-shrink:0}
+.ccard-title{font-size:13px;font-weight:700}
+.ccard-bad .ccard-title{color:#b91c1c}
+.ccard-good .ccard-title{color:#15803d}
+.ccard-tag{font-size:9.5px;font-weight:700;letter-spacing:0.5px;margin-top:2px}
+.ccard-bad .ccard-tag{color:#ef4444}
+.ccard-good .ccard-tag{color:#22c55e}
+.ccard-body{padding:12px 15px 14px;background:#fff}
+.ccard-list{list-style:none;padding:0;margin:0}
+.ccard-list li{font-size:12px;line-height:1.75;padding-left:14px;position:relative;margin-bottom:3px;color:#374151}
+.ccard-bad .ccard-list li::before{content:'✗';position:absolute;left:0;color:#ef4444;font-size:10px;top:3px;font-weight:700}
+.ccard-good .ccard-list li::before{content:'✓';position:absolute;left:0;color:#22c55e;font-size:10px;top:3px;font-weight:700}
+.ccard-result{margin-top:10px;padding:8px 11px;border-radius:6px;font-size:12px;font-weight:700;text-align:center}
+.ccard-bad .ccard-result{background:#fef2f2;color:#b91c1c}
+.ccard-good .ccard-result{background:#f0fdf4;color:#15803d}
+
+/* FLOW DIAGRAM */
+.flow-section{margin-bottom:22px}
+.flow-box{background:#0f1f3d;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px}
+.flow-label{color:#7ec8f5;font-size:10px;font-weight:700;letter-spacing:1.5px;white-space:nowrap}
+.flow-items{display:flex;align-items:center;gap:0;flex:1;justify-content:center;flex-wrap:wrap}
+.flow-item{background:rgba(255,255,255,0.1);border-radius:7px;padding:8px 13px;text-align:center;min-width:100px}
+.flow-item .fi-num{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px}
+.flow-item .fi-text{font-size:12px;font-weight:700;color:#fff;line-height:1.4}
+.flow-arrow{font-size:18px;color:rgba(255,255,255,0.4);padding:0 6px}
+
+/* KEY POINTS */
+.points-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+.point-card{border-radius:8px;padding:13px 15px}
+.point-card.blue{background:#eff6ff;border:1px solid #bfdbfe}
+.point-card.green{background:#f0fdf4;border:1px solid #bbf7d0}
+.point-card.amber{background:#fffbeb;border:1px solid #fde68a}
+.point-card.purple{background:#f5f3ff;border:1px solid #ddd6fe}
+.point-title{font-size:11px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.blue .point-title{color:#1e40af}
+.green .point-title{color:#15803d}
+.amber .point-title{color:#b45309}
+.purple .point-title{color:#6d28d9}
+.point-text{font-size:11.5px;line-height:1.75;color:#374151}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:22px}
+.cost-table thead tr{background:#0f1f3d}
+.cost-table thead th{padding:9px 12px;color:#fff;font-weight:700;font-size:11px;text-align:center}
+.cost-table thead th:first-child{text-align:left;border-radius:8px 0 0 0}
+.cost-table thead th:last-child{border-radius:0 8px 0 0}
+.cost-table tbody td{padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;color:#374151;font-size:12px}
+.cost-table tbody td:first-child{text-align:left;font-weight:700;color:#0f1f3d}
+.cost-table tbody tr:nth-child(even) td{background:#f9fafb}
+.cost-table .hl-row td{background:#fef3c7 !important;font-weight:700;color:#92400e}
+
+/* ANSWER BOX */
+.answer-box{background:#0f1f3d;border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.answer-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#7ec8f5;margin-bottom:8px}
+.answer-text{font-size:13px;font-weight:700;color:#fff;line-height:1.8;white-space:pre-line}
+
+/* FOOTER */
+.footer{margin-top:auto;padding-top:12px;border-top:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:flex-end}
+.footer-ref{font-size:9px;color:#9ca3af;line-height:1.7;max-width:540px}
+.footer-ref a{color:#9ca3af;text-decoration:none}
+.footer-brand{font-size:10px;color:#9ca3af;text-align:right}
+.footer-brand strong{display:block;color:#4b5563;font-size:11px}
+
+@media print{body{background:#fff;padding:0}.a4{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="a4">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="header-tag">Repair Cost &amp; Asset Value Guide</div>
+      <h1>修繕積立金は<span>コストではなく、資産価値の維持投資</span>です</h1>
+      <div class="header-sub">「修繕費が上がり続けるのでは？」という不安にお答えする資料です。</div>
+    </div>
+    <div class="logo">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    修繕積立金が増える、と聞くと「出費が増える」と感じる方が多いです。しかし正しく理解すると、<strong>修繕を続けているマンションこそ資産価値が維持・上昇し、修繕していないマンションは価値が大きく下落する</strong>ことがわかります。修繕積立金は「守りのコスト」ではなく「資産を育てる投資」なのです。
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="sec">修繕済みマンション vs 未修繕マンション ／ 資産価値の差</div>
+  <div class="compare-grid">
+    <div class="ccard ccard-bad">
+      <div class="ccard-head">
+        <div class="ccard-emoji">📉</div>
+        <div>
+          <div class="ccard-title">修繕を怠ったマンション</div>
+          <div class="ccard-tag">UNMANAGED — 価値下落リスク大</div>
+        </div>
+      </div>
+      <div class="ccard-body">
+        <ul class="ccard-list">
+          <li>外壁・屋根の劣化が目立ち、見た目が悪い</li>
+          <li>エレベーター・給排水管の老朽化が放置される</li>
+          <li>修繕積立金が不足し、大規模修繕ができない</li>
+          <li>入居者が退去しやすく、空室リスクが上昇</li>
+          <li>買い手がつかず、売却価格が大幅に下落</li>
+          <li>築26〜30年で新築比<strong>57%程度まで下落</strong>する事例も</li>
+        </ul>
+        <div class="ccard-result">❌ 資産価値が大きく目減りする</div>
+      </div>
+    </div>
+    <div class="ccard ccard-good">
+      <div class="ccard-head">
+        <div class="ccard-emoji">📈</div>
+        <div>
+          <div class="ccard-title">計画的に修繕されたマンション</div>
+          <div class="ccard-tag">WELL-MANAGED — 資産価値が維持・上昇</div>
+        </div>
+      </div>
+      <div class="ccard-body">
+        <ul class="ccard-list">
+          <li>外壁・共用部が清潔に保たれ、入居者需要が高い</li>
+          <li>設備が更新され、快適性・安全性が維持される</li>
+          <li>大規模修繕が計画通り実施され、建物の寿命が延びる</li>
+          <li>入居率が高く、安定した家賃収入が続く</li>
+          <li>売却時の買い手がつきやすく、高値で売れる</li>
+          <li>首都圏の中古マンション成約単価は<strong>10年で約190%上昇</strong>した事例も</li>
+        </ul>
+        <div class="ccard-result">✅ 資産価値が維持・向上する</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY POINTS -->
+  <div class="sec">なぜ修繕が資産価値につながるのか ／ 4つのポイント</div>
+  <div class="points-grid">
+    <div class="point-card blue">
+      <div class="point-title">🏢 入居者需要が高まる</div>
+      <div class="point-text">きれいに管理されたマンションは入居者に選ばれやすい。空室リスクが下がり、安定した家賃収入が続く。「マンションは管理を買え」と言われる所以。</div>
+    </div>
+    <div class="point-card green">
+      <div class="point-title">💰 売却価格が維持される</div>
+      <div class="point-text">修繕履歴がしっかりしているマンションは買い手に安心感を与え、売却時の価格交渉で有利になる。修繕積立金の適正積立は「売れやすさ」に直結する。</div>
+    </div>
+    <div class="point-card amber">
+      <div class="point-title">📋 国交省ガイドラインで計画的に管理</div>
+      <div class="point-text">国土交通省の修繕積立金ガイドライン（令和6年改定）に基づき、長期修繕計画を策定。5年おきに10万円・10年おきに10万円の増額を想定した計画的な積立が標準。</div>
+    </div>
+    <div class="point-card purple">
+      <div class="point-title">🔄 修繕費は収益還元価格に織り込み済み</div>
+      <div class="point-text">収益還元法による価格計算では、修繕コストを差し引いた純収益で算出する。修繕を続けて家賃収入を維持することが、物件価格の維持につながる仕組み。</div>
+    </div>
+  </div>
+
+  <!-- COST TABLE -->
+  <div class="sec">修繕積立金の増額シミュレーション（国交省ガイドラインに基づく標準モデル）</div>
+  <table class="cost-table">
+    <thead>
+      <tr>
+        <th>時期</th>
+        <th>修繕積立金（月額）</th>
+        <th>増加額</th>
+        <th>主な修繕工事</th>
+        <th>家賃収入との差引</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>購入時〜5年目</td>
+        <td>9,950円（例）</td>
+        <td>—</td>
+        <td>日常点検・小修繕</td>
+        <td>家賃収入で相殺</td>
+      </tr>
+      <tr>
+        <td>6〜10年目</td>
+        <td>+約10,000円増</td>
+        <td>＋1万円/月</td>
+        <td>外壁・屋上防水の第1回大規模修繕</td>
+        <td>節税効果でカバー可</td>
+      </tr>
+      <tr class="hl-row">
+        <td>11〜15年目</td>
+        <td>さらに+約10,000円増</td>
+        <td>＋2万円/月</td>
+        <td>給排水管・エレベーター更新</td>
+        <td>物件価値の維持に直結</td>
+      </tr>
+      <tr>
+        <td>16〜20年目</td>
+        <td>段階的に増額</td>
+        <td>計画に準拠</td>
+        <td>第2回大規模修繕・設備更新</td>
+        <td>入居率維持→家賃安定</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FLOW -->
+  <div class="flow-section">
+    <div class="sec">修繕積立金が資産価値につながる流れ</div>
+    <div class="flow-box">
+      <div class="flow-label">資産価値<br>維持の<br>サイクル</div>
+      <div class="flow-items">
+        <div class="flow-item"><div class="fi-num">①</div><div class="fi-text">修繕積立金<br>を積み立てる</div></div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-item"><div class="fi-num">②</div><div class="fi-text">計画的に<br>修繕・更新</div></div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-item"><div class="fi-num">③</div><div class="fi-text">建物の状態<br>が良好に</div></div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-item"><div class="fi-num">④</div><div class="fi-text">入居者需要<br>が高まる</div></div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-item"><div class="fi-num">⑤</div><div class="fi-text">家賃・売却価格<br>が維持される</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER -->
+  <div class="answer-box">
+    <div class="answer-label">「修繕費が上がり続けるのでは？」への回答</div>
+    <div class="answer-text">修繕積立金は確かに段階的に増えます。ただし、これは計画通りの「管理されている証拠」です。
+修繕をしないマンションの方が、資産価値の下落・空室増加・売却困難というリスクが大きくなります。
+修繕積立金の増額分は節税効果・家賃収入と合わせてバランスを取ることが可能です。
+長期修繕計画書を一緒に確認しながら、数字で見ていきましょう。</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-ref">
+      【参考文献・データ出典】<br>
+      ・国土交通省「マンションの修繕積立金に関するガイドライン」（令和6年6月改定）
+      <a href="https://www.mlit.go.jp/jutakukentiku/house/content/001747009.pdf" target="_blank">mlit.go.jp/jutakukentiku/house/content/001747009.pdf</a><br>
+      ・東日本不動産流通機構「築年数から見た首都圏の不動産流通市場（2023年）」<br>
+      ・マンションレビュー「全国中古マンション相場推移（2024年4月）」首都圏主要エリア10年比較<br>
+      ・国土交通省「令和5年度マンション総合調査」<br>
+      ※本資料は作成時点の情報を参考にしており、将来の価値・価格を保証するものではありません。
+    </div>
+    <div class="footer-brand">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
