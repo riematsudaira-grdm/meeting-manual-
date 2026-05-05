@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なぜマンション経営をお勧めするのか｜GRDM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+
+:root {
+  --teal: #4BBFC3;
+  --teal-dark: #3aa0a4;
+  --teal-light: #d0f0f1;
+  --navy: #0f1f3d;
+  --navy2: #1a3560;
+  --pink: #e84785;
+  --pink-light: #fde8f2;
+  --blue: #3b6fd4;
+  --blue-light: #dbeafe;
+  --green: #27ae60;
+  --green-light: #d4edda;
+  --amber: #f39c12;
+  --amber-light: #fef3cd;
+  --red: #e74c3c;
+  --red-light: #fde8e6;
+  --gray-50: #f8f9fa;
+  --gray-100: #f1f3f5;
+  --gray-200: #e9ecef;
+  --gray-400: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-800: #343a40;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #1a1a2e;
+  color: var(--gray-800);
+  min-height: 100vh;
+}
+
+/* ── NAVIGATION ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(15,31,61,0.95);
+  backdrop-filter: blur(10px);
+  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(75,191,195,0.2);
+}
+.nav-logo {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 1px;
+}
+.nav-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.nav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  padding: 0;
+}
+.nav-dot.active { background: var(--teal); transform: scale(1.3); }
+.nav-dot:hover { background: rgba(75,191,195,0.6); }
+.nav-arrows {
+  display: flex; gap: 6px;
+}
+.nav-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.nav-btn:hover { background: rgba(75,191,195,0.3); border-color: var(--teal); }
+
+/* ── SLIDE CONTAINER ── */
+.slides {
+  padding-top: 52px;
+}
+
+.slide {
+  display: none;
+  min-height: calc(100vh - 52px);
+  animation: fadeIn 0.4s ease;
+}
+.slide.active { display: flex; flex-direction: column; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════
+   SLIDE 0: COVER
+══════════════════════ */
+.cover {
+  background: linear-gradient(135deg, #0a1628 0%, #0f2a4a 40%, #0e3d4a 100%);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,191,195,0.12) 0%, transparent 70%);
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,71,133,0.08) 0%, transparent 70%);
+}
+.cover-inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 60px 40px;
+}
+.cover-tag {
+  display: inline-block;
+  background: rgba(75,191,195,0.15);
+  border: 1px solid rgba(75,191,195,0.35);
+  color: var(--teal);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.cover h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+.cover h1 em { color: var(--teal); font-style: normal; }
+.cover-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+.merit-chips {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.merit-chip {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.cover-q {
+  background: rgba(75,191,195,0.1);
+  border: 1px solid rgba(75,191,195,0.25);
+  border-radius: 12px;
+  padding: 18px 28px;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.cover-q p { color: rgba(255,255,255,0.75); font-size: 13px; margin-bottom: 8px; }
+.cover-q strong { color: var(--teal); font-size: 14px; }
+.cover-logo {
+  position: absolute;
+  top: 28px; left: 36px;
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.cover-logo strong { color: rgba(255,255,255,0.8); display: block; font-size: 13px; margin-bottom: 2px; }
+
+/* ══════════════════════
+   COMMON SLIDE LAYOUT
+══════════════════════ */
+.slide-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 32px 48px;
+  flex: 1;
+}
+.slide-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--gray-100);
+}
+.slide-num {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900;
+  color: #fff; flex-shrink: 0;
+}
+.slide-title-block {}
+.slide-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.slide-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 2.5vw, 27px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.slide-title span { display: block; font-size: 14px; font-weight: 400; color: var(--gray-600); margin-top: 3px; font-family: 'Noto Sans JP', sans-serif; }
+
+/* CARDS */
+.card-grid { display: grid; gap: 14px; }
+.g2 { grid-template-columns: 1fr 1fr; }
+.g3 { grid-template-columns: 1fr 1fr 1fr; }
+.g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+@media(max-width:700px){ .g2,.g3,.g4 { grid-template-columns: 1fr; } }
+
+.card {
+  border-radius: 12px;
+  padding: 20px;
+  border: 1.5px solid;
+}
+.card-icon { font-size: 28px; margin-bottom: 10px; }
+.card-title { font-size: 14px; font-weight: 700; margin-bottom: 7px; line-height: 1.4; }
+.card-text { font-size: 12.5px; line-height: 1.75; color: var(--gray-600); }
+
+/* color variants */
+.c-teal { background: #f0fcfd; border-color: #a0dfe1; }
+.c-teal .card-title { color: #0e7490; }
+.c-pink { background: var(--pink-light); border-color: #f5a7c8; }
+.c-pink .card-title { color: #c0185e; }
+.c-blue { background: var(--blue-light); border-color: #93c5fd; }
+.c-blue .card-title { color: #1d4ed8; }
+.c-green { background: var(--green-light); border-color: #86efac; }
+.c-green .card-title { color: var(--green); }
+.c-amber { background: var(--amber-light); border-color: var(--amber-light); }
+.c-amber { border-color: #fcd34d; }
+.c-amber .card-title { color: #92400e; }
+.c-navy { background: var(--navy); border-color: var(--navy); color: #fff; }
+.c-navy .card-title { color: var(--teal); }
+.c-navy .card-text { color: rgba(255,255,255,0.75); }
+
+/* STAT BLOCK */
+.stat {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-align: center;
+  color: #fff;
+}
+.stat-num {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.stat-label { font-size: 11.5px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+/* FLOW */
+.flow-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: var(--navy);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+.flow-item {
+  flex: 1;
+  padding: 16px 14px;
+  text-align: center;
+  position: relative;
+}
+.flow-item::after {
+  content: '▶';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.25);
+  font-size: 12px;
+  z-index: 1;
+}
+.flow-item:last-child::after { display: none; }
+.flow-item .fi-n { font-size: 9px; color: rgba(255,255,255,0.4); margin-bottom: 4px; letter-spacing: 1px; }
+.flow-item .fi-t { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.4; }
+.flow-item .fi-s { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
+/* BAR CHART */
+.bar-chart { display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: flex; align-items: center; gap: 10px; }
+.bar-label { font-size: 11.5px; color: var(--gray-600); width: 160px; flex-shrink: 0; text-align: right; }
+.bar-wrap { flex: 1; background: var(--gray-100); border-radius: 4px; height: 28px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; }
+.bar-val { font-size: 12px; font-weight: 700; color: #fff; white-space: nowrap; }
+.bar-accent .bar-fill { background: var(--teal); }
+.bar-muted .bar-fill { background: var(--gray-400); }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.data-table thead tr { background: var(--navy); }
+.data-table thead th { padding: 10px 12px; color: #fff; font-weight: 700; font-size: 11.5px; text-align: left; }
+.data-table thead th:first-child { border-radius: 8px 0 0 0; }
+.data-table thead th:last-child { border-radius: 0 8px 0 0; }
+.data-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-800); }
+.data-table tbody tr:nth-child(even) td { background: var(--gray-50); }
+.data-table .hl td { background: #e0f9fa !important; font-weight: 700; color: #0e7490; }
+.data-table .bad td { background: #fff5f5 !important; color: #b91c1c; }
+
+/* COMPARE */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.compare-card { border-radius: 10px; overflow: hidden; }
+.compare-head { padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+.compare-body { padding: 14px 16px; background: #fff; }
+.compare-list { list-style: none; }
+.compare-list li { font-size: 12px; line-height: 1.75; padding-left: 14px; position: relative; margin-bottom: 3px; }
+.compare-bad .compare-head { background: #fef2f2; }
+.compare-bad .compare-list li { color: #374151; }
+.compare-bad .compare-list li::before { content: '✗'; position: absolute; left: 0; color: #ef4444; font-size: 10px; top: 3px; font-weight: 700; }
+.compare-good .compare-head { background: #f0fdf4; }
+.compare-good .compare-list li { color: #374151; }
+.compare-good .compare-list li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-size: 10px; top: 3px; font-weight: 700; }
+.compare-head-title { font-size: 13px; font-weight: 700; }
+.compare-bad .compare-head-title { color: #b91c1c; }
+.compare-good .compare-head-title { color: #15803d; }
+.compare-head-icon { font-size: 22px; }
+.compare-result { margin-top: 10px; padding: 7px 11px; border-radius: 6px; font-size: 12px; font-weight: 700; text-align: center; }
+.compare-bad .compare-result { background: #fef2f2; color: #b91c1c; }
+.compare-good .compare-result { background: #f0fdf4; color: #15803d; }
+
+/* HIGHLIGHT BOX */
+.hl-box {
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 18px;
+}
+.hl-box.dark { background: var(--navy); }
+.hl-box-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 7px; }
+.dark .hl-box-label { color: var(--teal); }
+.hl-box-text { font-size: 13px; font-weight: 700; line-height: 1.85; white-space: pre-line; }
+.dark .hl-box-text { color: #fff; }
+
+/* SLIDE BG COLORS */
+.bg-white { background: var(--white); }
+.bg-gray { background: var(--gray-50); }
+.bg-teal { background: linear-gradient(135deg, #0a2a2e 0%, #0d3a40 60%, #0a1628 100%); }
+.bg-blue { background: linear-gradient(135deg, #0a1628 0%, #0f2a4a 100%); }
+
+/* BOTTOM NAV */
+.slide-nav-bottom {
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  padding: 12px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+.slide-progress { font-size: 11px; color: var(--gray-400); }
+.slide-nav-btns { display: flex; gap: 8px; }
+.snb {
+  padding: 7px 18px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.18s;
+}
+.snb-prev { background: var(--gray-100); color: var(--gray-600); }
+.snb-prev:hover { background: var(--gray-200); }
+.snb-next { background: var(--navy); color: #fff; }
+.snb-next:hover { background: var(--navy2); }
+.snb-teal { background: var(--teal); color: #fff; }
+.snb-teal:hover { background: var(--teal-dark); }
+
+/* DISCLAIMER */
+.disclaimer {
+  font-size: 10px;
+  color: var(--gray-400);
+  padding: 8px 32px;
+  text-align: right;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* UTILITY */
+.mt8 { margin-top: 8px; }
+.mt14 { margin-top: 14px; }
+.mt20 { margin-top: 20px; }
+.big-num { font-size: 36px; font-weight: 900; }
+.teal { color: var(--teal); }
+.pink { color: var(--pink); }
+.red { color: var(--red); }
+.green { color: var(--green); }
+ul.clean { list-style: none; padding: 0; }
+ul.clean li { padding-left: 14px; position: relative; font-size: 12.5px; line-height: 1.75; margin-bottom: 3px; color: var(--gray-800); }
+ul.clean li::before { content: '▸'; position: absolute; left: 0; color: var(--teal); font-size: 10px; top: 3px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">GRADATION MANAGEMENT</div>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="nav-arrows">
+    <button class="nav-btn" onclick="prevSlide()">←</button>
+    <button class="nav-btn" onclick="nextSlide()">→</button>
+  </div>
+</nav>
+
+<div class="slides" id="slides">
+
+<!-- ══ SLIDE 0: COVER ══ -->
+<div class="slide active cover" data-index="0">
+  <div class="cover-logo">
+    <strong>Gradation management</strong>
+    株式会社グラデーションマネジメント
+  </div>
+  <div class="cover-inner">
+    <div class="cover-tag">GRDM PROPOSAL 2025</div>
+    <h1>なぜ<em>マンション経営</em>を<br>お勧めするのか</h1>
+    <p class="cover-sub">
+      人生100年時代・公的年金の目減り・インフレによる現金価値の低下。<br>
+      これら3つの課題に、マンション経営は一度で対応できます。
+    </p>
+    <div class="merit-chips">
+      <div class="merit-chip">🛡 生命保険の代わりに</div>
+      <div class="merit-chip">🏦 個人年金として</div>
+      <div class="merit-chip">💴 節税効果</div>
+      <div class="merit-chip">📈 安定した運用・インフレ対策</div>
+    </div>
+    <div class="cover-q">
+      <p>今のご希望に一番近いものはどれですか？</p>
+      <strong>① 生命保険　② 年金対策　③ 節税　④ 現金運用・インフレ対策</strong>
+    </div>
+  </div>
+  <div class="slide-nav-bottom">
+    <span class="slide-progress" id="prog0">1 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-teal" onclick="nextSlide()">次へ → マンション経営の仕組み</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 1: 仕組み ══ -->
+<div class="slide bg-gray" data-index="1">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-num" style="background:var(--navy)">🏢</div>
+      <div class="slide-title-block">
+        <div class="slide-tag" style="color:var(--teal)">STRUCTURE</div>
+        <div class="slide-title">マンション経営の仕組み<span>3つの柱：システム・団信・サブリース</span></div>
+      </div>
+    </div>
+
+    <div class="flow-row">
+      <div class="flow-item">
+        <div class="fi-n">STEP 1</div>
+        <div class="fi-t">マンションを<br>ローンで購入</div>
+        <div class="fi-s">頭金なし・フルローン可</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-n">STEP 2</div>
+        <div class="fi-t">家賃収入で<br>ローンを返済</div>
+        <div class="fi-s">毎月の手出しは少額</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-n">STEP 3</div>
+        <div class="fi-t">ローン完済<br>（35年後）</div>
+        <div class="fi-s">返済ゼロになる</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-n">STEP 4</div>
+        <div class="fi-t">家賃収入が<br>そのまま収入に</div>
+        <div class="fi-s">私的年金として機能</div>
+      </div>
+    </div>
+
+    <div class="card-grid g3 mt14">
+      <div class="card c-teal">
+        <div class="card-icon">🏗</div>
+        <div class="card-title">システム（仕組み）</div>
+        <div class="card-text">ローン返済中も家賃収入が入り続ける。毎月の差引き負担は少額で、実質的に家賃がローンを返し続ける仕組み。</div>
+      </div>
+      <div class="card c-pink">
+        <div class="card-icon">🛡</div>
+        <div class="card-title">団信（団体信用生命保険）</div>
+        <div class="card-text">ローン利用時に自動加入。死亡・高度障害時にローンが全額消える。無借金のマンションが家族に残る。</div>
+      </div>
+      <div class="card c-blue">
+        <div class="card-icon">🏠</div>
+        <div class="card-title">サブリース（家賃保証）</div>
+        <div class="card-text">管理会社が物件を借り上げ、空室でも家賃を保証。入居者募集・管理の手間がかからない。</div>
+      </div>
+    </div>
+
+    <div class="hl-box dark mt20">
+      <div class="hl-box-label">ポイント</div>
+      <div class="hl-box-text">「月々の家賃が、ローンを返しながら保険にもなり、老後の年金にもなる」── これがマンション経営の最大の強みです。</div>
+    </div>
+  </div>
+  <div class="slide-nav-bottom">
+    <span class="slide-progress">2 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-prev" onclick="prevSlide()">← 前へ</button>
+      <button class="snb snb-next" onclick="nextSlide()">次へ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: 保険 ══ -->
+<div class="slide bg-white" data-index="2">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-num" style="background:#0369a1">🛡</div>
+      <div class="slide-title-block">
+        <div class="slide-tag" style="color:#0369a1">MERIT 1</div>
+        <div class="slide-title">生命保険の代わりになる<span>団信で、万一のとき家族を守る</span></div>
+      </div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card compare-bad">
+        <div class="compare-head">
+          <div class="compare-head-icon">📉</div>
+          <div class="compare-head-title">掛け捨て・定期付終身保険</div>
+        </div>
+        <div class="compare-body">
+          <ul class="compare-list">
+            <li>60歳以降の保障がほぼゼロになる</li>
+            <li>払った保険料はほぼ戻らない（掛け捨て）</li>
+            <li>死亡保険金は一時的な現金のみ</li>
+            <li>インフレで保険金の実質価値が目減り</li>
+          </ul>
+          <div class="compare-result">❌ 老後の保障が薄い</div>
+        </div>
+      </div>
+      <div class="compare-card compare-good">
+        <div class="compare-head">
+          <div class="compare-head-icon">📈</div>
+          <div class="compare-head-title">マンション経営の団信</div>
+        </div>
+        <div class="compare-body">
+          <ul class="compare-list">
+            <li>死亡・高度障害でローンが全額消える</li>
+            <li>無借金のマンションが家族に残る</li>
+            <li>毎月の家賃収入が「遺族年金」として続く</li>
+            <li>保険料はローン金利に組み込まれる（実質家賃負担）</li>
+            <li>現在の生命保険を見直せ、家計負担を軽減できる</li>
+          </ul>
+          <div class="compare-result">✅ 保険 × 資産形成 が同時に実現</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid g3 mt14">
+      <div class="stat">
+        <div class="stat-num teal">約2,200万円</div>
+        <div class="stat-label">35年間保有した場合の<br>生命保険効果（遺族年金相当）の目安</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#f59e0b">0円</div>
+        <div class="stat-label">ローン完済後の<br>月々ローン返済額<br>（家賃収入が丸ごと残る）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#f472b6">家賃収入</div>
+        <div class="stat-label">万一のとき家族が受け取る<br>毎月の収入<br>（一生涯続く）</div>
+      </div>
+    </div>
+
+    <div class="hl-box dark mt14">
+      <div class="hl-box-label">使う資料</div>
+      <div class="hl-box-text">保険証券（当日持参） → 計算書1年目（PORT）の「生命保険効果」欄 → 終身保険シミュレーション（その場でネット検索）</div>
+    </div>
+  </div>
+  <div class="slide-nav-bottom">
+    <span class="slide-progress">3 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-prev" onclick="prevSlide()">← 前へ</button>
+      <button class="snb snb-next" onclick="nextSlide()">次へ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: 年金 ══ -->
+<div class="slide bg-gray" data-index="3">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-num" style="background:var(--green)">🏦</div>
+      <div class="slide-title-block">
+        <div class="slide-tag" style="color:var(--green)">MERIT 2</div>
+        <div class="slide-title">個人年金になる<span>公的年金に頼れない今、マンション経営が老後の収入柱に</span></div>
+      </div>
+    </div>
+
+    <div class="card-grid g2">
+      <div class="card c-navy">
+        <div class="card-icon">📊</div>
+        <div class="card-title">公的年金の現実</div>
+        <div class="card-text">
+          厚生年金の平均受給額は2000年の約177,000円から2021年には約144,000円へ、<strong style="color:var(--teal)">約33,000円減少</strong>。マクロ経済スライドにより、今後もさらなる実質目減りが続く見込み。受給開始年齢も65歳以上への引き上げが続いている。
+        </div>
+      </div>
+      <div class="card c-green">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">マンション経営で「私的年金」を作る</div>
+        <div class="card-text">
+          現役中はローン返済 → 退職後はローン完済 → 家賃収入がそのまま個人年金に。<br><br>
+          計算書の例：完済後の月々収入 <strong>約57,890円</strong>（年間 約629,680円）が老後に入り続ける。公的年金への上乗せとして機能。
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-row mt14">
+      <div class="flow-item">
+        <div class="fi-n">現役時代</div>
+        <div class="fi-t">マンション購入<br>＋35年ローン</div>
+        <div class="fi-s">家賃でローン返済</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-n">退職前後</div>
+        <div class="fi-t">ローン完済</div>
+        <div class="fi-s">返済ゼロに</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-n">老後〜一生涯</div>
+        <div class="fi-t">家賃収入が<br>個人年金に</div>
+        <div class="fi-s">月々 約57,890円の目安</div>
+      </div>
+    </div>
+
+    <div class="card-grid g3 mt14">
+      <div class="stat">
+        <div class="stat-num" style="color:#fbbf24">2047年</div>
+        <div class="stat-label">百寿者（100歳以上）が<br>53.9万人を突破する予測年<br>（厚労省データ）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num teal">65歳〜</div>
+        <div class="stat-label">公的年金の受給開始年齢<br>（引き上げが続く傾向）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#f472b6">40年</div>
+        <div class="stat-label">退職後の老後期間<br>「30年 → 40年時代」へ</div>
+      </div>
+    </div>
+  </div>
+  <div class="disclaimer">出典：厚生労働省「厚生年金保険・国民年金事業の概況」／厚生労働省「令和3年百歳以上高齢者等について」</div>
+  <div class="slide-nav-bottom">
+    <span class="slide-progress">4 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-prev" onclick="prevSlide()">← 前へ</button>
+      <button class="snb snb-next" onclick="nextSlide()">次へ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: 節税 ══ -->
+<div class="slide bg-white" data-index="4">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-num" style="background:#0f766e">💴</div>
+      <div class="slide-title-block">
+        <div class="slide-tag" style="color:#0f766e">MERIT 3</div>
+        <div class="slide-title">節税効果<span>サラリーマンが合法的に税金を取り戻す、最も効果的な手段</span></div>
+      </div>
+    </div>
+
+    <div class="card-grid g2">
+      <div>
+        <div class="card c-navy" style="margin-bottom:14px">
+          <div class="card-icon">📉</div>
+          <div class="card-title">年収500万円の手取りは20年で35万円減少</div>
+          <div class="card-text">
+            ボーナスの社会保険料アップ・定率減税廃止・扶養控除縮小…<br>
+            「ステルス増税」が静かに進行。2002年〜2019年で年収500万円の手取りは<strong style="color:var(--teal)">429万円 → 394万円</strong>へと35万円減少している。
+          </div>
+        </div>
+        <div class="card c-navy">
+          <div class="card-icon">⚠️</div>
+          <div class="card-title">サラリーマンの節税手段はほぼない</div>
+          <div class="card-text">
+            医療費控除 → 使える人が限られる<br>
+            ふるさと納税 → 上限がある<br>
+            <strong style="color:var(--teal)">マンション経営だけが、ケタ違いの節税が可能</strong>
+          </div>
+        </div>
+      </div>
+      <div class="card c-teal" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="card-icon">✅</div>
+          <div class="card-title">なぜ税金が戻るのか？</div>
+          <div class="card-text">
+            不動産の経費（ローン利息・管理費・修繕費・減価償却など）を<strong>給与所得と損益通算</strong>できる。<br><br>
+            不動産所得が赤字になることで、課税所得が減り、払いすぎた税金が確定申告で還付される。
+          </div>
+        </div>
+        <div style="margin-top:16px">
+          <div style="font-size:11px;color:#0e7490;font-weight:700;letter-spacing:1px;margin-bottom:10px">節税シミュレーション例（計算書1年目・PORT資料より）</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:6px;padding:8px 12px">
+              <span style="font-size:12px;color:#374151">所得税還付額</span>
+              <span style="font-size:16px;font-weight:900;color:#0369a1">約255,000円</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:6px;padding:8px 12px">
+              <span style="font-size:12px;color:#374151">住民税軽減額</span>
+              <span style="font-size:16px;font-weight:900;color:#0369a1">約113,300円</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:var(--navy);border-radius:6px;padding:8px 12px">
+              <span style="font-size:12px;color:rgba(255,255,255,0.8)">節税合計</span>
+              <span style="font-size:20px;font-weight:900;color:var(--teal)">約368,300円/年</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hl-box dark mt14">
+      <div class="hl-box-label">使う資料</div>
+      <div class="hl-box-text">源泉徴収票（当日持参・税額確認用） → 計算書1年目（PORT）の「節税合計額」欄　※税務判断は税理士等の専門家へ</div>
+    </div>
+  </div>
+  <div class="disclaimer">出典：国税庁「民間給与実態統計調査」各年版 / ファイナンシャルプランナー舟本美子氏作成データより</div>
+  <div class="slide-nav-bottom">
+    <span class="slide-progress">5 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-prev" onclick="prevSlide()">← 前へ</button>
+      <button class="snb snb-next" onclick="nextSlide()">次へ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: 運用・インフレ ══ -->
+<div class="slide bg-gray" data-index="5">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-num" style="background:var(--amber)">📈</div>
+      <div class="slide-title-block">
+        <div class="slide-tag" style="color:var(--amber)">MERIT 4</div>
+        <div class="slide-title">安定した利回り・インフレ対策<span>現金を持ち続けることが、実は最大のリスク</span></div>
+      </div>
+    </div>
+
+    <div class="card-grid g2">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--gray-600);margin-bottom:10px;letter-spacing:1px">主な金融商品の利回り比較（年率・税引前）</div>
+        <div class="bar-chart">
+          <div class="bar-row bar-muted">
+            <div class="bar-label">銀行預金（普通）</div>
+            <div class="bar-wrap"><div class="bar-fill bar-fill-muted" style="width:3%;background:#adb5bd"><span class="bar-val" style="color:#fff;font-size:10px;padding:0 6px">0.2%</span></div></div>
+          </div>
+          <div class="bar-row bar-muted">
+            <div class="bar-label">個人向け国債（10年）</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:20%;background:#6c757d"><span class="bar-val">1.5%</span></div></div>
+          </div>
+          <div class="bar-row bar-muted">
+            <div class="bar-label">積立型終身保険</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:28%;background:#6c757d"><span class="bar-val">2.5%</span></div></div>
+          </div>
+          <div class="bar-row bar-accent">
+            <div class="bar-label" style="font-weight:700;color:var(--teal)">マンション経営（平均）</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:100%;background:var(--teal)"><span class="bar-val">4.0%（当社実績・表面利回り）</span></div></div>
+          </div>
+        </div>
+        <div style="font-size:10.5px;color:var(--gray-400);margin-top:8px">出典：各金融機関・国交省公開データ・当社実績（2017年3月）</div>
+      </div>
+
+      <div class="card c-navy">
+        <div class="card-icon">💸</div>
+        <div class="card-title">インフレで現金は実質目減りする</div>
+        <div class="card-text">
+          現在1,000万円の将来価値（インフレ率2%の場合）：<br>
+          ・5年後 → 約905万円<br>
+          ・10年後 → 約820万円<br>
+          ・20年後 → 約668万円<br><br>
+          銀行預金の金利がほぼゼロなら、<strong style="color:var(--teal)">現金を寝かせることが最大のリスク</strong>。<br><br>
+          一方、不動産（実物資産）は物価と一緒に価値が上がる傾向がある。「現金・証券・実物資産」の3分割が資産管理の基本。
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid g3 mt14">
+      <div class="stat">
+        <div class="stat-num" style="color:#f59e0b">30年前80円</div>
+        <div class="stat-label">マクドナルドのハンバーガー<br>現在190円<br>（物価は確実に上がっている）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num teal">3倍</div>
+        <div class="stat-label">現在の国民年金保険料<br>30年前：8,400円 → 現在：16,590円<br>（支出も確実に増えている）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#f472b6">4.0%</div>
+        <div class="stat-label">マンション経営の表面利回り平均<br>銀行預金の約20倍<br>実物資産でゼロになるリスクほぼなし</div>
+      </div>
+    </div>
+  </div>
+  <div class="disclaimer">出典：GRDM提案資料「2025年MK提案書」インフレデータ / 日本銀行・財務省・各金融機関公開データ</div>
+  <div class="slide-nav-bottom">
+    <span class="slide-progress">6 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-prev" onclick="prevSlide()">← 前へ</button>
+      <button class="snb snb-next" onclick="nextSlide()">次へ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: まとめ ══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628 0%,#0f2a4a 50%,#0a2a2e 100%)" data-index="6">
+  <div class="slide-inner">
+    <div class="slide-header" style="border-color:rgba(255,255,255,0.1)">
+      <div class="slide-num" style="background:var(--teal)">✓</div>
+      <div class="slide-title-block">
+        <div class="slide-tag" style="color:var(--teal)">SUMMARY</div>
+        <div class="slide-title" style="color:#fff">4つのメリット まとめ<span style="color:rgba(255,255,255,0.5)">マンション経営が「最も合理的な選択」である理由</span></div>
+      </div>
+    </div>
+
+    <div class="card-grid g2">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(75,191,195,0.25);border-radius:12px;padding:20px">
+        <div style="font-size:22px;margin-bottom:8px">🛡</div>
+        <div style="font-size:14px;font-weight:700;color:var(--teal);margin-bottom:8px">① 生命保険代わり</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.75">団信で万一のときローールが消え、無借金のマンションが家族に残る。家賃が一生涯の遺族年金に。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(39,174,96,0.35);border-radius:12px;padding:20px">
+        <div style="font-size:22px;margin-bottom:8px">🏦</div>
+        <div style="font-size:14px;font-weight:700;color:#4ade80;margin-bottom:8px">② 私的年金</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.75">ローン完済後、家賃収入がそのまま個人年金に。公的年金への上乗せで老後資金を確保。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(6,182,212,0.3);border-radius:12px;padding:20px">
+        <div style="font-size:22px;margin-bottom:8px">💴</div>
+        <div style="font-size:14px;font-weight:700;color:#22d3ee;margin-bottom:8px">③ 節税効果</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.75">不動産経費と給与所得の損益通算で、年間数十万円の税金還付が可能。サラリーマン最大の合法節税。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px">
+        <div style="font-size:22px;margin-bottom:8px">📈</div>
+        <div style="font-size:14px;font-weight:700;color:#fbbf24;margin-bottom:8px">④ 安定運用・インフレ対策</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.75">表面利回り平均4%。実物資産はインフレと一緒に価値が上がる。現金を持ち続けるリスクを回避。</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(75,191,195,0.1);border:1px solid rgba(75,191,195,0.3);border-radius:12px;padding:20px;margin-top:18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center">
+      <div style="padding:10px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:8px">MISSION</div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:#fff;line-height:1.6">可能性を最大化する</div>
+      </div>
+      <div style="padding:10px;border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:8px">VISION</div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--teal);line-height:1.6">最高のきっかけを生む</div>
+      </div>
+      <div style="padding:10px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:8px">VALUE</div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:#fbbf24;line-height:1.6">かっこいいか、どうか</div>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:10px;font-size:11px;color:rgba(255,255,255,0.35)">
+      株式会社グラデーションマネジメント　代表取締役 佐伯 完碩
+    </div>
+  </div>
+  <div class="slide-nav-bottom" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)">
+    <span class="slide-progress" style="color:rgba(255,255,255,0.4)">7 / 7</span>
+    <div class="slide-nav-btns">
+      <button class="snb snb-prev" onclick="prevSlide()">← 前へ</button>
+      <button class="snb" style="background:var(--teal);color:var(--navy)" onclick="goTo(0)">↩ 最初に戻る</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /slides -->
+
+<script>
+let current = 0;
+const TOTAL = document.querySelectorAll('.slide').length;
+
+// Build nav dots
+const dotsContainer = document.getElementById('navDots');
+for (let i = 0; i < TOTAL; i++) {
+  const d = document.createElement('button');
+  d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  d.title = ['表紙','仕組み','保険','年金','節税','運用・インフレ','まとめ'][i] || '';
+  dotsContainer.appendChild(d);
+}
+
+function goTo(n) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = Math.max(0, Math.min(n, TOTAL - 1));
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextSlide() { goTo(current + 1); }
+function prevSlide() { goTo(current - 1); }
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+});
+</script>
+</body>
+</html>
