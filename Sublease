@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>賃貸管理の方法｜GRDM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#e8eaf0;display:flex;justify-content:center;padding:24px;min-height:100vh}
+
+.a4{
+  width:794px;min-height:1123px;
+  background:#fff;
+  padding:36px 44px 32px;
+  box-shadow:0 4px 32px rgba(0,0,0,0.13);
+  display:flex;flex-direction:column;gap:0;
+}
+
+/* ── HEADER ── */
+.header{
+  background:linear-gradient(135deg,#0f1f3d 0%,#1a3560 60%,#0e7490 100%);
+  border-radius:12px;
+  padding:20px 24px 18px;
+  margin-bottom:18px;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.header::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.header-left{position:relative;z-index:1}
+.header-tag{font-size:10px;font-weight:700;letter-spacing:2.5px;color:rgba(255,255,255,0.55);margin-bottom:6px}
+.header h1{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.35}
+.header h1 span{color:#7ec8f5}
+.header-sub{font-size:11.5px;color:rgba(255,255,255,0.65);margin-top:6px;line-height:1.65}
+.header-right{position:relative;z-index:1;text-align:right}
+.logo{font-size:10px;color:rgba(255,255,255,0.4)}
+.logo strong{display:block;font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:2px}
+
+/* ── COMPARISON TABLE ── */
+.comp-wrap{margin-bottom:16px}
+.comp-title{font-size:10px;font-weight:700;letter-spacing:2px;color:#9ca3af;margin-bottom:10px;display:flex;align-items:center;gap:8px;text-transform:uppercase}
+.comp-title::after{content:'';flex:1;height:1px;background:#e5e7eb}
+
+.comp-table{width:100%;border-collapse:collapse;font-size:12px}
+/* header row */
+.comp-table .th-blank{width:160px}
+.comp-table thead th{padding:10px 14px;font-weight:700;font-size:12px;text-align:center}
+.comp-table thead .th-sublease{
+  background:#0f1f3d;color:#fff;border-radius:8px 8px 0 0;
+  position:relative;
+}
+.comp-table thead .th-sublease::after{
+  content:'★ 当社推奨';
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:#fbbf24;color:#0f1f3d;
+  font-size:9px;font-weight:900;padding:2px 10px;border-radius:10px;
+  white-space:nowrap;letter-spacing:0.5px;
+}
+.comp-table thead .th-daiko{background:#f1f5f9;color:#475569;border-radius:8px 8px 0 0}
+
+/* body rows */
+.comp-table tbody tr{border-bottom:1px solid #f3f4f6}
+.comp-table tbody tr:last-child{border-bottom:none}
+.comp-table tbody .row-label{
+  padding:11px 14px;
+  font-weight:700;font-size:12px;color:#0f1f3d;
+  background:#f8fafc;
+  border-right:1px solid #e5e7eb;
+}
+.comp-table tbody td{padding:11px 16px;text-align:center;font-size:12px;vertical-align:middle}
+.comp-table tbody .col-sublease{background:#f0fcfd;border-left:2px solid #0e7490;border-right:2px solid #0e7490}
+.comp-table tbody .col-daiko{background:#fafafa}
+.comp-table tbody tr:last-child .col-sublease{border-bottom:2px solid #0e7490;border-radius:0 0 0 0}
+
+/* circle/cross */
+.ok{color:#15803d;font-size:16px;font-weight:900}
+.ng{color:#ef4444;font-size:14px;font-weight:700}
+.who{font-size:11.5px;font-weight:700}
+.who.grdm{color:#0e7490}
+.who.owner{color:#e55a5a}
+
+/* ── TWO COL DETAIL ── */
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+
+.det-card{border-radius:10px;overflow:hidden}
+.det-head{padding:11px 15px;display:flex;align-items:center;gap:9px}
+.det-icon{font-size:20px}
+.det-title{font-size:13px;font-weight:700}
+.det-body{padding:12px 15px 14px;background:#fff}
+
+/* sublease card */
+.det-sublease{border:2px solid #0e7490}
+.det-sublease .det-head{background:#0f1f3d}
+.det-sublease .det-title{color:#7ec8f5}
+.det-sublease .det-body{background:#f0fcfd}
+
+/* daiko card */
+.det-daiko{border:1.5px solid #cbd5e1}
+.det-daiko .det-head{background:#f1f5f9}
+.det-daiko .det-title{color:#475569}
+
+.merit-list,.demerit-list{list-style:none;padding:0;margin:0 0 8px}
+.merit-list li,.demerit-list li{
+  font-size:11.5px;line-height:1.75;
+  padding-left:16px;position:relative;margin-bottom:2px;
+}
+.merit-list li::before{content:'✓';position:absolute;left:0;font-weight:700;font-size:11px;top:2px}
+.demerit-list li::before{content:'✗';position:absolute;left:0;font-weight:700;font-size:11px;top:2px}
+
+.det-sublease .merit-list li{color:#0f4c5a}
+.det-sublease .merit-list li::before{color:#0e7490}
+.det-sublease .demerit-list li{color:#78716c}
+.det-sublease .demerit-list li::before{color:#d97706}
+
+.det-daiko .merit-list li{color:#374151}
+.det-daiko .merit-list li::before{color:#22c55e}
+.det-daiko .demerit-list li{color:#b91c1c}
+.det-daiko .demerit-list li::before{color:#ef4444}
+
+.mini-label{font-size:9.5px;font-weight:700;letter-spacing:1px;margin:8px 0 4px;padding:2px 7px;border-radius:3px;display:inline-block}
+.ml-good{background:#d1fae5;color:#065f46}
+.ml-bad{background:#fee2e2;color:#b91c1c}
+
+/* ── FLOW ── */
+.flow-box{
+  background:#0f1f3d;
+  border-radius:10px;
+  padding:13px 18px;
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:14px;
+}
+.fl-label{color:#7ec8f5;font-size:10px;font-weight:700;letter-spacing:1.2px;white-space:nowrap;line-height:1.5}
+.fl-items{display:flex;align-items:center;gap:0;flex:1;flex-wrap:wrap;justify-content:center}
+.fl-item{
+  background:rgba(255,255,255,0.08);border-radius:7px;
+  padding:9px 13px;text-align:center;min-width:100px;
+}
+.fl-n{font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:3px}
+.fl-t{font-size:11.5px;font-weight:700;color:#fff;line-height:1.4}
+.fl-s{font-size:10px;color:rgba(255,255,255,0.55);margin-top:2px}
+.fl-arr{font-size:16px;color:rgba(255,255,255,0.3);padding:0 5px}
+
+/* ── SERVICE LIST ── */
+.service-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:16px;
+}
+.service-item{
+  display:flex;gap:8px;align-items:flex-start;
+  background:#f0fcfd;border:1px solid #a5f3fc;
+  border-radius:7px;padding:7px 10px;
+  font-size:11.5px;color:#0f4c5a;line-height:1.5;
+}
+.service-item::before{content:'✓';color:#0e7490;font-weight:900;flex-shrink:0;margin-top:1px}
+
+/* ── CONCLUSION ── */
+.conclusion{
+  background:linear-gradient(135deg,#0f1f3d 0%,#0e7490 100%);
+  border-radius:12px;
+  padding:18px 22px;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:18px;
+}
+.conc-icon{font-size:32px;flex-shrink:0}
+.conc-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#7ec8f5;margin-bottom:6px}
+.conc-text{font-size:13px;font-weight:700;color:#fff;line-height:1.85}
+.conc-text span{color:#fbbf24}
+
+/* ── FOOTER ── */
+.footer{margin-top:auto;padding-top:10px;border-top:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center}
+.footer-note{font-size:9.5px;color:#9ca3af;line-height:1.6}
+.footer-brand{font-size:10px;color:#9ca3af;text-align:right}
+.footer-brand strong{display:block;color:#4b5563;font-size:11px}
+
+@media print{body{background:#fff;padding:0}.a4{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="a4">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-tag">RENTAL MANAGEMENT GUIDE</div>
+      <h1>賃貸管理の方法は<span>2種類</span>あります</h1>
+      <div class="header-sub">「借上契約（サブリース）」と「集金代行」の違いをわかりやすく解説します。<br>どちらも選べますが、ほとんどのオーナー様に借上契約（サブリース）をお勧めしています。</div>
+    </div>
+    <div class="header-right">
+      <div class="logo"><strong>Gradation management</strong>株式会社グラデーションマネジメント</div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comp-wrap">
+    <div class="comp-title">一目でわかる比較表</div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="th-blank"></th>
+          <th class="th-sublease">借上契約<br>（サブリース）</th>
+          <th class="th-daiko">集金代行</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">空室時の家賃収入</td>
+          <td class="col-sublease"><span class="ok">○</span><br><span style="font-size:10.5px;color:#0e7490;font-weight:700">空室でも保証</span></td>
+          <td class="col-daiko"><span class="ng">✗</span><br><span style="font-size:10.5px;color:#6b7280">収入なし</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">滞納時の家賃収入</td>
+          <td class="col-sublease"><span class="ok">○</span><br><span style="font-size:10.5px;color:#0e7490;font-weight:700">滞納でも保証</span></td>
+          <td class="col-daiko"><span class="ng">✗</span><br><span style="font-size:10.5px;color:#6b7280">収入なし</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">クレーム対応</td>
+          <td class="col-sublease"><span class="who grdm">当社が対応</span></td>
+          <td class="col-daiko"><span class="who owner">オーナー様</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">入退去・賃貸管理</td>
+          <td class="col-sublease"><span class="who grdm">当社が対応</span></td>
+          <td class="col-daiko"><span class="who owner">オーナー様</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">退去時 原状回復費用</td>
+          <td class="col-sublease"><span class="who owner">オーナー様負担</span></td>
+          <td class="col-daiko"><span class="who owner">オーナー様負担</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">礼金・更新料</td>
+          <td class="col-sublease"><span style="font-size:11.5px;color:#6b7280">当社収入</span></td>
+          <td class="col-daiko"><span style="font-size:11.5px;color:#374151;font-weight:700">オーナー様収入</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">手間・手続き</td>
+          <td class="col-sublease"><span style="font-size:11.5px;font-weight:700;color:#0e7490">ほぼゼロ</span></td>
+          <td class="col-daiko"><span style="font-size:11.5px;color:#b91c1c;font-weight:700">オーナー様の対応が必要</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DETAIL CARDS -->
+  <div class="detail-grid">
+
+    <!-- サブリース -->
+    <div class="det-card det-sublease">
+      <div class="det-head">
+        <div class="det-icon">🏢</div>
+        <div>
+          <div class="det-title">借上契約（サブリース）</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.55);margin-top:2px">当社がオーナー様から物件を借り上げ、入居者に転貸する仕組み</div>
+        </div>
+      </div>
+      <div class="det-body">
+        <div class="mini-label ml-good">✓ メリット</div>
+        <ul class="merit-list">
+          <li>空室・滞納に関わらず毎月安定した家賃収入が入る</li>
+          <li>クレーム・入退去・契約更新など全て当社が対応</li>
+          <li>ローン返済の不安がなく、副業感覚で運営できる</li>
+          <li>本業に集中しながら不動産収入を得られる</li>
+        </ul>
+        <div class="mini-label ml-bad">注意点</div>
+        <ul class="demerit-list">
+          <li>設定家賃より受取家賃がやや低くなる（管理コスト分）</li>
+          <li>礼金・更新料は当社収入となる</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 集金代行 -->
+    <div class="det-card det-daiko">
+      <div class="det-head">
+        <div class="det-icon">📋</div>
+        <div>
+          <div class="det-title">集金代行</div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">オーナー様が直接貸主となり、大家業務を当社が代行する仕組み</div>
+        </div>
+      </div>
+      <div class="det-body">
+        <div class="mini-label ml-good">✓ メリット</div>
+        <ul class="merit-list">
+          <li>礼金・更新料がオーナー様の収入になる</li>
+          <li>入居者との直接契約で賃料設定の自由度が高い</li>
+        </ul>
+        <div class="mini-label ml-bad">注意点</div>
+        <ul class="demerit-list">
+          <li>空室期間中は家賃収入がゼロになる</li>
+          <li>入居者が家賃を滞納しても収入が入らない</li>
+          <li>クレーム・交渉・更新手続きへの対応が必要な場合がある</li>
+          <li>ローン返済を自己資金で補填しなければならないリスクがある</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FLOW -->
+  <div class="flow-box">
+    <div class="fl-label">サブリースの<br>お金の流れ</div>
+    <div class="fl-items">
+      <div class="fl-item">
+        <div class="fl-n">入居者</div>
+        <div class="fl-t">家賃を支払う</div>
+        <div class="fl-s">例：月10万円</div>
+      </div>
+      <div class="fl-arr">▶</div>
+      <div class="fl-item">
+        <div class="fl-n">当社（GRDM）</div>
+        <div class="fl-t">管理・保証を行い<br>オーナーへ支払う</div>
+        <div class="fl-s">全業務を代行</div>
+      </div>
+      <div class="fl-arr">▶</div>
+      <div class="fl-item">
+        <div class="fl-n">オーナー様</div>
+        <div class="fl-t">毎月安定した<br>家賃を受け取る</div>
+        <div class="fl-s">例：月9万円（空室でも）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE LIST -->
+  <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:#9ca3af;margin-bottom:10px;display:flex;align-items:center;gap:8px">
+    借上契約でGRDMが行う全業務
+    <span style="flex:1;height:1px;background:#e5e7eb;display:block"></span>
+  </div>
+  <div class="service-grid">
+    <div class="service-item">賃料条件の提案・決定</div>
+    <div class="service-item">広告制作・図面作成</div>
+    <div class="service-item">入居者の募集・審査</div>
+    <div class="service-item">契約書の作成・締結</div>
+    <div class="service-item">敷金の保管・管理</div>
+    <div class="service-item">家賃の集金・滞納催促</div>
+    <div class="service-item">入居者・近隣からのクレーム処理</div>
+    <div class="service-item">修繕箇所の協議・費用負担交渉</div>
+    <div class="service-item">契約更新手続き・賃料改定交渉</div>
+    <div class="service-item">退室立会い・原状回復工事の手配</div>
+    <div class="service-item">解約精算・契約違反行為への対応</div>
+    <div class="service-item">入居案内の作成・ご案内</div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <div class="conc-icon">✅</div>
+    <div>
+      <div class="conc-label">GRDM からのお勧め</div>
+      <div class="conc-text">
+        投資用マンションは<span>「入れたら終わり」ではなく、長期的に安定収益を得る事業</span>です。<br>
+        借上契約（サブリース）なら、空室・滞納・クレームのリスクをすべて当社が吸収。<br>
+        <span>オーナー様は毎月安定した収入を受け取るだけ</span>。本業に集中しながら資産を育てられます。
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-note">
+      ※借上契約の家賃保証額・条件は物件・エリア・市況により異なります。詳細は担当者にご確認ください。<br>
+      ※退去時の原状回復費用はいずれの管理形態においてもオーナー様のご負担となります。
+    </div>
+    <div class="footer-brand">
+      <strong>Gradation management</strong>
+      株式会社グラデーションマネジメント
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
