@@ -694,9 +694,12 @@ const questions = [
     text: '家族構成を教えてください',
     hint: '保険・年金ニーズの大きさに影響します',
     options: [
-      { value: 'single', label: '独身' },
+      { value: 'single', label: '独身（一人暮らし）' },
+      { value: 'single_parent', label: '独身（実家暮らし）' },
       { value: 'married_no_child', label: '既婚・子なし' },
-      { value: 'married_with_child', label: '既婚・子あり' },
+      { value: 'married_with_child', label: '既婚・子あり（未就学〜小学生）' },
+      { value: 'married_with_teen', label: '既婚・子あり（中学生以上）' },
+      { value: 'married_elderly', label: '既婚・親の介護あり' },
     ]
   },
   {
@@ -723,10 +726,15 @@ const questions = [
   {
     id: 'asset',
     text: '現在の資産運用・貯蓄の状況は？',
-    hint: '現金運用・インフレ対策訴求の入り口になります',
+    hint: '複数選択できます（当てはまるものをすべて選んでください）',
+    multi: true,
     options: [
       { value: 'bank_only', label: '銀行預金のみ' },
-      { value: 'has_nisa', label: 'NISA・株式投資をしている' },
+      { value: 'has_nisa', label: 'NISA・積立NISA をしている' },
+      { value: 'has_stock', label: '株式・投資信託をしている' },
+      { value: 'has_insurance', label: '貯蓄型保険・個人年金保険に入っている' },
+      { value: 'has_ideco', label: 'iDeCo（個人型確定拠出年金）をしている' },
+      { value: 'has_fx', label: 'FX・仮想通貨をしている' },
       { value: 'nothing', label: '特に何もしていない' },
     ]
   },
@@ -759,30 +767,65 @@ function renderQ(idx) {
   const btnNext = document.getElementById('btnNext');
   const btnPrev = document.getElementById('btnPrev');
   btnPrev.style.visibility = idx === 0 ? 'hidden' : 'visible';
-  btnNext.disabled = !answers[q.id];
   btnNext.textContent = idx === questions.length - 1 ? '診断する ✓' : '次へ →';
 
+  const isMulti = q.multi === true;
+
+  // 回答済み判定
+  if (isMulti) {
+    const sel = answers[q.id] || [];
+    btnNext.disabled = sel.length === 0;
+  } else {
+    btnNext.disabled = !answers[q.id];
+  }
+
   document.getElementById('qCard').innerHTML = `
-    <div class="q-num">QUESTION ${idx + 1}</div>
+    <div class="q-num">QUESTION ${idx + 1}${isMulti ? ' <span style="font-size:9px;background:rgba(62,207,207,0.2);color:var(--teal);padding:1px 7px;border-radius:10px;margin-left:4px;">複数選択可</span>' : ''}</div>
     <div class="q-text">${q.text}</div>
     <div class="q-hint">${q.hint}</div>
     <div class="options">
-      ${q.options.map(opt => `
-        <button class="option ${answers[q.id] === opt.value ? 'selected' : ''}"
-          onclick="selectOption('${q.id}', '${opt.value}', this)">
-          <div class="option-dot"></div>
-          ${opt.label}
-        </button>
-      `).join('')}
+      ${q.options.map(opt => {
+        const isSelected = isMulti
+          ? (answers[q.id] || []).includes(opt.value)
+          : answers[q.id] === opt.value;
+        return `
+          <button class="option ${isSelected ? 'selected' : ''}"
+            onclick="selectOption('${q.id}', '${opt.value}', this, ${isMulti})">
+            <div class="option-dot" style="${isMulti ? 'border-radius:4px' : ''}"></div>
+            ${opt.label}
+          </button>
+        `;
+      }).join('')}
     </div>
   `;
 }
 
-function selectOption(qId, value, el) {
-  answers[qId] = value;
-  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('btnNext').disabled = false;
+function selectOption(qId, value, el, isMulti) {
+  if (isMulti) {
+    // 複数選択
+    if (!answers[qId]) answers[qId] = [];
+    // 「特に何もしていない」を選んだら他を解除
+    if (value === 'nothing') {
+      answers[qId] = ['nothing'];
+    } else {
+      // 他を選んだら「特に何もしていない」を外す
+      answers[qId] = answers[qId].filter(v => v !== 'nothing');
+      const idx = answers[qId].indexOf(value);
+      if (idx > -1) {
+        answers[qId].splice(idx, 1);
+      } else {
+        answers[qId].push(value);
+      }
+    }
+    // UIを再描画
+    renderQ(currentQ);
+  } else {
+    // 単一選択
+    answers[qId] = value;
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('btnNext').disabled = false;
+  }
 }
 
 function nextQ() {
@@ -860,13 +903,16 @@ function diagnose(a) {
   if (a.insurance === 'term') scores.insurance += 40;
   if (a.insurance === 'unknown') scores.insurance += 20;
   if (a.family === 'married_with_child') scores.insurance += 30;
+  if (a.family === 'married_with_teen') scores.insurance += 25;
   if (a.family === 'married_no_child') scores.insurance += 15;
+  if (a.family === 'married_elderly') scores.insurance += 20;
 
   // 年金スコア
   if (a.pension === 'very') scores.pension += 40;
   if (a.pension === 'some') scores.pension += 25;
   if (a.job === 'civil') scores.pension += 20;
   if (a.income === 'under500' || a.income === '500to800') scores.pension += 15;
+  if (a.family === 'married_elderly') scores.pension += 15; // 介護があると老後不安が高い
 
   // 節税スコア
   if (a.income === '1000to1500') scores.tax += 40;
@@ -876,9 +922,14 @@ function diagnose(a) {
   if (a.job === 'medical') scores.tax += 30;
   if (a.job === 'corp_large') scores.tax += 10;
 
-  // 運用・インフレスコア
-  if (a.asset === 'bank_only') scores.investment += 35;
-  if (a.asset === 'nothing') scores.investment += 20;
+  // 運用・インフレスコア（複数選択対応）
+  const assetList = Array.isArray(a.asset) ? a.asset : [a.asset];
+  if (assetList.includes('bank_only')) scores.investment += 35;
+  if (assetList.includes('nothing')) scores.investment += 20;
+  if (assetList.includes('has_insurance')) scores.investment += 25;
+  if (assetList.includes('has_ideco')) scores.investment += 15;
+  if (assetList.includes('has_fx')) scores.investment += 10;
+  if (assetList.includes('has_nisa') || assetList.includes('has_stock')) scores.investment += 5;
   if (a.income === 'over1500') scores.investment += 20;
   if (a.income === '1000to1500') scores.investment += 15;
   if (a.job === 'owner') scores.investment += 20;
