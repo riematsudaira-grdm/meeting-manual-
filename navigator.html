@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI商談診断｜GRDM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --bg: #0a0f1a;
+  --bg2: #0f1724;
+  --bg3: #151e2e;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --teal: #3ecfcf;
+  --teal2: #2ab8b8;
+  --teal-dim: rgba(62,207,207,0.12);
+  --teal-glow: rgba(62,207,207,0.25);
+  --gold: #f0c040;
+  --gold-dim: rgba(240,192,64,0.12);
+  --red: #ff5e6c;
+  --green: #3ed98a;
+  --blue: #5b9cf6;
+  --text: rgba(255,255,255,0.88);
+  --text2: rgba(255,255,255,0.55);
+  --text3: rgba(255,255,255,0.3);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.7;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HEADER ── */
+.header {
+  position: relative;
+  padding: 32px 40px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(62,207,207,0.04) 0%, transparent 100%);
+}
+.header-logo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--teal);
+  text-transform: uppercase;
+}
+.header-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+.header-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SCREEN ── */
+.screen { display: none; }
+.screen.active { display: block; animation: fadeUp 0.4s ease; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── INTRO SCREEN ── */
+.intro-hero {
+  text-align: center;
+  padding: 20px 0 40px;
+}
+.intro-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--teal);
+  text-transform: uppercase;
+  background: var(--teal-dim);
+  border: 1px solid rgba(62,207,207,0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.intro-h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.intro-h1 em { color: var(--teal); font-style: italic; }
+.intro-sub {
+  font-size: 14px;
+  color: var(--text2);
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+.intro-steps {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  margin-bottom: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.intro-step {
+  flex: 1;
+  padding: 16px 14px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.intro-step:last-child { border-right: none; }
+.intro-step .is-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.intro-step .is-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* ── START BUTTON ── */
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--teal);
+  color: var(--bg);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+.btn-start:hover {
+  background: var(--teal2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(62,207,207,0.3);
+}
+
+/* ── QUESTION SCREEN ── */
+.q-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.q-prog-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--border2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.q-prog-fill {
+  height: 100%;
+  background: var(--teal);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.q-prog-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text3);
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+.q-card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 16px;
+}
+.q-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.q-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.q-hint {
+  font-size: 12px;
+  color: var(--text2);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 14px;
+  color: var(--text);
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+}
+.option:hover {
+  border-color: var(--teal);
+  background: var(--teal-dim);
+  transform: translateX(4px);
+}
+.option.selected {
+  border-color: var(--teal);
+  background: var(--teal-dim);
+  color: var(--teal);
+}
+.option-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+}
+.option.selected .option-dot {
+  border-color: var(--teal);
+  background: var(--teal);
+}
+.option.selected .option-dot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.18s;
+}
+.btn-prev {
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border2);
+}
+.btn-prev:hover { color: var(--text); border-color: var(--border2); }
+.btn-next {
+  background: var(--teal);
+  color: var(--bg);
+}
+.btn-next:hover { background: var(--teal2); transform: translateY(-1px); }
+.btn-next:disabled {
+  background: var(--bg3);
+  color: var(--text3);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── LOADING ── */
+.loading-screen {
+  text-align: center;
+  padding: 60px 20px;
+}
+.loading-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.95); }
+}
+.loading-text {
+  font-size: 16px;
+  color: var(--text2);
+  margin-bottom: 8px;
+}
+.loading-sub { font-size: 13px; color: var(--text3); }
+.loading-bar {
+  width: 200px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 24px auto 0;
+  overflow: hidden;
+}
+.loading-fill {
+  height: 100%;
+  background: var(--teal);
+  border-radius: 2px;
+  animation: loading 1.8s ease-in-out infinite;
+}
+@keyframes loading {
+  0% { width: 0%; margin-left: 0; }
+  50% { width: 100%; margin-left: 0; }
+  100% { width: 0%; margin-left: 100%; }
+}
+
+/* ── RESULT SCREEN ── */
+.result-header {
+  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.result-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--teal-glow) 0%, transparent 70%);
+}
+.result-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.result-profile {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.result-profile span { color: var(--teal); }
+.result-summary {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+
+/* APPROACH SECTION */
+.section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin: 24px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.approach-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.approach-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  transition: border-color 0.2s;
+}
+.approach-item.primary {
+  border-color: var(--teal);
+  background: var(--teal-dim);
+}
+.approach-item.secondary { border-color: var(--border2); }
+.approach-num {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900;
+  flex-shrink: 0;
+}
+.primary .approach-num { background: var(--teal); color: var(--bg); }
+.secondary .approach-num { background: var(--bg3); color: var(--text2); }
+.approach-content { flex: 1; }
+.approach-label {
+  font-size: 13px; font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.primary .approach-label { color: var(--teal); }
+.approach-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.approach-badge {
+  font-size: 10px; font-weight: 700;
+  padding: 3px 8px; border-radius: 4px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.badge-main { background: var(--teal); color: var(--bg); }
+.badge-sub { background: var(--bg3); color: var(--text3); border: 1px solid var(--border2); }
+
+/* RESOURCE LINKS */
+.resource-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+@media(max-width:500px){ .resource-grid { grid-template-columns: 1fr; } }
+
+.resource-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 15px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.18s;
+  cursor: pointer;
+}
+.resource-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(62,207,207,0.12);
+}
+.resource-card.priority {
+  border-color: rgba(62,207,207,0.4);
+  background: var(--teal-dim);
+}
+.rc-icon { font-size: 20px; flex-shrink: 0; }
+.rc-text { flex: 1; }
+.rc-name { font-size: 12.5px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.resource-card.priority .rc-name { color: var(--teal); }
+.rc-desc { font-size: 11px; color: var(--text2); margin-top: 2px; }
+.rc-arrow { font-size: 12px; color: var(--text3); flex-shrink: 0; }
+.resource-card:hover .rc-arrow { color: var(--teal); }
+
+/* TALK POINTS */
+.talk-box {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 8px;
+}
+.talk-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.talk-item:last-child { border-bottom: none; padding-bottom: 0; }
+.talk-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal);
+  flex-shrink: 0;
+  width: 20px;
+  margin-top: 1px;
+}
+.talk-text { font-size: 13px; color: var(--text); line-height: 1.65; }
+.talk-text strong { color: var(--gold); }
+
+/* CAUTION */
+.caution-box {
+  background: rgba(255,94,108,0.08);
+  border: 1px solid rgba(255,94,108,0.25);
+  border-radius: 10px;
+  padding: 13px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.caution-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.caution-text { font-size: 12px; color: rgba(255,150,150,0.9); line-height: 1.65; }
+
+/* RESET */
+.btn-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  color: var(--text2);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  margin-top: 24px;
+}
+.btn-reset:hover { color: var(--text); border-color: var(--text2); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">GRDM</div>
+  <div class="header-title">AI 商談診断</div>
+  <div class="header-badge">Sales Navigator</div>
+</div>
+
+<div class="main">
+
+  <!-- ── INTRO ── -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-hero">
+      <div class="intro-tag">AI Sales Navigator</div>
+      <h1 class="intro-h1">お客様の属性から<br><em>最適な商談アプローチ</em>を診断</h1>
+      <p class="intro-sub">7つの質問に答えるだけで、どのメリットから入るべきか・どの資料を使うべきかが自動で決まります。</p>
+      <div class="intro-steps">
+        <div class="intro-step">
+          <div class="is-num">STEP 1</div>
+          <div class="is-text">8つの<br>質問に答える</div>
+        </div>
+        <div class="intro-step">
+          <div class="is-num">STEP 2</div>
+          <div class="is-text">AIが属性を<br>分析</div>
+        </div>
+        <div class="intro-step">
+          <div class="is-num">STEP 3</div>
+          <div class="is-text">最適な商談<br>順序が出る</div>
+        </div>
+        <div class="intro-step">
+          <div class="is-num">STEP 4</div>
+          <div class="is-text">資料を<br>その場で開く</div>
+        </div>
+      </div>
+      <button class="btn-start" onclick="startDiagnosis()">診断をはじめる →</button>
+    </div>
+  </div>
+
+  <!-- ── QUESTIONS ── -->
+  <div class="screen" id="screen-questions">
+    <div class="q-progress">
+      <div class="q-prog-bar"><div class="q-prog-fill" id="progFill" style="width:0%"></div></div>
+      <div class="q-prog-text" id="progText">1 / 7</div>
+    </div>
+    <div class="q-card" id="qCard"></div>
+    <div class="q-nav">
+      <button class="btn-nav btn-prev" id="btnPrev" onclick="prevQ()">← 戻る</button>
+      <button class="btn-nav btn-next" id="btnNext" onclick="nextQ()" disabled>次へ →</button>
+    </div>
+  </div>
+
+  <!-- ── LOADING ── -->
+  <div class="screen" id="screen-loading">
+    <div class="loading-screen">
+      <div class="loading-icon">🧠</div>
+      <div class="loading-text">属性を分析しています...</div>
+      <div class="loading-sub">最適な商談アプローチを構築中</div>
+      <div class="loading-bar"><div class="loading-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ── RESULT ── -->
+  <div class="screen" id="screen-result"></div>
+
+</div>
+
+<script>
+// ── QUESTIONS ──
+const questions = [
+  {
+    id: 'age',
+    text: 'お客様の年齢はどのくらいですか？',
+    hint: '年金・保険ニーズの緊急度に影響します',
+    options: [
+      { value: 'under30', label: '20代' },
+      { value: '30s', label: '30代' },
+      { value: '40s', label: '40代' },
+      { value: '50s', label: '50代' },
+      { value: 'over60', label: '60代以上' },
+    ]
+  },
+  {
+    id: 'income',
+    text: 'お客様の年収はどのくらいですか？',
+    hint: '節税効果の大きさや訴求軸が変わります',
+    options: [
+      { value: 'under500', label: '500万円未満' },
+      { value: '500to800', label: '500〜800万円' },
+      { value: '800to1000', label: '800〜1,000万円' },
+      { value: '1000to1500', label: '1,000〜1,500万円' },
+      { value: 'over1500', label: '1,500万円以上' },
+    ]
+  },
+  {
+    id: 'job',
+    text: 'お客様の職業・業種は？',
+    hint: '訴求の切り口が変わります',
+    options: [
+      { value: 'corp_large', label: '会社員（大企業・上場企業）' },
+      { value: 'corp_mid', label: '会社員（中小企業）' },
+      { value: 'civil', label: '公務員' },
+      { value: 'medical', label: '医師・士業（弁護士・税理士等）' },
+      { value: 'owner', label: '経営者・自営業' },
+      { value: 'other', label: 'その他' },
+    ]
+  },
+  {
+    id: 'family',
+    text: '家族構成を教えてください',
+    hint: '保険・年金ニーズの大きさに影響します',
+    options: [
+      { value: 'single', label: '独身' },
+      { value: 'married_no_child', label: '既婚・子なし' },
+      { value: 'married_with_child', label: '既婚・子あり' },
+    ]
+  },
+  {
+    id: 'insurance',
+    text: '現在加入している生命保険の種類は？',
+    hint: '保険の見直し提案ができるかどうかの判断に使います',
+    options: [
+      { value: 'term', label: '掛け捨て・定期付終身保険' },
+      { value: 'whole', label: '終身保険' },
+      { value: 'none', label: '未加入' },
+      { value: 'unknown', label: 'わからない' },
+    ]
+  },
+  {
+    id: 'pension',
+    text: '老後の年金・資産形成について不安はありますか？',
+    hint: '年金訴求の刺さりやすさの指標になります',
+    options: [
+      { value: 'very', label: 'とても不安がある' },
+      { value: 'some', label: 'やや不安がある' },
+      { value: 'little', label: 'あまり不安はない' },
+    ]
+  },
+  {
+    id: 'asset',
+    text: '現在の資産運用・貯蓄の状況は？',
+    hint: '現金運用・インフレ対策訴求の入り口になります',
+    options: [
+      { value: 'bank_only', label: '銀行預金のみ' },
+      { value: 'has_nisa', label: 'NISA・株式投資をしている' },
+      { value: 'nothing', label: '特に何もしていない' },
+    ]
+  },
+  {
+    id: 'housing',
+    text: '現在の住居は？',
+    hint: '住宅ローンとの兼ね合いを確認します',
+    options: [
+      { value: 'rent', label: '賃貸' },
+      { value: 'owned', label: '持ち家（ローンあり）' },
+      { value: 'owned_paid', label: '持ち家（完済済み）' },
+    ]
+  }
+];
+
+let answers = {};
+let currentQ = 0;
+
+function startDiagnosis() {
+  showScreen('questions');
+  renderQ(0);
+}
+
+function renderQ(idx) {
+  const q = questions[idx];
+  const fill = ((idx) / questions.length) * 100;
+  document.getElementById('progFill').style.width = fill + '%';
+  document.getElementById('progText').textContent = (idx + 1) + ' / ' + questions.length;
+
+  const btnNext = document.getElementById('btnNext');
+  const btnPrev = document.getElementById('btnPrev');
+  btnPrev.style.visibility = idx === 0 ? 'hidden' : 'visible';
+  btnNext.disabled = !answers[q.id];
+  btnNext.textContent = idx === questions.length - 1 ? '診断する ✓' : '次へ →';
+
+  document.getElementById('qCard').innerHTML = `
+    <div class="q-num">QUESTION ${idx + 1}</div>
+    <div class="q-text">${q.text}</div>
+    <div class="q-hint">${q.hint}</div>
+    <div class="options">
+      ${q.options.map(opt => `
+        <button class="option ${answers[q.id] === opt.value ? 'selected' : ''}"
+          onclick="selectOption('${q.id}', '${opt.value}', this)">
+          <div class="option-dot"></div>
+          ${opt.label}
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+function selectOption(qId, value, el) {
+  answers[qId] = value;
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btnNext').disabled = false;
+}
+
+function nextQ() {
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQ(currentQ);
+  } else {
+    showLoading();
+  }
+}
+
+function prevQ() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQ(currentQ);
+  }
+}
+
+// ── DIAGNOSIS LOGIC ──
+function diagnose(a) {
+  const result = {
+    profileLabel: '',
+    profileDesc: '',
+    approaches: [],
+    talkPoints: [],
+    resources: [],
+    caution: null
+  };
+
+  // ── Profile label ──
+  const incomeLabels = {
+    under500: '年収500万円未満',
+    '500to800': '年収500〜800万円',
+    '800to1000': '年収800〜1,000万円',
+    '1000to1500': '年収1,000〜1,500万円',
+    over1500: '年収1,500万円以上'
+  };
+  const jobLabels = {
+    corp_large: '大企業会社員',
+    corp_mid: '中小企業会社員',
+    civil: '公務員',
+    medical: '医師・士業',
+    owner: '経営者・自営業',
+    other: 'その他'
+  };
+  const familyLabels = {
+    single: '独身',
+    married_no_child: '既婚・子なし',
+    married_with_child: '既婚・子あり'
+  };
+  result.profileLabel = `${incomeLabels[a.income]}・${jobLabels[a.job]}・${familyLabels[a.family]}`;
+
+  // ── 訴求軸スコアリング ──
+  let scores = { insurance: 0, pension: 0, tax: 0, investment: 0 };
+
+  // 年齢スコア
+  if (a.age === 'under30' || a.age === '30s') {
+    scores.insurance += 15; // 若いほど保険効果が長く続く
+    scores.investment += 10; // 長期運用のメリット
+  }
+  if (a.age === '40s') {
+    scores.pension += 20; // 老後が見えてきて年金不安が高まる
+    scores.tax += 10;
+  }
+  if (a.age === '50s') {
+    scores.pension += 35; // 老後が迫り年金ニーズ最大
+    scores.insurance += 10;
+  }
+  if (a.age === 'over60') {
+    scores.pension += 40;
+    scores.investment += 15;
+  }
+
+  // 保険スコア
+  if (a.insurance === 'term') scores.insurance += 40;
+  if (a.insurance === 'unknown') scores.insurance += 20;
+  if (a.family === 'married_with_child') scores.insurance += 30;
+  if (a.family === 'married_no_child') scores.insurance += 15;
+
+  // 年金スコア
+  if (a.pension === 'very') scores.pension += 40;
+  if (a.pension === 'some') scores.pension += 25;
+  if (a.job === 'civil') scores.pension += 20;
+  if (a.income === 'under500' || a.income === '500to800') scores.pension += 15;
+
+  // 節税スコア
+  if (a.income === '1000to1500') scores.tax += 40;
+  if (a.income === 'over1500') scores.tax += 50;
+  if (a.income === '800to1000') scores.tax += 30;
+  if (a.income === '500to800') scores.tax += 15;
+  if (a.job === 'medical') scores.tax += 30;
+  if (a.job === 'corp_large') scores.tax += 10;
+
+  // 運用・インフレスコア
+  if (a.asset === 'bank_only') scores.investment += 35;
+  if (a.asset === 'nothing') scores.investment += 20;
+  if (a.income === 'over1500') scores.investment += 20;
+  if (a.income === '1000to1500') scores.investment += 15;
+  if (a.job === 'owner') scores.investment += 20;
+
+  // ── ソート ──
+  const axisLabels = {
+    insurance: { label: '生命保険効果（団信）', icon: '🛡', desc: '団信でローンが消え、家族に無借金の資産が残る', url: 'proposal.html#hoken' },
+    pension:   { label: '年金対策・私的年金', icon: '🏦', desc: 'ローン完済後の家賃収入が個人年金に', url: 'proposal.html#nenkin' },
+    tax:       { label: '節税効果（確定申告）', icon: '💴', desc: '損益通算で所得税・住民税が還付される', url: 'proposal.html#setsuzei' },
+    investment:{ label: '現金運用・インフレ対策', icon: '📈', desc: '利回り4%・実物資産でインフレに強い', url: 'proposal.html#unyo' }
+  };
+
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  result.approaches = sorted.map(([key, score], i) => ({
+    ...axisLabels[key],
+    key,
+    score,
+    isPrimary: i === 0
+  }));
+
+  // ── トークポイント ──
+  const primary = sorted[0][0];
+  if (primary === 'tax') {
+    result.talkPoints = [
+      `まず源泉徴収票で<strong>実際の所得税・住民税の金額</strong>を一緒に確認する`,
+      `「サラリーマンが合法的に税金を減らせる方法、実はほとんどないんです」と入る`,
+      `計算書1年目で<strong>節税合計額（年間約30〜40万円）</strong>を数字で見せる`,
+      `ふるさと納税との比較でケタ違いであることを強調する`
+    ];
+  } else if (primary === 'insurance') {
+    result.talkPoints = [
+      `保険証券を確認し<strong>60歳以降の保障がほぼゼロ</strong>になることを説明する`,
+      `団信の仕組みを図解で説明：「死亡・高度障害でローンが全額消えます」`,
+      `計算書1年目の<strong>生命保険効果欄（約2,200万円相当）</strong>を見せる`,
+      `「現在の保険料を見直せ、家計負担が軽減できる」と締める`
+    ];
+  } else if (primary === 'pension') {
+    result.talkPoints = [
+      `「公的年金について、今後どうなると思いますか？」と意見を先に聞く`,
+      `厚生年金平均受給額が<strong>20年で約33,000円減少</strong>しているデータを見せる`,
+      `50年収支表でローン完済後の<strong>月々約57,890円の収入</strong>を確認する`,
+      `「現役中は保険、退職後は年金になる二刀流です」と表現する`
+    ];
+  } else {
+    result.talkPoints = [
+      `「現在の貯蓄、銀行預金だけですか？」と現状を確認する`,
+      `銀行預金0.2% vs マンション経営4%の<strong>利回り比較表</strong>を見せる`,
+      `インフレ率2%で<strong>1,000万円が20年後に668万円</strong>になることを数字で示す`,
+      `「現金を寝かせることが実は最大のリスク」と伝える`
+    ];
+  }
+
+  // ── 使う資料 ──
+  const resourceMap = {
+    insurance: { name: '保険効果スライドを開く', icon: '🛡', desc: '団信・生命保険代わりの説明', url: 'proposal.html#hoken', priority: false },
+    pension:   { name: '年金対策スライドを開く', icon: '🏦', desc: '個人年金になる・公的年金減少データ', url: 'proposal.html#nenkin', priority: false },
+    tax:       { name: '節税効果スライドを開く', icon: '💴', desc: '損益通算・確定申告の説明', url: 'proposal.html#setsuzei', priority: false },
+    investment:{ name: '現金運用スライドを開く', icon: '📈', desc: '利回り比較・インフレ対策', url: 'proposal.html#unyo', priority: false },
+    soneki:    { name: '収益還元法 説明資料', icon: '💹', desc: 'お客様渡し可', url: 'soneki.html', priority: false },
+    sublease:  { name: 'サブリース説明資料', icon: '🏢', desc: '賃貸管理の仕組み', url: 'sublease.html', priority: false },
+    risk:      { name: 'リスク一覧', icon: '⚡', desc: 'テストクロージング時', url: 'risk-list.html', priority: false },
+    kinri:     { name: '金利ネック解消', icon: '📊', desc: '金利の不安が出たとき', url: 'kinri.html', priority: false },
+    shuzen:    { name: '修繕ネック解消', icon: '🔧', desc: '修繕の不安が出たとき', url: 'shuzen.html', priority: false },
+  };
+
+  // 必須セット
+  result.resources = [
+    { ...resourceMap[primary], priority: true },
+    resourceMap['soneki'],
+    resourceMap['sublease'],
+    resourceMap['risk'],
+  ];
+  // 所得高ければ節税追加
+  if (primary !== 'tax' && (a.income === '800to1000' || a.income === '1000to1500' || a.income === 'over1500')) {
+    result.resources.splice(1, 0, { ...resourceMap['tax'], priority: false });
+  }
+  // 金利・修繕はリスク対応用として常時
+  result.resources.push(resourceMap['kinri'], resourceMap['shuzen']);
+
+  // ── 注意点 ──
+  if (a.income === 'under500') {
+    result.caution = 'ローン審査が通りにくい可能性があります。事前に金融機関への相談を案内しましょう。節税効果も限定的なため、年金・保険メリットを中心に訴求することをお勧めします。';
+  }
+  if (a.housing === 'owned') {
+    result.caution = (result.caution || '') + '住宅ローンがある場合、投資用ローンとの兼ね合いを事前に金融機関へ確認するよう案内してください。';
+  }
+  if (a.job === 'owner') {
+    result.caution = (result.caution || '') + '経営者・自営業の場合、法人での取得を検討するケースもあります。詳細は担当者へ確認を。';
+  }
+
+  // profile desc
+  const descMap = {
+    tax: '節税ニーズが高い属性です。まず源泉徴収票で税負担を確認し、節税効果を数字で見せることが最も刺さります。',
+    insurance: '家族への保障ニーズが高い属性です。まず現在の保険証券を確認し、団信との比較から入るのが効果的です。',
+    pension: '老後の収入不安が強い属性です。公的年金の減少データを見せた上で、マンション経営が私的年金になることを訴求しましょう。',
+    investment: '資産運用・インフレ対策への関心が高い属性です。現金の価値目減りを数字で見せ、利回り比較から入るのが有効です。'
+  };
+  result.profileDesc = descMap[primary];
+
+  return result;
+}
+
+function showLoading() {
+  showScreen('loading');
+  setTimeout(() => {
+    const result = diagnose(answers);
+    renderResult(result);
+    showScreen('result');
+  }, 1800);
+}
+
+function renderResult(r) {
+  const el = document.getElementById('screen-result');
+  el.innerHTML = `
+    <div class="result-header">
+      <div class="result-tag">診断結果 — 推奨アプローチ</div>
+      <div class="result-profile">${r.profileLabel.split('・').map((p, i) => i === 0 ? `<span>${p}</span>` : p).join(' · ')}</div>
+      <div class="result-summary">${r.profileDesc}</div>
+    </div>
+
+    ${r.caution ? `
+    <div class="caution-box">
+      <div class="caution-icon">⚠️</div>
+      <div class="caution-text">${r.caution}</div>
+    </div>
+    ` : ''}
+
+    <div class="section-title">推奨する商談の順番</div>
+    <div class="approach-list">
+      ${r.approaches.map((a, i) => `
+        <div class="approach-item ${a.isPrimary ? 'primary' : 'secondary'}">
+          <div class="approach-num">${i + 1}</div>
+          <div class="approach-content">
+            <div class="approach-label">${a.icon} ${a.label}</div>
+            <div class="approach-desc">${a.desc}</div>
+          </div>
+          <div class="approach-badge ${a.isPrimary ? 'badge-main' : 'badge-sub'}">${a.isPrimary ? '最優先' : 'サブ'}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="section-title">最初に使うトークのポイント</div>
+    <div class="talk-box">
+      ${r.talkPoints.map((t, i) => `
+        <div class="talk-item">
+          <div class="talk-num">${i + 1}</div>
+          <div class="talk-text">${t}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="section-title">使う資料（タップして開く）</div>
+    <div class="resource-grid">
+      ${r.resources.map(res => `
+        <a href="${res.url}" target="_blank" class="resource-card ${res.priority ? 'priority' : ''}">
+          <div class="rc-icon">${res.icon}</div>
+          <div class="rc-text">
+            <div class="rc-name">${res.name}</div>
+            <div class="rc-desc">${res.desc}</div>
+          </div>
+          <div class="rc-arrow">↗</div>
+        </a>
+      `).join('')}
+    </div>
+
+    <button class="btn-reset" onclick="resetDiagnosis()">↩ もう一度診断する</button>
+  `;
+}
+
+function resetDiagnosis() {
+  answers = {};
+  currentQ = 0;
+  showScreen('intro');
+}
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
