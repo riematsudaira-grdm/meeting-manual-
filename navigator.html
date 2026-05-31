@@ -735,6 +735,10 @@ const questions = [
       { value: 'has_insurance', label: '貯蓄型保険・個人年金保険に入っている' },
       { value: 'has_ideco', label: 'iDeCo（個人型確定拠出年金）をしている' },
       { value: 'has_fx', label: 'FX・仮想通貨をしている' },
+      { value: 're_other_1', label: '不動産投資をしている（他社・1件）' },
+      { value: 're_other_2', label: '不動産投資をしている（他社・2件以上）' },
+      { value: 're_grdm_1', label: '当社でマンション購入済み（1件）' },
+      { value: 're_grdm_2', label: '当社でマンション購入済み（2件以上）' },
       { value: 'nothing', label: '特に何もしていない' },
     ]
   },
@@ -931,6 +935,11 @@ function diagnose(a) {
   if (assetList.includes('has_ideco')) scores.investment += 15;
   if (assetList.includes('has_fx')) scores.investment += 10;
   if (assetList.includes('has_nisa') || assetList.includes('has_stock')) scores.investment += 5;
+  // 不動産保有者は節税の追加訴求が有効
+  if (assetList.includes('re_other_1')) scores.tax += 20;
+  if (assetList.includes('re_other_2')) scores.tax += 15;
+  if (assetList.includes('re_grdm_1')) scores.tax += 25;
+  if (assetList.includes('re_grdm_2')) scores.tax += 15;
   if (a.income === 'over1500') scores.investment += 20;
   if (a.income === '1000to1500') scores.investment += 15;
   if (a.job === 'owner') scores.investment += 20;
@@ -1015,10 +1024,19 @@ function diagnose(a) {
     result.caution = 'ローン審査が通りにくい可能性があります。事前に金融機関への相談を案内しましょう。節税効果も限定的なため、年金・保険メリットを中心に訴求することをお勧めします。';
   }
   if (a.housing === 'owned') {
-    result.caution = (result.caution || '') + '住宅ローンがある場合、投資用ローンとの兼ね合いを事前に金融機関へ確認するよう案内してください。';
+    result.caution = (result.caution || '') + '　住宅ローンがある場合、投資用ローンとの兼ね合いを事前に金融機関へ確認するよう案内してください。';
   }
   if (a.job === 'owner') {
-    result.caution = (result.caution || '') + '経営者・自営業の場合、法人での取得を検討するケースもあります。詳細は担当者へ確認を。';
+    result.caution = (result.caution || '') + '　経営者・自営業の場合、法人での取得を検討するケースもあります。詳細は担当者へ確認を。';
+  }
+  if (assetList.includes('re_other_1') || assetList.includes('re_other_2')) {
+    result.caution = (result.caution || '') + '　他社で不動産投資中のため、買い増し提案が有効です。「複数件で節税額がさらに増える」という切り口で訴求しましょう。';
+  }
+  if (assetList.includes('re_grdm_1')) {
+    result.caution = (result.caution || '') + '　当社既存オーナー様です。現在の物件の収支状況を確認した上で、2件目の節税・資産拡大メリットを訴求しましょう。';
+  }
+  if (assetList.includes('re_grdm_2')) {
+    result.caution = (result.caution || '') + '　当社で2件以上お持ちの優良オーナー様です。GOC（オーナーズクラブ）のご案内や、資産管理の観点からのご提案をご検討ください。';
   }
 
   // profile desc
