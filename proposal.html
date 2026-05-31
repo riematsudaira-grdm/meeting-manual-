@@ -558,7 +558,7 @@ ul.clean li::before { content: '▸'; position: absolute; left: 0; color: var(--
 </div>
 
 <!-- ══ SLIDE 2: 保険 ══ -->
-<div class="slide bg-white" data-index="2">
+<div class="slide bg-white" data-index="2" id="slide-hoken">
   <div class="slide-inner">
     <div class="slide-header">
       <div class="slide-num" style="background:#0369a1">🛡</div>
@@ -632,7 +632,7 @@ ul.clean li::before { content: '▸'; position: absolute; left: 0; color: var(--
 </div>
 
 <!-- ══ SLIDE 3: 年金 ══ -->
-<div class="slide bg-gray" data-index="3">
+<div class="slide bg-gray" data-index="3" id="slide-nenkin">
   <div class="slide-inner">
     <div class="slide-header">
       <div class="slide-num" style="background:var(--green)">🏦</div>
@@ -704,7 +704,7 @@ ul.clean li::before { content: '▸'; position: absolute; left: 0; color: var(--
 </div>
 
 <!-- ══ SLIDE 4: 節税 ══ -->
-<div class="slide bg-white" data-index="4">
+<div class="slide bg-white" data-index="4" id="slide-setsuzei">
   <div class="slide-inner">
     <div class="slide-header">
       <div class="slide-num" style="background:#0f766e">💴</div>
@@ -779,7 +779,7 @@ ul.clean li::before { content: '▸'; position: absolute; left: 0; color: var(--
 </div>
 
 <!-- ══ SLIDE 5: 運用・インフレ ══ -->
-<div class="slide bg-gray" data-index="5">
+<div class="slide bg-gray" data-index="5" id="slide-unyo">
   <div class="slide-inner">
     <div class="slide-header">
       <div class="slide-num" style="background:var(--amber)">📈</div>
@@ -942,6 +942,13 @@ function goTo(n) {
 
 function nextSlide() { goTo(current + 1); }
 function prevSlide() { goTo(current - 1); }
+
+// ハッシュで特定スライドに直接ジャンプ
+const hashMap = { hoken: 2, nenkin: 3, setsuzei: 4, unyo: 5 };
+window.addEventListener('load', () => {
+  const hash = location.hash.replace('#', '');
+  if (hashMap[hash] !== undefined) goTo(hashMap[hash]);
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', e => {
