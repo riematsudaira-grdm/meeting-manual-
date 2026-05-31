@@ -883,15 +883,14 @@ function diagnose(a) {
 
   // 年齢スコア
   if (a.age === 'under30' || a.age === '30s') {
-    scores.insurance += 15; // 若いほど保険効果が長く続く
-    scores.investment += 10; // 長期運用のメリット
+    scores.investment += 10; // 若いほど長期運用メリット大
   }
   if (a.age === '40s') {
-    scores.pension += 20; // 老後が見えてきて年金不安が高まる
+    scores.pension += 20;
     scores.tax += 10;
   }
   if (a.age === '50s') {
-    scores.pension += 35; // 老後が迫り年金ニーズ最大
+    scores.pension += 35;
     scores.insurance += 10;
   }
   if (a.age === 'over60') {
@@ -900,11 +899,12 @@ function diagnose(a) {
   }
 
   // 保険スコア
-  if (a.insurance === 'term') scores.insurance += 40;
-  if (a.insurance === 'unknown') scores.insurance += 20;
+  if (a.insurance === 'term') scores.insurance += 40;  // 掛け捨て確定→保険見直し訴求有効
+  if (a.insurance === 'unknown') scores.insurance += 5; // わからない→確認の余地あり程度
+  if (a.insurance === 'none') scores.insurance += 10;   // 未加入→団信訴求有効
   if (a.family === 'married_with_child') scores.insurance += 30;
   if (a.family === 'married_with_teen') scores.insurance += 25;
-  if (a.family === 'married_no_child') scores.insurance += 15;
+  if (a.family === 'married_no_child') scores.insurance += 10; // 子なしは保険ニーズ低め
   if (a.family === 'married_elderly') scores.insurance += 20;
 
   // 年金スコア
@@ -912,15 +912,16 @@ function diagnose(a) {
   if (a.pension === 'some') scores.pension += 25;
   if (a.job === 'civil') scores.pension += 20;
   if (a.income === 'under500' || a.income === '500to800') scores.pension += 15;
-  if (a.family === 'married_elderly') scores.pension += 15; // 介護があると老後不安が高い
+  if (a.family === 'married_elderly') scores.pension += 15;
 
-  // 節税スコア
-  if (a.income === '1000to1500') scores.tax += 40;
-  if (a.income === 'over1500') scores.tax += 50;
-  if (a.income === '800to1000') scores.tax += 30;
+  // 節税スコア（高年収ほど大きく加算）
+  if (a.income === 'over1500') scores.tax += 60;
+  if (a.income === '1000to1500') scores.tax += 50;
+  if (a.income === '800to1000') scores.tax += 35;
   if (a.income === '500to800') scores.tax += 15;
-  if (a.job === 'medical') scores.tax += 30;
-  if (a.job === 'corp_large') scores.tax += 10;
+  if (a.job === 'medical') scores.tax += 35;
+  if (a.job === 'corp_large') scores.tax += 15;
+  if (a.job === 'owner') scores.tax += 20;
 
   // 運用・インフレスコア（複数選択対応）
   const assetList = Array.isArray(a.asset) ? a.asset : [a.asset];
