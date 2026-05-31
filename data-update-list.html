@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>データ更新管理リスト｜GRDM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#f1f3f7;color:#1f2937;line-height:1.7}
+
+.header{background:linear-gradient(135deg,#0f1f3d,#1a3560);padding:28px 40px;display:flex;align-items:center;justify-content:space-between}
+.header h1{font-size:20px;font-weight:900;color:#fff}
+.header h1 span{color:#7ec8f5}
+.header-sub{font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px}
+.header-right{font-size:12px;color:rgba(255,255,255,0.5);text-align:right}
+.header-right strong{display:block;color:#7ec8f5;font-size:13px}
+
+.main{max-width:960px;margin:0 auto;padding:32px 20px 60px}
+
+/* HOW TO USE */
+.howto{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 24px;margin-bottom:28px;display:flex;gap:16px;align-items:flex-start}
+.howto-icon{font-size:24px;flex-shrink:0}
+.howto-title{font-size:13px;font-weight:700;color:#0f1f3d;margin-bottom:6px}
+.howto-text{font-size:12.5px;color:#4b5563;line-height:1.75}
+.howto-text code{background:#f3f4f6;border-radius:4px;padding:1px 6px;font-family:monospace;font-size:11.5px;color:#1d4ed8}
+
+/* SECTION */
+.sec-title{font-size:10px;font-weight:700;letter-spacing:2.5px;color:#9ca3af;text-transform:uppercase;margin:24px 0 10px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:#e5e7eb}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);margin-bottom:8px}
+.data-table thead tr{background:#0f1f3d}
+.data-table thead th{padding:11px 14px;color:#fff;font-size:11px;font-weight:700;text-align:left;letter-spacing:0.5px}
+.data-table thead th:first-child{border-radius:12px 0 0 0;width:130px}
+.data-table thead th:last-child{border-radius:0 12px 0 0}
+.data-table tbody tr{border-bottom:1px solid #f3f4f6;transition:background 0.15s}
+.data-table tbody tr:last-child{border-bottom:none}
+.data-table tbody tr:hover{background:#f9fafb}
+.data-table tbody td{padding:11px 14px;font-size:12.5px;color:#374151;vertical-align:top}
+
+/* TAGS */
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:0.5px;white-space:nowrap}
+.tag-high{background:#fee2e2;color:#b91c1c}
+.tag-mid{background:#fef3c7;color:#b45309}
+.tag-low{background:#f0fdf4;color:#15803d}
+.tag-fixed{background:#f1f5f9;color:#64748b}
+
+/* FILE BADGE */
+.file-badge{display:inline-block;font-size:10px;font-weight:700;background:#dbeafe;color:#1d4ed8;padding:2px 8px;border-radius:4px;margin-bottom:3px;font-family:monospace}
+
+/* VALUE DISPLAY */
+.val-current{font-size:12.5px;color:#0f1f3d;font-weight:700}
+.val-source{font-size:11px;color:#6b7280;margin-top:2px}
+.val-source a{color:#1d4ed8;text-decoration:none}
+.val-source a:hover{text-decoration:underline}
+
+/* PROMPT BOX */
+.prompt-box{background:#0f1f3d;border-radius:12px;padding:20px 24px;margin-top:28px}
+.prompt-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#7ec8f5;margin-bottom:10px}
+.prompt-text{font-size:13px;color:#fff;line-height:1.85;white-space:pre-line}
+.prompt-text em{color:#fbbf24;font-style:normal;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>データ更新管理リスト <span>GRDM Sales Materials</span></h1>
+    <div class="header-sub">最終更新：2025年5月 ／ 次回確認推奨：2026年4月以降</div>
+  </div>
+  <div class="header-right">
+    <strong>使い方</strong>
+    このリストをClaudeに貼り付けて<br>「最新データに更新して」と依頼する
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- HOW TO USE -->
+  <div class="howto">
+    <div class="howto-icon">💡</div>
+    <div>
+      <div class="howto-title">このリストの使い方</div>
+      <div class="howto-text">
+        Claudeのチャットにこのページを見せて、<code>「このリストのデータを最新に更新して、各HTMLファイルも反映して」</code> と言うだけで一気に更新できます。<br>
+        優先度「高」は毎年変わる可能性があるデータ。優先度「低」はほぼ変わらないデータです。
+      </div>
+    </div>
+  </div>
+
+  <!-- ① 政策金利・金利関連 -->
+  <div class="sec-title">① 政策金利・金利関連（kinri.html / risk-list.html）</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>項目</th><th>現在の値</th><th>出典・確認先</th><th>優先度</th><th>更新頻度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>日本の政策金利</td>
+        <td><div class="val-current">0.50%（2025年時点）</div><div class="val-source">日本銀行</div></td>
+        <td><div class="val-source"><a href="https://www.boj.or.jp/mopo/mpmdeci/index.htm" target="_blank">boj.or.jp — 金融政策決定会合</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>随時変わる</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>米国の政策金利</td>
+        <td><div class="val-current">4.25〜4.50%（2025年頃）</div><div class="val-source">FRB</div></td>
+        <td><div class="val-source"><a href="https://www.federalreserve.gov/monetarypolicy/openmarket.htm" target="_blank">federalreserve.gov</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>年数回変わる</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>豪州の政策金利</td>
+        <td><div class="val-current">4.10%（2025年頃）</div><div class="val-source">RBA</div></td>
+        <td><div class="val-source"><a href="https://www.rba.gov.au/cash-rate/" target="_blank">rba.gov.au</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>年数回変わる</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>英国の政策金利</td>
+        <td><div class="val-current">4.50%（2025年頃）</div><div class="val-source">BOE</div></td>
+        <td><div class="val-source"><a href="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" target="_blank">bankofengland.co.uk</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>年数回変わる</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>日本の変動住宅ローン金利目安</td>
+        <td><div class="val-current">変動0.3〜1.5%台</div><div class="val-source">各金融機関</div></td>
+        <td><div class="val-source"><a href="https://www.eonet.ne.jp/~himaari/juutaku_risi.html" target="_blank">各行公式サイト（イオン・ソニー等）</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>随時変わる</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>日本の平均年収</td>
+        <td><div class="val-current">約460万円（令和4年分）</div><div class="val-source">国税庁「民間給与実態統計調査」</div></td>
+        <td><div class="val-source"><a href="https://www.nta.go.jp/publication/statistics/kokuzeicho/minkan/top.htm" target="_blank">nta.go.jp</a></div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>年1回（毎年秋）</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">risk-list.html</div><br>日本の政策金利（リスク一覧）</td>
+        <td><div class="val-current">0.5%（世界最低水準）</div></td>
+        <td><div class="val-source">kinri.htmlと同じ値に揃える</div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>kinri.htmlと連動</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ② 年金・社会保障 -->
+  <div class="sec-title">② 年金・社会保障（proposal.html）</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>項目</th><th>現在の値</th><th>出典・確認先</th><th>優先度</th><th>更新頻度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="file-badge">proposal.html</div><br>厚生年金の平均受給額の減少</td>
+        <td><div class="val-current">2000年 約177,000円 → 2021年 約144,000円（約33,000円減）</div></td>
+        <td><div class="val-source"><a href="https://www.mhlw.go.jp/topics/bukyoku/nenkin/nenkin/toukei/jigyou/m2021/jg210000.html" target="_blank">厚生労働省「厚生年金・国民年金事業の概況」</a></div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>年1回</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">proposal.html</div><br>百寿者（100歳以上）の将来推計</td>
+        <td><div class="val-current">2047年：53.9万人 / 2049年：65.9万人</div></td>
+        <td><div class="val-source"><a href="https://www.mhlw.go.jp/stf/houdou/0000119558.html" target="_blank">厚生労働省「百歳以上高齢者について」</a></div></td>
+        <td><span class="tag tag-low">低</span></td>
+        <td>数年に1回</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">proposal.html</div><br>年収500万円の手取り推移</td>
+        <td><div class="val-current">2002年 429万円 → 2019年 394万円（35万円減）</div></td>
+        <td><div class="val-source"><a href="https://www.nta.go.jp/publication/statistics/kokuzeicho/minkan/top.htm" target="_blank">国税庁「民間給与実態統計調査」各年版</a></div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>年1回（最新年度に更新）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ③ インフレ・物価 -->
+  <div class="sec-title">③ インフレ・物価データ（proposal.html / kinri.html）</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>項目</th><th>現在の値</th><th>出典・確認先</th><th>優先度</th><th>更新頻度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="file-badge">proposal.html</div><br>物価推移（30年比較）</td>
+        <td><div class="val-current">マック80円→190円 / 吉野家400円→498円 / ディズニー4,800円→9,900円 / 消費税3%→10% / 国民年金8,400円→16,590円</div></td>
+        <td><div class="val-source">各社公式・財務省・厚生労働省</div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>年1回（値上げ時に更新）</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html / proposal.html</div><br>インフレ2%時の1,000万円の将来価値</td>
+        <td><div class="val-current">5年後905万円 / 10年後820万円 / 20年後668万円</div></td>
+        <td><div class="val-source">数式ベース（インフレ率が変われば再計算）</div></td>
+        <td><span class="tag tag-low">低</span></td>
+        <td>インフレ目標が変わった場合</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ④ 不動産市場 -->
+  <div class="sec-title">④ 不動産市場データ（soneki.html / shuzen.html / kinri.html）</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>項目</th><th>現在の値</th><th>出典・確認先</th><th>優先度</th><th>更新頻度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="file-badge">soneki.html</div><br>マンション経営の表面利回り平均</td>
+        <td><div class="val-current">4.0%（当社実績・2017年3月）</div></td>
+        <td><div class="val-source">当社実績値 → 最新の成約データで確認</div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>年1回（当社実績で更新）</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">kinri.html</div><br>海外不動産投資額（JLL調査）</td>
+        <td><div class="val-current">2024年 国内不動産投資額 約3.9兆円（前年比40%増）/ 世界3位（170億米ドル）</div></td>
+        <td><div class="val-source"><a href="https://www.jll.co.jp/ja/trends-and-insights/research" target="_blank">JLL Japan リサーチレポート</a></div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>年1回（JLL年次レポート）</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">shuzen.html</div><br>首都圏中古マンション成約単価の上昇</td>
+        <td><div class="val-current">10年で約190%上昇（マンションレビュー2024年4月）</div></td>
+        <td><div class="val-source"><a href="https://www.mansion-review.jp/" target="_blank">マンションレビュー / 東日本不動産流通機構</a></div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>年1回</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">shuzen.html</div><br>未修繕マンションの価値下落</td>
+        <td><div class="val-current">築26〜30年で新築比57%程度まで下落する事例</div></td>
+        <td><div class="val-source"><a href="https://www.reins.or.jp/" target="_blank">東日本不動産流通機構（REINS）年次レポート</a></div></td>
+        <td><span class="tag tag-low">低</span></td>
+        <td>数年に1回</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ⑤ 災害・安全性 -->
+  <div class="sec-title">⑤ 災害・RC造安全性データ（risk-list.html）</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>項目</th><th>現在の値</th><th>出典・確認先</th><th>優先度</th><th>更新頻度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="file-badge">risk-list.html</div><br>東日本大震災のRC造倒壊率</td>
+        <td><div class="val-current">84,667棟中682棟（約0.8%）</div></td>
+        <td><div class="val-source"><a href="https://www.kanrikyo.or.jp/news/data/hisaihoukoku110519.pdf" target="_blank">国交省・マンション管理業協会 被災状況調査</a></div></td>
+        <td><span class="tag tag-fixed">固定</span></td>
+        <td>変わらない（過去の実績値）</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">risk-list.html</div><br>修繕積立金ガイドライン</td>
+        <td><div class="val-current">令和6年6月改定版</div></td>
+        <td><div class="val-source"><a href="https://www.mlit.go.jp/jutakukentiku/house/content/001747009.pdf" target="_blank">国交省「修繕積立金ガイドライン」</a></div></td>
+        <td><span class="tag tag-mid">中</span></td>
+        <td>改定時（数年に1回）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ⑥ 金融商品利回り比較 -->
+  <div class="sec-title">⑥ 金融商品利回り比較（proposal.html）</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>項目</th><th>現在の値</th><th>出典・確認先</th><th>優先度</th><th>更新頻度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="file-badge">proposal.html</div><br>銀行預金（普通）</td>
+        <td><div class="val-current">0.2%</div></td>
+        <td><div class="val-source"><a href="https://www.boj.or.jp/statistics/boj/other/depositfacility/index.htm" target="_blank">日本銀行・各銀行公式</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>随時変わる</td>
+      </tr>
+      <tr>
+        <td><div class="file-badge">proposal.html</div><br>個人向け国債（10年）</td>
+        <td><div class="val-current">1.5%</div></td>
+        <td><div class="val-source"><a href="https://www.mof.go.jp/jgbs/individual/kojinmuke/houdou/index.htm" target="_blank">財務省「個人向け国債」</a></div></td>
+        <td><span class="tag tag-high">高</span></td>
+        <td>毎月変わる</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PROMPT -->
+  <div class="prompt-box">
+    <div class="prompt-label">Claudeへの更新依頼フレーズ（コピーして使う）</div>
+    <div class="prompt-text">このデータ更新管理リストを確認してください。
+各項目の最新データをウェブ検索で確認し、現在の値と異なる場合は以下のファイルを更新してください：
+・<em>kinri.html</em>（金利・平均年収）
+・<em>proposal.html</em>（年金・物価・利回り比較）
+・<em>shuzen.html</em>（修繕・不動産価格）
+・<em>risk-list.html</em>（政策金利・ガイドライン）
+・<em>soneki.html</em>（利回り）
+
+更新した箇所と変更前→変更後の値を一覧で教えてください。</div>
+  </div>
+
+</div>
+</body>
+</html>
